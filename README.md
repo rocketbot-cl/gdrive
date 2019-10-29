@@ -5,7 +5,7 @@ Module to work with Google Drive
 
 <ul>
   <li>
-    For get a credential file go to <a href="https://developers.google.com/drive/api/v3/quickstart/python">
+    To get a credential file go to <a href="https://developers.google.com/drive/api/v3/quickstart/python">
     Google Drive Credentials
     </a>
   </li>
