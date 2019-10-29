@@ -244,7 +244,7 @@
             },
             "title": {
               "es": "Nombre de la carpeta",
-              "en": "File path",
+              "en": "Folder name",
               "cn": "File path"
             },
             "id": "folder_name",
@@ -259,8 +259,7 @@
             },
             "title": {
               "es": "Guardar en variable",
-              "en": "File path",
-              "cn": "File path"
+              "en": "Assign to a Variable"
             },
             "help": {
               "es": "Nombre de variable sin {}",
@@ -340,8 +339,8 @@
             },
             "title": {
               "es": "Carpeta destino (ID)",
-              "en": "File path",
-              "cn": "File path"
+              "en": "Destiny Folder ID",
+              "cn": "Destiny Folder ID"
             },
             "id": "folder_id",
             "css": "col-md-12"
@@ -374,8 +373,8 @@
             },
             "title": {
               "es": "Guardar en variable",
-              "en": "File path",
-              "cn": "File path"
+              "en": "Assing to a Variable",
+              "cn": "Assign to a Variable"
             },
             "help": {
               "es": "Nombre de variable sin {}",
@@ -461,8 +460,8 @@
             },
             "title": {
               "es": "Guardar en carpeta - ID (opcional)",
-              "en": "File path",
-              "cn": "File path"
+              "en": "Folder ID (optional)",
+              "cn": "Folder ID"
             },
             "id": "folder",
             "css": "col-md-12"
@@ -476,7 +475,12 @@
             },
             "title": {
               "es": "Guardar en variable",
-              "en": "File path",
+              "en": "Assign result in a Variable",
+              "cn": "File path"
+            },
+            "help": {
+              "es": "Nombre de variable sin llaves {}",
+              "en": "Variable name without {}",
               "cn": "File path"
             },
             "id": "var",
