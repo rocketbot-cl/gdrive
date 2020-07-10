@@ -95,11 +95,13 @@ if module == "ListFiles":
         raise Exception("No hay credenciales ni token válidos, por favor configure sus credenciales")
 
     var = GetParams('var_file_list')
+    filter_ = GetParams("filter")
 
     service = build('drive', 'v3', credentials=creds)
 
     results = service.files().list(
-        pageSize=1000, fields="files(id, name, mimeType)", includeItemsFromAllDrives=True, supportsAllDrives=True).execute()
+        q=filter_,
+        pageSize=1000, spaces="drive", fields="files(id, name, mimeType)", includeItemsFromAllDrives=True, supportsAllDrives=True).execute()
     items = results.get('files', [])
     # print('ITEMS',items)
     files = []
