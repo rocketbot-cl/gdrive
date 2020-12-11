@@ -264,3 +264,25 @@ if module == "DeleteFile":
         print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
         PrintException()
         raise e
+
+if module == "ShareFile":
+    try:
+        if not creds:
+            raise Exception("No hay credenciales ni token válidos, por favor configure sus credenciales")
+        file_id = GetParams("file_id")
+        if not file_id:
+            raise Exception("No ha ingresado un ID")
+        service = build('drive', 'v3', credentials=creds)
+        result = GetParams("result")
+        try:
+            service.permissions().create(body={"role":"reader", "type":"anyone"}, fileId=file_id).execute()
+            SetVar(result, True)
+        except Exception as e:
+            print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
+            PrintException()
+            SetVar(result, False)
+
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
+        PrintException()
+        raise e
