@@ -19,12 +19,11 @@ Para obtener la Opcion seleccionada:
 
 
 Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
-    
+
     pip install <package> -t .
 
 """
 from __future__ import print_function
-
 import os.path
 import pickle
 
@@ -52,7 +51,7 @@ global creds
 mimes = {
     'application/vnd.google-apps.spreadsheet': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     'application/vnd.google-apps.document': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    #'application/pdf': 'application/pdf',
+    # 'application/pdf': 'application/pdf',
     'application/vnd.google-apps.presentation': 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
 }
 
@@ -101,7 +100,8 @@ if module == "ListFiles":
 
     results = service.files().list(
         q=filter_,
-        pageSize=1000, spaces="drive", fields="files(id, name, mimeType)", includeItemsFromAllDrives=True, supportsAllDrives=True).execute()
+        pageSize=1000, spaces="drive", fields="files(id, name, mimeType)", includeItemsFromAllDrives=True,
+        supportsAllDrives=True).execute()
     items = results.get('files', [])
     # print('ITEMS',items)
     files = []
@@ -112,136 +112,164 @@ if module == "ListFiles":
     SetVar(var, files)
 
 if module == 'DownloadFile':
-    if not creds:
-        raise Exception("No hay credenciales ni token válidos, por favor configure sus credenciales")
+    try:
+        if not creds:
+            raise Exception("No hay credenciales ni token válidos, por favor configure sus credenciales")
 
-    drive_id = GetParams('drive_id')
-    if not drive_id:
-        raise Exception("ID de archivo no enviado")
+        drive_id = GetParams('drive_id')
+        if not drive_id:
+            raise Exception("ID de archivo no enviado")
 
-    file_path = GetParams('path_to_file')
-    if not file_path:
-        raise Exception("No se ingreso ruta donde guardar el archivo")
+        file_path = GetParams('path_to_file')
+        if not file_path:
+            raise Exception("No se ingreso ruta donde guardar el archivo")
 
-    service = build('drive', 'v3', credentials=creds)
-    file = service.files().get(fileId=drive_id).execute()
-    request = None
-    if file['mimeType'] in mimes:
-        request = service.files().export_media(fileId=drive_id, mimeType=mimes[file['mimeType']])
-    else:
-        request = service.files().get_media(fileId=drive_id)
-    fh = io.BytesIO()
-    downloader = MediaIoBaseDownload(fh, request)
-    # downloader = MediaIoBaseDownload(fh, request)
-    done = False
-    while done is False:
-        status, done = downloader.next_chunk()
-        print("Download %d%%." % int(status.progress() * 100))
+        service = build('drive', 'v3', credentials=creds)
+        file = service.files().get(fileId=drive_id).execute()
+        request = None
+        if file['mimeType'] in mimes:
+            request = service.files().export_media(fileId=drive_id, mimeType=mimes[file['mimeType']])
+        else:
+            request = service.files().get_media(fileId=drive_id)
+        fh = io.BytesIO()
+        downloader = MediaIoBaseDownload(fh, request)
+        # downloader = MediaIoBaseDownload(fh, request)
+        done = False
+        while done is False:
+            status, done = downloader.next_chunk()
+            print("Download %d%%." % int(status.progress() * 100))
 
-    with io.open(file_path + os.sep + file['name'], 'wb') as out:
-        fh.seek(0)
-        out.write(fh.read())
+        with io.open(file_path + os.sep + file['name'], 'wb') as out:
+            fh.seek(0)
+            out.write(fh.read())
+
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
 
 if module == 'CreateFolder':
-    if not creds:
-        raise Exception("No hay credenciales ni token válidos, por favor configure sus credenciales")
+    try:
+        if not creds:
+            raise Exception("No hay credenciales ni token válidos, por favor configure sus credenciales")
 
-    var = GetParams('var')
-    folder_name = GetParams('folder_name')
-    parent_id = GetParams('parent_id')
+        var = GetParams('var')
+        folder_name = GetParams('folder_name')
+        parent_id = GetParams('parent_id')
 
-    body = {
-        'name': folder_name,
-        'mimeType': "application/vnd.google-apps.folder"
-    }
-    if parent_id:
-        body['parents'] = [parent_id]
+        body = {
+            'name': folder_name,
+            'mimeType': "application/vnd.google-apps.folder"
+        }
+        if parent_id:
+            body['parents'] = [parent_id]
 
-    service = build('drive', 'v3', credentials=creds)
-    root_folder = service.files().create(body=body).execute()
+        service = build('drive', 'v3', credentials=creds)
+        root_folder = service.files().create(body=body).execute()
 
-    if var:
-        SetVar(var, root_folder)
+        if var:
+            SetVar(var, root_folder)
 
-    print(root_folder)
+        print(root_folder)
+
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
 
 if module == 'CopyMoveFile':
-    if not creds:
-        raise Exception("No hay credenciales ni token válidos, por favor configure sus credenciales")
+    try:
+        if not creds:
+            raise Exception("No hay credenciales ni token válidos, por favor configure sus credenciales")
 
-    var = GetParams('var')
-    folder_id = GetParams('folder_id')
-    file_id = GetParams('file_id')
+        var = GetParams('var')
+        folder_id = GetParams('folder_id')
+        file_id = GetParams('file_id')
 
-    if not folder_id or not file_id:
-        raise Exception("No ha ingresado archivo o carpeta")
+        if not folder_id or not file_id:
+            raise Exception("No ha ingresado archivo o carpeta")
 
-    option = GetParams('option')
+        option = GetParams('options')
 
-    print(option)
+        print(option)
 
-    service = build('drive', 'v3', credentials=creds)
-    file = service.files().get(fileId=file_id,
-                               fields='parents').execute()
-    previous_parents = ",".join(file.get('parents'))
+        service = build('drive', 'v3', credentials=creds)
+        file_to_move = service.files().get(fileId=file_id,
+                                           fields='parents, name').execute()
+        print(file_to_move.get('parents'), file_to_move)
+        previous_parents = ",".join(file_to_move.get('parents'))
 
-    print(previous_parents)
+        print("parents", previous_parents)
 
-    copy = option == "Copiar" or option == "Copy"
+        copy = option == "copy"
 
-    if copy:
-        previous_parents = ''
+        parents = folder_id
+        if copy:
+            file_id = service.files().copy(fileId=file_id).execute()["id"]
 
-    file = service.files().update(fileId=file_id,
-                                  addParents=folder_id,
-                                  removeParents=previous_parents,
-                                  fields='id, parents').execute()
+        file = service.files().update(fileId=file_id,
+                                      addParents=parents,
+                                      fields='id, parents, name').execute()
 
-    if var:
-        SetVar(var, file)
+        if copy:
+            file = service.files().update(fileId=file_id,
+                                          body={
+                                              "name": file_to_move["name"]
+                                          },
+                                          fields='id, name, parents').execute()
 
-    print(file)
+        if var:
+            SetVar(var, file)
+
+
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
 
 if module == "UploadFile":
-    if not creds:
-        raise Exception("No hay credenciales ni token válidos, por favor configure sus credenciales")
+    try:
+        if not creds:
+            raise Exception("No hay credenciales ni token válidos, por favor configure sus credenciales")
 
-    file_path = GetParams("file_path")
+        file_path = GetParams("file_path")
 
-    if not file_path:
-        raise Exception("No ha ingresado una ruta")
+        if not file_path:
+            raise Exception("No ha ingresado una ruta")
 
-    if not os.path.exists(file_path):
-        raise Exception("Archivo ingresado no existe")
+        if not os.path.exists(file_path):
+            raise Exception("Archivo ingresado no existe")
 
-    new_name = GetParams("new_name")
-    folder = GetParams("folder")
-    var = GetParams("var")
+        new_name = GetParams("new_name")
+        folder = GetParams("folder")
+        var = GetParams("var")
 
-    service = build('drive', 'v3', credentials=creds)
+        service = build('drive', 'v3', credentials=creds)
 
+        file_mime = magic.from_file(file_path, mime=True)
+        if file_path.endswith('.csv'):
+            file_mime = 'text/csv'
 
+        name = new_name or os.path.basename(file_path)
 
-    file_mime = magic.from_file(file_path, mime=True)
-    if file_path.endswith('.csv'):
-        file_mime = 'text/csv'
+        file_metadata = {'name': name}
+        media = MediaFileUpload(file_path,
+                                mimetype=file_mime)
 
-    name = new_name or os.path.basename(file_path)
+        if folder:
+            file_metadata['parents'] = [folder]
 
-    file_metadata = {'name': name}
-    media = MediaFileUpload(file_path,
-                            mimetype=file_mime)
+        file = service.files().create(body=file_metadata,
+                                      media_body=media,
+                                      fields='id').execute()
+        if var:
+            SetVar(var, file)
 
-    if folder:
-        file_metadata['parents'] = [folder]
-
-    file = service.files().create(body=file_metadata,
-                                  media_body=media,
-                                  fields='id').execute()
-    if var:
-        SetVar(var, file)
-
-    print(file)
+        print(file)
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
 
 if module == "DeleteFile":
     try:
@@ -256,12 +284,12 @@ if module == "DeleteFile":
             file = service.files().delete(fileId=file_id).execute()
             SetVar(result, True)
         except Exception as e:
-            print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
+            print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
             PrintException()
             SetVar(result, False)
 
     except Exception as e:
-        print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
 
@@ -275,14 +303,14 @@ if module == "ShareFile":
         service = build('drive', 'v3', credentials=creds)
         result = GetParams("result")
         try:
-            service.permissions().create(body={"role":"reader", "type":"anyone"}, fileId=file_id).execute()
+            service.permissions().create(body={"role": "reader", "type": "anyone"}, fileId=file_id).execute()
             SetVar(result, True)
         except Exception as e:
-            print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
+            print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
             PrintException()
             SetVar(result, False)
 
     except Exception as e:
-        print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
