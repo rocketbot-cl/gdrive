@@ -248,8 +248,11 @@ if module == "UploadFile":
         service = build('drive', 'v3', credentials=creds)
 
         file_mime = magic.from_file(file_path, mime=True)
+        print("mime type: ", file_mime)
         if file_path.endswith('.csv'):
             file_mime = 'text/csv'
+        if file_path.endswith('.xlsx'):
+            file_mime = 'application/vnd.ms-excel'
 
         name = new_name or os.path.basename(file_path)
 
