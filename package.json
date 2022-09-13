@@ -523,13 +523,13 @@
     },
     {
       "en": {
-        "title": "Delete a file in Drive",
+        "title": "Delete a file or folder in Drive",
         "description": "Delete a file in Drive",
         "title_options": "Select Option",
         "options": null
       },
       "es": {
-        "title": "Eliminar un archivo de Drive",
+        "title": "Eliminar un archivo o carpeta de Drive",
         "description": "Eliminar un archivo de Drive",
         "title_options": "Seleccione una opción",
         "options": null
@@ -545,8 +545,8 @@
               "cn": "1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo"
             },
             "title": {
-              "es": "ID Archivo",
-              "en": "File ID",
+              "es": "ID Archivo o Carpeta",
+              "en": "File or folder ID",
               "cn": "File ID"
             },
             "id": "file_id",

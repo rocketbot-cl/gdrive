@@ -195,8 +195,10 @@ if module == 'CopyMoveFile':
         print(option)
 
         service = build('drive', 'v3', credentials=creds)
+        
         file_to_move = service.files().get(fileId=file_id,
                                            fields='parents, name').execute()
+        
         print(file_to_move.get('parents'), file_to_move)
         previous_parents = ",".join(file_to_move.get('parents'))
 
@@ -209,7 +211,9 @@ if module == 'CopyMoveFile':
             file_id = service.files().copy(fileId=file_id).execute()["id"]
 
         file = service.files().update(fileId=file_id,
-                                      addParents=parents,
+                                      removeParents = previous_parents,
+                                      addParents = parents,
+                                      enforceSingleParent = True,
                                       fields='id, parents, name').execute()
 
         if copy:
