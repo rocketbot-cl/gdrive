@@ -9,6 +9,24 @@ __Download__ and __install__ the content in 'modules' folder in Rocketbot path
 
 
 
+## How to use this module
+
+Before using this module, you must register your app into the Google Cloud Portal.
+
+1. Sign in with a google account to the following link: https://console.cloud.google.com/projectcreate?previousPage=%2Fhome%2Fdashboard
+2. Complete the form and then press Create
+3. Within the Navigation Menu (Left), enter API and Services
+4. In the upper section, go to "+ ENABLE API AND SERVICES"
+5. Search for "Google Drive API", select it and finally enable it
+6. Again, go to the Navigation Menu (Left) > API and Services > Credentials
+7. Press Create Credentials > OAuth Client ID, select Application Type: Desktop App, enter a name and create.
+8. Download the credentials JSON file.
+9. Finally go to the Navigation Menu (Left) > Consent Screen and add a user in the "Test Users" section
+
+Note: When the first connection is made, a .pickle file will be created in the Rocketbot root folder, to connect to the same service from another account you must delete
+that file. Do the same procedure for the case in which the credentials expire.
+
+
 ## Description of the commands
 
 ### Setup G-Suite credentials
