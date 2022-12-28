@@ -56,6 +56,26 @@ mimes = {
     'application/vnd.google-apps.presentation': 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
 }
 
+export_formats = {
+    "Microsoft Word (.docx)": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "OpenDocument (.odt)": "application/vnd.oasis.opendocument.text",
+    "Rich Text (.rtf)": "application/rtf",
+    "PDF (.pdf)": "application/pdf",
+    "Plain Text (.txt)": "text/plain",
+    "Web Page (HTML) (.zip)": "application/zip",
+    "EPUB (.epub)": "application/epub+zip",
+    "Microsoft Excel (.xlsx)": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "OpenDocument (.ods)":	"application/x-vnd.oasis.opendocument.spreadsheet",
+    "Comma Separated Values (.csv)": "text/csv",
+    "Tab Separated Values (.tsv)": "text/tab-separated-values",
+    "Microsoft PowerPoint (.pptx)": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    "ODP (.odp)": "application/vnd.oasis.opendocument.presentation",
+    "JPEG (.jpg)": "image/jpeg",
+    "PNG (.png)": "image/png",
+    "Scalable Vector Graphics (.svg)": "image/svg+xml",
+    "JSON (.json)": "application/vnd.google-apps.script+json"
+}
+
 if module == "GoogleSuite":
     cred = None
     # global creds
@@ -127,6 +147,7 @@ if module == 'DownloadFile':
 
         service = build('drive', 'v3', credentials=creds)
         file = service.files().get(fileId=drive_id).execute()
+        
         request = None
         if file['mimeType'] in mimes:
             request = service.files().export_media(fileId=drive_id, mimeType=mimes[file['mimeType']])
@@ -140,7 +161,56 @@ if module == 'DownloadFile':
             status, done = downloader.next_chunk()
             print("Download %d%%." % int(status.progress() * 100))
 
-        with io.open(file_path + os.sep + file['name'], 'wb') as out:
+        keys = list(export_formats.keys())
+        values = list(export_formats.values())
+        mime = mimes.get(file['mimeType'], None)
+        if mime:
+            index = values.index(mime)
+            extension = keys[index].split()[-1][1:-1]
+        else:
+            extension = ""
+            
+        with io.open(file_path + os.sep + file['name'] + extension, 'wb') as out:
+            fh.seek(0)
+            out.write(fh.read())
+
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+
+if module == 'ExportFile':
+    try:
+        if not creds:
+            raise Exception("No hay credenciales ni token válidos, por favor configure sus credenciales")
+
+        drive_id = GetParams('drive_id')
+        if not drive_id:
+            raise Exception("ID de archivo no enviado")
+
+        file_path = GetParams('path_to_file')
+        if not file_path:
+            raise Exception("No se ingreso ruta donde guardar el archivo")
+
+        export_format = GetParams('format')
+        mime = export_formats.get(export_format)
+        
+        service = build('drive', 'v3', credentials=creds)
+        file = service.files().get(fileId=drive_id).execute()
+        request = None
+
+        request = service.files().export_media(fileId=drive_id, mimeType=mime)
+        fh = io.BytesIO()
+        downloader = MediaIoBaseDownload(fh, request)
+
+        done = False
+        while done is False:
+            status, done = downloader.next_chunk()
+            print("Download %d%%." % int(status.progress() * 100))
+
+        extension = export_format.split()[-1][1:-1]
+        
+        with io.open(file_path + os.sep + file['name'] + extension, 'wb') as out:
             fh.seek(0)
             out.write(fh.read())
 
@@ -171,8 +241,6 @@ if module == 'CreateFolder':
         if var:
             SetVar(var, root_folder)
 
-        print(root_folder)
-
     except Exception as e:
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
@@ -192,15 +260,12 @@ if module == 'CopyMoveFile':
 
         option = GetParams('options')
 
-        print(option)
-
         service = build('drive', 'v3', credentials=creds)
+        
         file_to_move = service.files().get(fileId=file_id,
                                            fields='parents, name').execute()
-        print(file_to_move.get('parents'), file_to_move)
+        
         previous_parents = ",".join(file_to_move.get('parents'))
-
-        print("parents", previous_parents)
 
         copy = option == "copy"
 
@@ -209,7 +274,9 @@ if module == 'CopyMoveFile':
             file_id = service.files().copy(fileId=file_id).execute()["id"]
 
         file = service.files().update(fileId=file_id,
-                                      addParents=parents,
+                                      removeParents = previous_parents,
+                                      addParents = parents,
+                                      enforceSingleParent = True,
                                       fields='id, parents, name').execute()
 
         if copy:
@@ -248,7 +315,7 @@ if module == "UploadFile":
         service = build('drive', 'v3', credentials=creds)
 
         file_mime = magic.from_file(file_path, mime=True)
-        print("mime type: ", file_mime)
+
         if file_path.endswith('.csv'):
             file_mime = 'text/csv'
         if file_path.endswith('.xlsx'):
@@ -269,7 +336,6 @@ if module == "UploadFile":
         if var:
             SetVar(var, file)
 
-        print(file)
     except Exception as e:
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
