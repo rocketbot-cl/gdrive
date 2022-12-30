@@ -35,6 +35,7 @@ Configure Google Drive credentials
 |Parameters|Description|example|
 | --- | --- | --- |
 |Credentials file path||C:\Usuario\Desktop\credentials.json|
+|Session||session|
 
 ### List files in Drive
   
@@ -43,6 +44,7 @@ List files of Google Drive
 | --- | --- | --- |
 |Filter||mimeType = 'application/vnd.google-apps.folder'|
 |Assign result to var||var|
+|Session||session|
 
 ### Download file
   
@@ -51,6 +53,7 @@ Download file from Drive
 | --- | --- | --- |
 |File ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Path where to save file||C:\users\usuario\Downloads|
+|Session||session|
 
 ### Export file
   
@@ -60,6 +63,7 @@ Export a file from Drive to the requested format type
 |File ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |File format (Drive)||---- Select format ----|
 |Path where to save file||C:\users\usuario\Downloads|
+|Session||session|
 
 ### Create Folder
   
@@ -69,6 +73,7 @@ Create Folder
 |File ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Folder name||New Folder|
 |Assign result to var||var|
+|Session||session|
 
 ### Copy or move file
   
@@ -79,6 +84,7 @@ Copy or move a file
 |Destiny Folder ID||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Move or Copy||var|
 |Assign result to var||var|
+|Session||session|
 
 ### Upload file
   
@@ -89,6 +95,7 @@ Upload a file to Google Drive
 |New name (optional)||new_name.txt|
 |Save to folder - ID (optional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Assign result to var||var|
+|Session||session|
 
 ### Delete a file or folder
   
@@ -97,6 +104,7 @@ Delete a file or folder from Drive
 | --- | --- | --- |
 |File ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Assign result to var||var|
+|Session||session|
 
 ### Share file
   
@@ -105,3 +113,4 @@ Share a file in Drive
 | --- | --- | --- |
 |File ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Assign result to var||var|
+|Session||session|

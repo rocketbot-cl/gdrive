@@ -35,6 +35,7 @@ Configurar credenciais do Google Drive
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |Caminho do arquivo de credenciais||C:\Usuario\Desktop\credentials.json|
+|Session||session|
 
 ### Listar arquivos no Drive
   
@@ -43,6 +44,7 @@ Listar arquivos do Google Drive
 | --- | --- | --- |
 |Filtro||mimeType = 'application/vnd.google-apps.folder'|
 |Atribuir resultado à variável||var|
+|Session||session|
 
 ### Baixar arquivo
   
@@ -51,6 +53,7 @@ Baixar um arquivo do Drive
 | --- | --- | --- |
 |ID do Arquivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Caminho onde salvar o arquivo||C:\users\usuario\Downloads|
+|Session||session|
 
 ### Exportar arquivo
   
@@ -60,6 +63,7 @@ Exportar um arquivo do Drive para o tipo de formato solicitado
 |ID do Arquivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Formato de arquivo (Drive)||---- Select format ----|
 |Caminho onde salvar o arquivo||C:\users\usuario\Downloads|
+|Session||session|
 
 ### Criar pasta
   
@@ -69,6 +73,7 @@ Criar pasta
 |ID do Arquivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |File path||New Folder|
 |Atribuir resultado à variável||var|
+|Session||session|
 
 ### Copiar ou mover arquivo
   
@@ -79,6 +84,7 @@ Copiar ou mover um arquivo
 |Destiny Folder ID||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Mover ou Copiar||var|
 |Atribuir resultado à variável||var|
+|Session||session|
 
 ### Subir arquivo
   
@@ -89,6 +95,7 @@ Carregar um arquivo para o Google Drive
 |Novo nome (opcional)||new_name.txt|
 |Salvar na pasta - ID (opcional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Atribuir resultado à variável||var|
+|Session||session|
 
 ### Excluir um arquivo ou pasta
   
@@ -97,6 +104,7 @@ Excluir um arquivo ou pasta do Google Drive
 | --- | --- | --- |
 |ID do Arquivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Atribuir resultado à variável||var|
+|Session||session|
 
 ### Compartilhar arquivo
   
@@ -105,3 +113,4 @@ Compartilhar um arquivo do Drive
 | --- | --- | --- |
 |ID do Arquivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Atribuir resultado à variável||var|
+|Session||session|

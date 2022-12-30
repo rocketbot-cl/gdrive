@@ -35,6 +35,7 @@ Configura credenciales de Google Drive
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |Ruta archivo de credenciales||C:\Usuario\Desktop\credentials.json|
+|Session||session|
 
 ### Listar archivos en Drive
   
@@ -43,6 +44,7 @@ Lista los archivos de Google Drive
 | --- | --- | --- |
 |Filtro||mimeType = 'application/vnd.google-apps.folder'|
 |Asignar resultado a variable||var|
+|Session||session|
 
 ### Descargar archivo
   
@@ -51,6 +53,7 @@ Descargar un archivo desde Drive
 | --- | --- | --- |
 |ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Ruta donde guardar archivo||C:\users\usuario\Downloads|
+|Session||session|
 
 ### Exportar archivo
   
@@ -60,6 +63,7 @@ Exportar un archivo de Drive al tipo de formato solicitado
 |ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Formato del archivo (Drive)||---- Select format ----|
 |Ruta donde guardar archivo||C:\users\usuario\Downloads|
+|Session||session|
 
 ### Crear carpeta
   
@@ -69,16 +73,18 @@ Crear carpeta
 |ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Nombre de la carpeta||Nueva carpeta|
 |Asignar resultado a variable||var|
+|Session||session|
 
 ### Copiar o mover archivo
   
-Copiar o mover archivo
+Copiar o mover un archivo
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Carpeta destino (ID)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Mover o Copiar||var|
 |Asignar resultado a variable||var|
+|Session||session|
 
 ### Subir archivo
   
@@ -89,6 +95,7 @@ Subir un archivo a Google Drive
 |Nombre nuevo (opcional)||nuevo_nombre.txt|
 |Guardar en carpeta - ID (opcional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Asignar resultado a variable||var|
+|Session||session|
 
 ### Eliminar un archivo o carpeta
   
@@ -97,6 +104,7 @@ Eliminar un archivo o carpeta de Google Drive
 | --- | --- | --- |
 |ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Asignar resultado a variable||var|
+|Session||session|
 
 ### Compartir archivo
   
@@ -105,3 +113,4 @@ Comparte un archivo de Drive
 | --- | --- | --- |
 |ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Asignar resultado a variable||var|
+|Session||session|
