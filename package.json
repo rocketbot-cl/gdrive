@@ -2,7 +2,7 @@
   "author": "José Gonzalez - Juan Siro",
   "description": "Google Drive connection module | Módulo de conexão do Google Drive | Módulo de conexión con Google Drive",
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "2.3.2",
+  "version": "3.4.2",
   "license": "MIT",
   "homepage": "http://rocketbot.com/",
   "linux": true,
@@ -751,6 +751,31 @@
             "css": "col-md-12"
           },
           {
+            "type": "checkbox",
+            "placeholder": {
+              "es": "",
+              "en": "",
+              "pr": ""
+            },
+            "title": {
+              "es": "Convertir a formato Google",
+              "en": "Convert to Google format",
+              "pr": "Converter para o formato Google"
+            },
+            "description": {
+              "es": "Si se marca, intentará subir el archivo como el formato equivalente de Google (de existir), si no, subira el archivo original.",
+              "en": "If checked, it will try to upload the file as Google's equivalent format (if any), if not, it will upload the original file.",
+              "pr": "Se marcado, ele tentará fazer o upload do arquivo no formato equivalente do Google (se houver), caso contrário, fará o upload do arquivo original."
+            },
+            "help": {
+              "es": "En caso de no existir formato equivalente de Google, subira el archivo original.",
+              "en": "If there is no equivalent Google format, the original file will be uploaded.",
+              "pr": "Se não houver um formato equivalente do Google, o arquivo original será carregado."
+            },
+            "id": "convert",
+            "css": "col-md-9"
+          },
+          {
             "type": "input",
             "placeholder": {
               "es": "var",
@@ -768,7 +793,7 @@
               "pr": "Nome da variável sem {}"
             },
             "id": "var",
-            "css": "col-md-12"
+            "css": "col-md-6"
           },
           {
             "type": "input",
