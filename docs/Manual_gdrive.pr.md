@@ -1,3 +1,7 @@
+
+
+
+
 # Google Drive
   
 Módulo de conexão do Google Drive  
@@ -5,7 +9,9 @@ Módulo de conexão do Google Drive
 ![banner](imgs/Banner_gdrive.png)
 ## Como instalar este módulo
   
-__Baixe__ e __instale__ o conteúdo na pasta 'modules' no caminho do Rocketbot  
+Para instalar o módulo no Rocketbot Studio, pode ser feito de duas formas:
+1. Manual: __Baixe__ o arquivo .zip e descompacte-o na pasta módulos. O nome da pasta deve ser o mesmo do módulo e dentro dela devem ter os seguintes arquivos e pastas: \__init__.py, package.json, docs, example e libs. Se você tiver o aplicativo aberto, atualize seu navegador para poder usar o novo módulo.
+2. Automático: Ao entrar no Rocketbot Studio na margem direita você encontrará a seção **Addons**, selecione **Install Mods**, procure o módulo desejado e aperte instalar.  
 
 
 
@@ -23,8 +29,7 @@ Antes de usar este módulo, você deve registrar seu aplicativo no Google Cloud 
 8. Baixe o arquivo JSON de credenciais.
 9. Por fim, vá para o Menu de Navegação (Esquerda) > Tela de Consentimento e adicione um usuário na seção "Testar usuários"
 
-Nota: Quando a primeira conexão for feita, um arquivo .pickle será criado na pasta raiz do Rocketbot, para conectar ao mesmo serviço de outra conta, você precisa deletar
-esse arquivo Faça o mesmo procedimento caso as credenciais expirem.
+Nota: Quando a primeira conexão for feita, um arquivo .pickle será criado na pasta raiz do Rocketbot, para conectar ao mesmo serviço de outra conta, você precisa deletaresse arquivo Faça o mesmo procedimento caso as credenciais expirem.
 
 
 ## Descrição do comando
@@ -94,6 +99,7 @@ Carregar um arquivo para o Google Drive
 |Caminho de arquivo||C:\archivo.txt|
 |Novo nome (opcional)||new_name.txt|
 |Salvar na pasta - ID (opcional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Converter para o formato Google|Se marcado, ele tentará fazer o upload do arquivo no formato equivalente do Google (se houver), caso contrário, fará o upload do arquivo original.||
 |Atribuir resultado à variável||var|
 |Session||session|
 
