@@ -1,3 +1,7 @@
+
+
+
+
 # Google Drive
   
 Google Drive connection module  
@@ -5,7 +9,9 @@ Google Drive connection module
 ![banner](imgs/Banner_gdrive.png)
 ## How to install this module
   
-__Download__ and __install__ the content in 'modules' folder in Rocketbot path  
+To install the module in Rocketbot Studio, it can be done in two ways:
+1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
+2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
 
 
 
@@ -23,8 +29,7 @@ Before using this module, you must register your app into the Google Cloud Porta
 8. Download the credentials JSON file.
 9. Finally go to the Navigation Menu (Left) > Consent Screen and add a user in the "Test Users" section
 
-Note: When the first connection is made, a .pickle file will be created in the Rocketbot root folder, to connect to the same service from another account you must delete
-that file. Do the same procedure for the case in which the credentials expire.
+Note: When the first connection is made, a .pickle file will be created in the Rocketbot root folder, to connect to the same service from another account you must delete that file. Do the same procedure for the case in which the credentials expire.
 
 
 ## Description of the commands
@@ -94,6 +99,7 @@ Upload a file to Google Drive
 |File path||C:\file.txt|
 |New name (optional)||new_name.txt|
 |Save to folder - ID (optional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Convert to Google format|If checked, it will try to upload the file as Google's equivalent format (if any), if not, it will upload the original file.||
 |Assign result to var||var|
 |Session||session|
 
