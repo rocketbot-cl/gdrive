@@ -345,6 +345,7 @@ if module == "UploadFile":
 
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
 
+        mimeType = None
         if convert and eval(convert) == True:
             filename, file_extension = os.path.splitext(file_path)
             mimeType = import_formats.get(file_extension, None)
