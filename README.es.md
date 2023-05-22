@@ -4,48 +4,15 @@
 
 # Google Drive
   
-Módulo de conexión con Google Drive  
+Módulo para conectarse a Google Drive y administrar sus archivos. Puede trabajar con archivos y carpetas propios o compartidos, moverlos, eliminarlos, descargarlos, exportarlos y cargarlos.  
+
+*Read this in other languages: [English](README.md), [Português](README.pr.md), [Español](README.es.md)*
 
 ## Como instalar este módulo
   
 Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
-1. Manual: __Descargar__ el archivo .zip y 
-descomprimirlo en la carpeta modules. El nombre de la carpeta debe ser el mismo al del módulo y dentro debe tener los 
-siguientes archivos y carpetas: \__init__.py, package.json, docs, example y libs. Si tiene abierta la aplicación, 
-refresca el navegador para poder utilizar el nuevo modulo.
-2. Automática: Al ingresar a Rocketbot Studio sobre el margen
- derecho encontrara la sección de **Addons**, seleccionar **Install Mods**, buscar el modulo deseado y presionar 
-install.  
-
-
-
-
-## Como usar este modulo
-
-Antes de usar este modulo, es necesario registrar tu aplicación en el portal de Google 
-Cloud. 
-
-1. Ingresar con una cuenta de google al siguiente link: 
-https://console.cloud.google.com/projectcreate?previousPage=%2Fhome%2Fdashboard
-2. Completar el formulario y luego 
-presionar Crear
-3. Dentro del Menu de Navegación (Izquierdo), ingresar en API y Servicios
-4. En la sección superior, 
-ingresar a "+ HABILITAR API Y SERVICIOS"
-5. Buscar "Google Drive API", seleccionar y por ultimo habilitar
-6. Nuevamente 
-dirigirse a Menu de Navegación (Izquierdo) > API y Servicios > Credenciales
-7. Presionas Crear Credenciales > ID de 
-cliente de OAuth, seleccionar como Tipo de Aplicación: App de Escritorio, colocar un nombre y crear.
-8. Descargar el 
-achivo JSON de credenciales.
-9. Por ultimo dirigirse a Menu de Navegación (Izquierdo) > Pantalla de Consentimiento y 
-agregar usuario dentro de la seccion "Usuarios de prueba"
-
-Nota: Cuando se realice la primera conexión, se creará un 
-archivo .pickle en la carpeta raíz de Rocketbot, para conectarse al mismo servicio desde otra cuenta, debe eliminar
-ese 
-archivo Realice el mismo procedimiento para el caso en que caduquen las credenciales.
+1. Manual: __Descargar__ el archivo .zip y descomprimirlo en la carpeta modules. El nombre de la carpeta debe ser el mismo al del módulo y dentro debe tener los siguientes archivos y carpetas: \__init__.py, package.json, docs, example y libs. Si tiene abierta la aplicación, refresca el navegador para poder utilizar el nuevo modulo.
+2. Automática: Al ingresar a Rocketbot Studio sobre el margen derecho encontrara la sección de **Addons**, seleccionar **Install Mods**, buscar el modulo deseado y presionar install.  
 
 
 ## Overview
@@ -55,7 +22,7 @@ archivo Realice el mismo procedimiento para el caso en que caduquen las credenci
 Configura credenciales de Google Drive
 
 2. Listar archivos en Drive  
-Lista los archivos de Google Drive
+Lista los archivos de Google Drive. Este comando devuelve todos los archivos de forma predeterminada, incluidos los archivos desechados. Si no desea que los archivos desechados aparezcan en la lista, utilice trashed=false como filtro.
 
 3. Descargar archivo  
 Descargar un archivo desde Drive

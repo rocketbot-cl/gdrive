@@ -4,7 +4,9 @@
 
 # Google Drive
   
-Módulo de conexión con Google Drive  
+Módulo para conectarse a Google Drive y administrar sus archivos. Puede trabajar con archivos y carpetas propios o compartidos, moverlos, eliminarlos, descargarlos, exportarlos y cargarlos.  
+
+*Read this in other languages: [English](Manual_gdrive.md), [Português](Manual_gdrive.pr.md), [Español](Manual_gdrive.es.md)*
   
 ![banner](imgs/Banner_gdrive.png)
 ## Como instalar este módulo
@@ -17,11 +19,9 @@ Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
 
 ## Como usar este modulo
 
-Antes de usar este modulo, es necesario registrar tu aplicación en el portal de Google 
-Cloud. 
+Antes de usar este modulo, es necesario registrar tu aplicación en el portal de Google Cloud. 
 
-1. Ingresar con una cuenta de google al siguiente link: 
-https://console.cloud.google.com/projectcreate?previousPage=%2Fhome%2Fdashboard
+1. Ingresar con una cuenta de google al siguiente link: https://console.cloud.google.com/projectcreate?previousPage=%2Fhome%2Fdashboard
 2. Completar el formulario y luego presionar Crear
 3. Dentro del Menu de Navegación (Izquierdo), ingresar en API y Servicios
 4. En la sección superior, ingresar a "+ HABILITAR API Y SERVICIOS"
@@ -46,10 +46,12 @@ Configura credenciales de Google Drive
 
 ### Listar archivos en Drive
   
-Lista los archivos de Google Drive
+Lista los archivos de Google Drive. Este comando devuelve todos los archivos de forma predeterminada, incluidos los archivos desechados. Si no desea que los archivos desechados aparezcan en la lista, utilice trashed=false como filtro.
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|Filtro||mimeType = 'application/vnd.google-apps.folder'|
+|Filtro||mimeType = 'application/vnd.google-apps.folder' and trashed = false|
+|Sólo archivos propios||-|
+|Sólo archivos compartidos conmigo||-|
 |Asignar resultado a variable||var|
 |Session||session|
 
