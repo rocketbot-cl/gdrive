@@ -30,9 +30,7 @@ Before using this module, you must register your app into the Google Cloud Porta
 8. Download the credentials JSON file.
 9. Finally go to the Navigation Menu (Left) > Consent Screen and add a user in the "Test Users" section
 
-Note: When the first connection is made, a .pickle file will be created in the Rocketbot root folder, to connect to the same service from another account you must delete
-that file. Do the same 
-procedure for the case in which the credentials expire.
+Note: When the first connection is made, a .pickle file will be created in the Rocketbot root folder, to connect to the same service from another account you must delete that file. Do the same procedure for the case in which the credentials expire.
 
 
 ## Description of the commands
