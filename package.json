@@ -1,8 +1,13 @@
 {
   "author": "José Gonzalez - Juan Siro",
   "description": "Google Drive connection module | Módulo de conexão do Google Drive | Módulo de conexión con Google Drive",
+  "description_lang": {
+    "en": "Module to connect to Google Drive and manage your files. You can work with owned or shared files and folders, move, delete, download, export and upload them.",
+    "es": "Módulo para conectarse a Google Drive y administrar sus archivos. Puede trabajar con archivos y carpetas propios o compartidos, moverlos, eliminarlos, descargarlos, exportarlos y cargarlos.",
+    "pr": "Módulo para conectar ao Google Drive e gerenciar seus arquivos. Você pode trabalhar com arquivos e pastas próprios ou compartilhados, mover, excluir, baixar, exportar e carregá-los."
+  },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "3.5.3",
+  "version": "3.5.5",
   "license": "MIT",
   "homepage": "http://rocketbot.com/",
   "linux": true,
@@ -93,19 +98,19 @@
     {
       "en": {
         "title": "List files in Drive",
-        "description": "List files of Google Drive",
+        "description": "List files of Google Drive. This command returns all files by default, including trashed files. If you don't want trashed files to appear in the list, use the trashed=false as filter.",
         "title_options": "Select Option",
         "options": null
       },
       "es": {
         "title": "Listar archivos en Drive",
-        "description": "Lista los archivos de Google Drive",
+        "description": "Lista los archivos de Google Drive. Este comando devuelve todos los archivos de forma predeterminada, incluidos los archivos desechados. Si no desea que los archivos desechados aparezcan en la lista, utilice trashed=false como filtro.",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
         "title": "Listar arquivos no Drive",
-        "description": "Listar arquivos do Google Drive",
+        "description": "Listar arquivos do Google Drive. Este comando retorna todos os arquivos por padrão, incluindo arquivos descartados. Se você não quiser que os arquivos da lixeira apareçam na lista, use trashed=false como filtro.",
         "title_options": "Selecione uma opção",
         "options": null
       },
@@ -115,9 +120,9 @@
           {
             "type": "input",
             "placeholder": {
-              "es": "mimeType = 'application/vnd.google-apps.folder'",
-              "en": "mimeType = 'application/vnd.google-apps.folder'",
-              "pr": "mimeType = 'application/vnd.google-apps.folder'"
+              "es": "mimeType = 'application/vnd.google-apps.folder' and trashed = false",
+              "en": "mimeType = 'application/vnd.google-apps.folder' and trashed = false",
+              "pr": "mimeType = 'application/vnd.google-apps.folder' and trashed = false"
             },
             "title": {
               "es": "Filtro",
@@ -125,12 +130,52 @@
               "pr": "Filtro"
             },
             "help": {
-              "es": "Para ver filtros disponibles, visitar https://developers.google.com/drive/api/v3/search-files#query_string_examples",
-              "en": "See filter from https://developers.google.com/drive/api/v3/search-files#query_string_examples",
-              "pr": "See filter from https://developers.google.com/drive/api/v3/search-files#query_string_examples"
+              "es": "Documentación sobre filtros disponibles: https://developers.google.com/drive/api/guides/ref-search-terms & https://developers.google.com/drive/api/v3/search-files#query_string_examples",
+              "en": "Documentation on available filters: https://developers.google.com/drive/api/guides/ref-search-terms & https://developers.google.com/drive/api/v3/search-files#query_string_examples",
+              "pr": "Documentação sobre os filtros disponíveis: https://developers.google.com/drive/api/guides/ref-search-terms & https://developers.google.com/drive/api/v3/search-files#query_string_examples"
             },
             "id": "filter",
             "css": "col-md-12"
+          },
+          {
+            "type": "checkbox",
+            "placeholder": {
+              "es": "-",
+              "en": "-",
+              "pr": "-"
+            },
+            "title": {
+              "es": "Sólo archivos propios",
+              "en": "Owned files only",
+              "pr": "Somente arquivos próprios"
+            },
+            "help": {
+              "es": "El comando, por defecto trae todos los archivos del usuario (propios y compartidos). Si se tilda solo traera información de archivos pertenecientes al usuario.",
+              "en": "By default, the command fetches all the user's files (own and shared). If checked, it will only bring information of files owned by the user.",
+              "pr": "O comando, por padrão, traz todos os arquivos do usuário (próprios e compartilhados). Se marcada, trará apenas informações dos arquivos pertencentes ao usuário."
+            },
+            "id": "mine",
+            "css": "col-md-6"
+          },
+          {
+            "type": "checkbox",
+            "placeholder": {
+              "es": "-",
+              "en": "-",
+              "pr": "-"
+            },
+            "title": {
+              "es": "Sólo archivos compartidos conmigo",
+              "en": "Shared with me files only",
+              "pr": "Somente arquivos compartilhados comigo"
+            },
+            "help": {
+              "es": "El comando, por defecto trae todos los archivos del usuario (propios y compartidos). Si se tilda solo traera información de archivos compartidos con el usuario.",
+              "en": "By default, the command fetches all the user's files (own and shared). If checked, it will only bring information of files shared with the user.",
+              "pr": "O comando, por padrão, traz todos os arquivos do usuário (próprios e compartilhados). Se marcada, trará apenas informações dos arquivos compartilhados com o usuário."
+            },
+            "id": "shared",
+            "css": "col-md-6"
           },
           {
             "type": "input",
@@ -150,7 +195,7 @@
               "pr": "Nome da variável sem {}"
             },
             "id": "var_file_list",
-            "css": "col-md-12"
+            "css": "col-md-6"
           },
           {
             "type": "input",

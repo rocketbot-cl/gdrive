@@ -4,7 +4,9 @@
 
 # Google Drive
   
-Módulo de conexão do Google Drive  
+Módulo para conectar ao Google Drive e gerenciar seus arquivos. Você pode trabalhar com arquivos e pastas próprios ou compartilhados, mover, excluir, baixar, exportar e carregá-los.  
+
+*Read this in other languages: [English](Manual_gdrive.md), [Português](Manual_gdrive.pr.md), [Español](Manual_gdrive.es.md)*
   
 ![banner](imgs/Banner_gdrive.png)
 ## Como instalar este módulo
@@ -29,7 +31,7 @@ Antes de usar este módulo, você deve registrar seu aplicativo no Google Cloud 
 8. Baixe o arquivo JSON de credenciais.
 9. Por fim, vá para o Menu de Navegação (Esquerda) > Tela de Consentimento e adicione um usuário na seção "Testar usuários"
 
-Nota: Quando a primeira conexão for feita, um arquivo .pickle será criado na pasta raiz do Rocketbot, para conectar ao mesmo serviço de outra conta, você precisa deletaresse arquivo Faça o mesmo procedimento caso as credenciais expirem.
+Nota: Quando a primeira conexão for feita, um arquivo .pickle será criado na pasta raiz do Rocketbot, para conectar ao mesmo serviço de outra conta, você precisa deletar esse arquivo Faça o mesmo procedimento caso as credenciais expirem.
 
 
 ## Descrição do comando
@@ -44,10 +46,12 @@ Configurar credenciais do Google Drive
 
 ### Listar arquivos no Drive
   
-Listar arquivos do Google Drive
+Listar arquivos do Google Drive. Este comando retorna todos os arquivos por padrão, incluindo arquivos descartados. Se você não quiser que os arquivos da lixeira apareçam na lista, use trashed=false como filtro.
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|Filtro||mimeType = 'application/vnd.google-apps.folder'|
+|Filtro||mimeType = 'application/vnd.google-apps.folder' and trashed = false|
+|Somente arquivos próprios||-|
+|Somente arquivos compartilhados comigo||-|
 |Atribuir resultado à variável||var|
 |Session||session|
 

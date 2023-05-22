@@ -1,29 +1,18 @@
+
+
+
+
 # Google Drive
   
-Google Drive connection module  
+Module to connect to Google Drive and manage your files. You can work with owned or shared files and folders, move, delete, download, export and upload them.  
+
+*Read this in other languages: [English](README.md), [Português](README.pr.md), [Español](README.es.md)*
 
 ## How to install this module
   
-__Download__ and __install__ the content in 'modules' folder in Rocketbot path  
-
-
-
-## How to use this module
-
-Before using this module, you must register your app into the Google Cloud Portal.
-
-1. Sign in with a google account to the following link: https://console.cloud.google.com/projectcreate?previousPage=%2Fhome%2Fdashboard
-2. Complete the form and then press Create
-3. Within the Navigation Menu (Left), enter API and Services
-4. In the upper section, go to "+ ENABLE API AND SERVICES"
-5. Search for "Google Drive API", select it and finally enable it
-6. Again, go to the Navigation Menu (Left) > API and Services > Credentials
-7. Press Create Credentials > OAuth Client ID, select Application Type: Desktop App, enter a name and create.
-8. Download the credentials JSON file.
-9. Finally go to the Navigation Menu (Left) > Consent Screen and add a user in the "Test Users" section
-
-Note: When the first connection is made, a .pickle file will be created in the Rocketbot root folder, to connect to the same service from another account you must delete
-that file. Do the same procedure for the case in which the credentials expire.
+To install the module in Rocketbot Studio, it can be done in two ways:
+1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
+2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
 
 
 ## Overview
@@ -33,7 +22,7 @@ that file. Do the same procedure for the case in which the credentials expire.
 Configure Google Drive credentials
 
 2. List files in Drive  
-List files of Google Drive
+List files of Google Drive. This command returns all files by default, including trashed files. If you don't want trashed files to appear in the list, use the trashed=false as filter.
 
 3. Download file  
 Download file from Drive

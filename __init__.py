@@ -159,13 +159,32 @@ if module == "ListFiles":
 
     var = GetParams('var_file_list')
     filter_ = GetParams("filter")
-
+    mine = GetParams("mine")
+    shared = GetParams("shared")
+    
+    # By default the command will get the data from all drives, if mine is checked, then will only bring back files thats have the user as owner.
+    if mine and eval(mine):
+        if filter_ and filter_ != "": 
+            filter_ += " and 'me' in owners"
+        else: 
+            filter_ = "'me' in owners"
+           
+    if shared and eval(shared):
+        if filter_ and filter_ != "": 
+            filter_ += " and sharedWithMe = true"
+        else: 
+            filter_ = "sharedWithMe = true"        
+    
+    if "'me' in owners" in filter_ and "sharedWithMe = true" in filter_:
+        raise Exception ("Can not use both filters ('me' in owners and sharedWithMe = true) in the same query...")
+    
     service = build('drive', 'v3', credentials=mod_gdrive_session[session])
 
     results = service.files().list(
         q=filter_,
-        pageSize=1000, spaces="drive", fields="files(id, name, mimeType)", includeItemsFromAllDrives=True,
-        supportsAllDrives=True).execute()
+        fields="files(id, name, mimeType, parents)",
+        pageSize=1000, spaces='drive', includeItemsFromAllDrives=True,
+        supportsAllDrives=True, includeLabels=True).execute()
     items = results.get('files', [])
 
     files = []
@@ -190,8 +209,10 @@ if module == 'DownloadFile':
         
         request = None
         if file['mimeType'] in mimes:
-            request = service.files().export_media(fileId=drive_id, mimeType=mimes[file['mimeType']])
+            mime = mimes[file['mimeType']]
+            request = service.files().export_media(fileId=drive_id, mimeType=mime)
         else:
+            mime = file['mimeType']
             request = service.files().get_media(fileId=drive_id)
         fh = io.BytesIO()
         downloader = MediaIoBaseDownload(fh, request)
@@ -203,11 +224,10 @@ if module == 'DownloadFile':
 
         keys = list(export_formats.keys())
         values = list(export_formats.values())
-        mime = mimes.get(file['mimeType'], None)
-        if mime:
+        try:
             index = values.index(mime)
             extension = keys[index].split()[-1][1:-1]
-        else:
+        except:
             extension = ""
             
         with io.open(file_path + os.sep + file['name'] + extension, 'wb') as out:

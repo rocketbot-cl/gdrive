@@ -4,7 +4,9 @@
 
 # Google Drive
   
-Google Drive connection module  
+Module to connect to Google Drive and manage your files. You can work with owned or shared files and folders, move, delete, download, export and upload them.  
+
+*Read this in other languages: [English](Manual_gdrive.md), [Português](Manual_gdrive.pr.md), [Español](Manual_gdrive.es.md)*
   
 ![banner](imgs/Banner_gdrive.png)
 ## How to install this module
@@ -12,7 +14,6 @@ Google Drive connection module
 To install the module in Rocketbot Studio, it can be done in two ways:
 1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
 2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
-
 
 
 ## How to use this module
@@ -44,10 +45,12 @@ Configure Google Drive credentials
 
 ### List files in Drive
   
-List files of Google Drive
+List files of Google Drive. This command returns all files by default, including trashed files. If you don't want trashed files to appear in the list, use the trashed=false as filter.
 |Parameters|Description|example|
 | --- | --- | --- |
-|Filter||mimeType = 'application/vnd.google-apps.folder'|
+|Filter||mimeType = 'application/vnd.google-apps.folder' and trashed = false|
+|Owned files only||-|
+|Shared with me files only||-|
 |Assign result to var||var|
 |Session||session|
 
