@@ -35,9 +35,9 @@ cur_path = base_path + 'modules' + os.sep + 'gdrive' + os.sep + 'libs' + os.sep
 cur_path_x64 = os.path.join(cur_path, 'Windows' + os.sep +  'x64' + os.sep)
 cur_path_x86 = os.path.join(cur_path, 'Windows' + os.sep +  'x86' + os.sep)
 
-if sys.maxsize > 2**32 and cur_path_x64 not in sys.path:
+if cur_path_x64 not in sys.path and sys.maxsize > 2**32:
     sys.path.append(cur_path_x64)
-elif sys.maxsize <= 2**32 and cur_path_x86 not in sys.path:
+elif cur_path_x86 not in sys.path and sys.maxsize > 32:
     sys.path.append(cur_path_x86)
 
 from google.auth.transport.requests import Request
@@ -64,6 +64,25 @@ mimes = {
     # 'application/pdf': 'application/pdf',
     'application/vnd.google-apps.presentation': 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
 }
+
+
+import_formats = {
+    ".docx": "application/vnd.google-apps.document",
+    ".odt": "application/vnd.google-apps.document",
+    ".rtf": "application/vnd.google-apps.document",
+    ".pdf": "application/vnd.google-apps.document",
+    ".html": "application/vnd.google-apps.document",
+    ".xlsx": "application/vnd.google-apps.spreadsheet",
+    ".xls": "application/vnd.google-apps.spreadsheet",
+    ".ods":	"application/vnd.google-apps.spreadsheet",
+    ".csv": "application/vnd.google-apps.spreadsheet",
+    ".tsv": "application/vnd.google-apps.spreadsheet",
+    ".pptx": "application/vnd.google-apps.presentation",
+    ".odp": "application/vnd.google-apps.presentation",
+    ".jpg": "application/vnd.google-apps.document",
+    ".png": "application/vnd.google-apps.document",
+    ".json": "application/vnd.google-apps.script"
+}   
 
 export_formats = {
     "Microsoft Word (.docx)": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -140,13 +159,32 @@ if module == "ListFiles":
 
     var = GetParams('var_file_list')
     filter_ = GetParams("filter")
-
+    mine = GetParams("mine")
+    shared = GetParams("shared")
+    
+    # By default the command will get the data from all drives, if mine is checked, then will only bring back files thats have the user as owner.
+    if mine and eval(mine):
+        if filter_ and filter_ != "": 
+            filter_ += " and 'me' in owners"
+        else: 
+            filter_ = "'me' in owners"
+           
+    if shared and eval(shared):
+        if filter_ and filter_ != "": 
+            filter_ += " and sharedWithMe = true"
+        else: 
+            filter_ = "sharedWithMe = true"        
+    
+    if "'me' in owners" in filter_ and "sharedWithMe = true" in filter_:
+        raise Exception ("Can not use both filters ('me' in owners and sharedWithMe = true) in the same query...")
+    
     service = build('drive', 'v3', credentials=mod_gdrive_session[session])
 
     results = service.files().list(
         q=filter_,
-        pageSize=1000, spaces="drive", fields="files(id, name, mimeType)", includeItemsFromAllDrives=True,
-        supportsAllDrives=True).execute()
+        fields="files(id, name, mimeType, parents)",
+        pageSize=1000, spaces='drive', includeItemsFromAllDrives=True,
+        supportsAllDrives=True, includeLabels=True).execute()
     items = results.get('files', [])
 
     files = []
@@ -171,8 +209,10 @@ if module == 'DownloadFile':
         
         request = None
         if file['mimeType'] in mimes:
-            request = service.files().export_media(fileId=drive_id, mimeType=mimes[file['mimeType']])
+            mime = mimes[file['mimeType']]
+            request = service.files().export_media(fileId=drive_id, mimeType=mime)
         else:
+            mime = file['mimeType']
             request = service.files().get_media(fileId=drive_id)
         fh = io.BytesIO()
         downloader = MediaIoBaseDownload(fh, request)
@@ -184,11 +224,10 @@ if module == 'DownloadFile':
 
         keys = list(export_formats.keys())
         values = list(export_formats.values())
-        mime = mimes.get(file['mimeType'], None)
-        if mime:
+        try:
             index = values.index(mime)
             extension = keys[index].split()[-1][1:-1]
-        else:
+        except:
             extension = ""
             
         with io.open(file_path + os.sep + file['name'] + extension, 'wb') as out:
@@ -321,10 +360,16 @@ if module == "UploadFile":
 
         new_name = GetParams("new_name")
         folder = GetParams("folder")
+        convert = GetParams("convert")
         var = GetParams("var")
 
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
 
+        mimeType = None
+        if convert and eval(convert) == True:
+            filename, file_extension = os.path.splitext(file_path)
+            mimeType = import_formats.get(file_extension, None)
+ 
         file_mime = magic.from_file(file_path, mime=True)
 
         if file_path.endswith('.csv'):
@@ -334,7 +379,7 @@ if module == "UploadFile":
 
         name = new_name or os.path.basename(file_path)
 
-        file_metadata = {'name': name}
+        file_metadata = {'name': name, 'mimeType': mimeType} if mimeType else  {'name': name}
         media = MediaFileUpload(file_path,
                                 mimetype=file_mime)
 
