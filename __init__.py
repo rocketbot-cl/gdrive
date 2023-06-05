@@ -162,37 +162,42 @@ if module == "ListFiles":
     mine = GetParams("mine")
     shared = GetParams("shared")
     
-    # By default the command will get the data from all drives, if mine is checked, then will only bring back files thats have the user as owner.
-    if mine and eval(mine):
-        if filter_ and filter_ != "": 
-            filter_ += " and 'me' in owners"
-        else: 
-            filter_ = "'me' in owners"
-           
-    if shared and eval(shared):
-        if filter_ and filter_ != "": 
-            filter_ += " and sharedWithMe = true"
-        else: 
-            filter_ = "sharedWithMe = true"        
-    
-    if "'me' in owners" in filter_ and "sharedWithMe = true" in filter_:
-        raise Exception ("Can not use both filters ('me' in owners and sharedWithMe = true) in the same query...")
-    
-    service = build('drive', 'v3', credentials=mod_gdrive_session[session])
+    try:
+        # By default the command will get the data from all drives, if mine is checked, then will only bring back files thats have the user as owner.
+        if mine and eval(mine):
+            if filter_ and filter_ != "": 
+                filter_ += " and 'me' in owners"
+            else: 
+                filter_ = "'me' in owners"
+            
+        if shared and eval(shared):
+            if filter_ and filter_ != "": 
+                filter_ += " and sharedWithMe = true"
+            else: 
+                filter_ = "sharedWithMe = true"        
+        
+        if filter_ and "'me' in owners" in filter_ and "sharedWithMe = true" in filter_:
+            raise Exception ("Can not use both filters ('me' in owners and sharedWithMe = true) in the same query...")
+        
+        service = build('drive', 'v3', credentials=mod_gdrive_session[session])
 
-    results = service.files().list(
-        q=filter_,
-        fields="files(id, name, mimeType, parents)",
-        pageSize=1000, spaces='drive', includeItemsFromAllDrives=True,
-        supportsAllDrives=True, includeLabels=True).execute()
-    items = results.get('files', [])
+        results = service.files().list(
+            q=filter_,
+            fields="files(id, name, mimeType, parents)",
+            pageSize=1000, spaces='drive', includeItemsFromAllDrives=True,
+            supportsAllDrives=True, includeLabels=True).execute()
+        items = results.get('files', [])
 
-    files = []
-    if len(items) > 0:
-        for item in items:
-            files.append({'name': item['name'], 'id': item['id'], 'mimeType': item['mimeType']})
-    
-    SetVar(var, files)
+        files = []
+        if len(items) > 0:
+            for item in items:
+                files.append({'name': item['name'], 'id': item['id'], 'mimeType': item['mimeType']})
+        
+        SetVar(var, files)
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
 
 if module == 'DownloadFile':
     try:
@@ -229,8 +234,9 @@ if module == 'DownloadFile':
             extension = keys[index].split()[-1][1:-1]
         except:
             extension = ""
-            
-        with io.open(file_path + os.sep + file['name'] + extension, 'wb') as out:
+        
+        filename = file['name'] + extension if extension not in file['name'] else file['name']
+        with io.open(file_path + os.sep + filename, 'wb') as out:
             fh.seek(0)
             out.write(fh.read())
 
