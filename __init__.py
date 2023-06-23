@@ -37,7 +37,7 @@ cur_path_x86 = os.path.join(cur_path, 'Windows' + os.sep +  'x86' + os.sep)
 
 if cur_path_x64 not in sys.path and sys.maxsize > 2**32:
     sys.path.append(cur_path_x64)
-elif cur_path_x86 not in sys.path and sys.maxsize > 32:
+elif cur_path_x86 not in sys.path and sys.maxsize < 2**32:
     sys.path.append(cur_path_x86)
 
 from google.auth.transport.requests import Request
@@ -187,11 +187,14 @@ if module == "ListFiles":
             pageSize=1000, spaces='drive', includeItemsFromAllDrives=True,
             supportsAllDrives=True, includeLabels=True).execute()
         items = results.get('files', [])
-
         files = []
         if len(items) > 0:
             for item in items:
-                files.append({'name': item['name'], 'id': item['id'], 'mimeType': item['mimeType']})
+                try:
+                    parents = item['parents'][0]
+                except:
+                    parents = ""
+                files.append({'name': item['name'], 'id': item['id'], 'mimeType': item['mimeType'], 'parents': parents})
         
         SetVar(var, files)
     except Exception as e:
