@@ -213,7 +213,7 @@ if module == 'DownloadFile':
             raise Exception("No se ingreso ruta donde guardar el archivo")
 
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
-        file = service.files().get(fileId=drive_id).execute()
+        file = service.files().get(fileId=drive_id, supportsAllDrives=True).execute()
         
         request = None
         if file['mimeType'] in mimes:
@@ -262,7 +262,7 @@ if module == 'ExportFile':
         mime = export_formats.get(export_format)
         
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
-        file = service.files().get(fileId=drive_id).execute()
+        file = service.files().get(fileId=drive_id, supportsAllDrives=True).execute()
         request = None
 
         request = service.files().export_media(fileId=drive_id, mimeType=mime)
@@ -300,7 +300,7 @@ if module == 'CreateFolder':
             body['parents'] = [parent_id]
 
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
-        root_folder = service.files().create(body=body).execute()
+        root_folder = service.files().create(body=body, supportsAllDrives=True).execute()
 
         if var:
             SetVar(var, root_folder)
@@ -324,7 +324,7 @@ if module == 'CopyMoveFile':
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
         
         file_to_move = service.files().get(fileId=file_id,
-                                           fields='parents, name').execute()
+                                           fields='parents, name', supportsAllDrives=True).execute()
         
         previous_parents = ",".join(file_to_move.get('parents'))
 
@@ -333,20 +333,22 @@ if module == 'CopyMoveFile':
         parents = folder_id
         
         if copy:
-            file_id = service.files().copy(fileId=file_id).execute()["id"]
+            file_id = service.files().copy(fileId=file_id, supportsAllDrives=True).execute()["id"]
 
         file = service.files().update(fileId=file_id,
                                       removeParents = previous_parents,
                                       addParents = parents,
                                       enforceSingleParent = True,
-                                      fields='id, parents, name').execute()
+                                      fields='id, parents, name',
+                                      supportsAllDrives=True).execute()
 
         if copy:
             file = service.files().update(fileId=file_id,
                                           body={
                                               "name": file_to_move["name"]
                                           },
-                                          fields='id, name, parents').execute()
+                                          fields='id, name, parents', 
+                                          supportsAllDrives=True).execute()
 
         if var:
             SetVar(var, file)
@@ -397,7 +399,7 @@ if module == "UploadFile":
 
         file = service.files().create(body=file_metadata,
                                       media_body=media,
-                                      fields='id').execute()
+                                      fields='id', supportsAllDrives=True).execute()
         if var:
             SetVar(var, file)
 
@@ -414,7 +416,7 @@ if module == "DeleteFile":
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
         result = GetParams("result")
             
-        file = service.files().delete(fileId=file_id).execute()
+        file = service.files().delete(fileId=file_id, supportsAllDrives=True).execute()
         SetVar(result, True)
 
     except Exception as e:
