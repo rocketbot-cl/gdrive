@@ -31,9 +31,9 @@ Antes de usar este módulo, você deve registrar seu aplicativo no Google Cloud 
 8. Baixe o arquivo JSON de credenciais.
 9. Por fim, vá para o Menu de Navegação (Esquerda) > Tela de Consentimento e adicione um usuário na seção "Testar usuários"
 
-Nota: Quando a primeira conexão for feita, um arquivo .pickle será criado na pasta raiz do Rocketbot, para conectar ao mesmo serviço de outra conta, você precisa deletar esse arquivo Faça o mesmo procedimento caso as credenciais expirem.
-
-
+Nota: Quando a primeira conexão for feita, um arquivo .pickle será criado na pasta raiz do Rocketbot, para conectar ao mesmo serviço de outra conta, você precisa
+ deletar
+esse arquivo Faça o mesmo procedimento caso as credenciais expirem.
 ## Descrição do comando
 
 ### Configurar credenciais do G-Suite
@@ -52,6 +52,7 @@ Listar arquivos do Google Drive. Este comando retorna todos os arquivos por padr
 |Filtro||mimeType = 'application/vnd.google-apps.folder' and trashed = false|
 |Somente arquivos próprios||-|
 |Somente arquivos compartilhados comigo||-|
+|Mais dados||-|
 |Atribuir resultado à variável||var|
 |Session||session|
 

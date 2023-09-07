@@ -161,6 +161,7 @@ if module == "ListFiles":
     filter_ = GetParams("filter")
     mine = GetParams("mine")
     shared = GetParams("shared")
+    more_data = GetParams("more_data")
     
     try:
         # By default the command will get the data from all drives, if mine is checked, then will only bring back files thats have the user as owner.
@@ -181,9 +182,14 @@ if module == "ListFiles":
         
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
 
+        if more_data and eval(more_data):
+            fields_ = "files(id, name, mimeType, createdTime, modifiedTime, modifiedByMeTime, labelInfo, permissions, parents, shared, driveId)" 
+        else:
+            fields_ = "files(id, name, mimeType, parents)"    
+            
         results = service.files().list(
             q=filter_,
-            fields="files(id, name, mimeType, parents)",
+            fields=fields_,
             pageSize=1000, spaces='drive', includeItemsFromAllDrives=True,
             supportsAllDrives=True, includeLabels=True).execute()
         items = results.get('files', [])
@@ -191,7 +197,7 @@ if module == "ListFiles":
         files = []
         if len(items) > 0:
             for item in items:
-                files.append({'name': item['name'], 'id': item['id'], 'mimeType': item['mimeType']})
+                files.append(item)
         
         SetVar(var, files)
     except Exception as e:

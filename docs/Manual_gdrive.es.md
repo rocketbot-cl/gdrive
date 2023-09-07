@@ -31,7 +31,9 @@ Antes de usar este modulo, es necesario registrar tu aplicación en el portal de
 8. Descargar el archivo JSON de credenciales.
 9. Por ultimo dirigirse a Menu de Navegación (Izquierdo) > Pantalla de Consentimiento y agregar usuario dentro de la seccion "Usuarios de prueba"
 
-Nota: Cuando se realice la primera conexión, se creará un archivo .pickle en la carpeta raíz de Rocketbot, para conectarse al mismo servicio desde otra cuenta, debe eliminar ese archivo Realice el mismo procedimiento para el caso en que caduquen las credenciales.
+Nota: Cuando se realice la primera conexión, se creará un 
+archivo .pickle en la carpeta raíz de Rocketbot, para conectarse al mismo servicio desde otra cuenta, debe eliminar
+ese archivo Realice el mismo procedimiento para el caso en que caduquen las credenciales.
 
 
 ## Descripción de los comandos
@@ -52,6 +54,7 @@ Lista los archivos de Google Drive. Este comando devuelve todos los archivos de 
 |Filtro||mimeType = 'application/vnd.google-apps.folder' and trashed = false|
 |Sólo archivos propios||-|
 |Sólo archivos compartidos conmigo||-|
+|Más datos||-|
 |Asignar resultado a variable||var|
 |Session||session|
 
