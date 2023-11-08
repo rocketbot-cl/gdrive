@@ -24,6 +24,7 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 
 """
 from __future__ import print_function
+import traceback
 import os.path
 import pickle
 import sys
@@ -37,7 +38,7 @@ cur_path_x86 = os.path.join(cur_path, 'Windows' + os.sep +  'x86' + os.sep)
 
 if cur_path_x64 not in sys.path and sys.maxsize > 2**32:
     sys.path.append(cur_path_x64)
-elif cur_path_x86 not in sys.path and sys.maxsize > 32:
+elif cur_path_x86 not in sys.path and sys.maxsize < 2**32:
     sys.path.append(cur_path_x86)
 
 from google.auth.transport.requests import Request
@@ -193,12 +194,10 @@ if module == "ListFiles":
             pageSize=1000, spaces='drive', includeItemsFromAllDrives=True,
             supportsAllDrives=True, includeLabels=True).execute()
         items = results.get('files', [])
-
         files = []
         if len(items) > 0:
             for item in items:
                 files.append(item)
-        
         SetVar(var, files)
     except Exception as e:
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
@@ -216,7 +215,7 @@ if module == 'DownloadFile':
             raise Exception("No se ingreso ruta donde guardar el archivo")
 
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
-        file = service.files().get(fileId=drive_id).execute()
+        file = service.files().get(fileId=drive_id, supportsAllDrives=True).execute()
         
         request = None
         if file['mimeType'] in mimes:
@@ -265,7 +264,7 @@ if module == 'ExportFile':
         mime = export_formats.get(export_format)
         
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
-        file = service.files().get(fileId=drive_id).execute()
+        file = service.files().get(fileId=drive_id, supportsAllDrives=True).execute()
         request = None
 
         request = service.files().export_media(fileId=drive_id, mimeType=mime)
@@ -303,7 +302,7 @@ if module == 'CreateFolder':
             body['parents'] = [parent_id]
 
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
-        root_folder = service.files().create(body=body).execute()
+        root_folder = service.files().create(body=body, supportsAllDrives=True).execute()
 
         if var:
             SetVar(var, root_folder)
@@ -327,29 +326,34 @@ if module == 'CopyMoveFile':
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
         
         file_to_move = service.files().get(fileId=file_id,
-                                           fields='parents, name').execute()
+                                           fields='parents, name', supportsAllDrives=True).execute()
         
-        previous_parents = ",".join(file_to_move.get('parents'))
-
+        try:        
+            previous_parents = ",".join(file_to_move.get('parents', []))
+        except: 
+            previous_parents = file_to_move.get('parents', '')
+            
         copy = option == "copy"
 
         parents = folder_id
         
         if copy:
-            file_id = service.files().copy(fileId=file_id).execute()["id"]
+            file_id = service.files().copy(fileId=file_id, supportsAllDrives=True).execute()["id"]
 
         file = service.files().update(fileId=file_id,
                                       removeParents = previous_parents,
                                       addParents = parents,
                                       enforceSingleParent = True,
-                                      fields='id, parents, name').execute()
+                                      fields='id, parents, name',
+                                      supportsAllDrives=True).execute()
 
         if copy:
             file = service.files().update(fileId=file_id,
                                           body={
                                               "name": file_to_move["name"]
                                           },
-                                          fields='id, name, parents').execute()
+                                          fields='id, name, parents', 
+                                          supportsAllDrives=True).execute()
 
         if var:
             SetVar(var, file)
@@ -381,9 +385,11 @@ if module == "UploadFile":
         if convert and eval(convert) == True:
             filename, file_extension = os.path.splitext(file_path)
             mimeType = import_formats.get(file_extension, None)
- 
-        file_mime = magic.from_file(file_path, mime=True)
 
+        try:
+            file_mime = magic.from_file(file_path, mime=True)
+        except:
+            file_mime = None       
         if file_path.endswith('.csv'):
             file_mime = 'text/csv'
         if file_path.endswith('.xlsx'):
@@ -400,11 +406,12 @@ if module == "UploadFile":
 
         file = service.files().create(body=file_metadata,
                                       media_body=media,
-                                      fields='id').execute()
+                                      fields='id', supportsAllDrives=True).execute()
         if var:
             SetVar(var, file)
 
     except Exception as e:
+        traceback.print_exc()
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
@@ -417,7 +424,7 @@ if module == "DeleteFile":
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
         result = GetParams("result")
             
-        file = service.files().delete(fileId=file_id).execute()
+        file = service.files().delete(fileId=file_id, supportsAllDrives=True).execute()
         SetVar(result, True)
 
     except Exception as e:
@@ -425,18 +432,72 @@ if module == "DeleteFile":
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
-
+   
 if module == "ShareFile":
     try:
         file_id = GetParams("file_id")
+        type = GetParams("type")
+        target = GetParams("target")
+        role = GetParams("role")
+        # action = GetParams("action")
+        
+        email_notification = eval(GetParams("email_notification")) if GetParams("email_notification") else False
+        transfer_owner = eval(GetParams("transfer_owner")) if GetParams("transfer_owner") else False
+        transfer = eval(GetParams("transfer_to_root")) if GetParams("transfer_to_root") else False
+        
         if not file_id:
             raise Exception("No ha ingresado un ID")
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
         result = GetParams("result")
+        
+        type_ = "anyone" if not type else type
+        role_ = "reader" if not role else role
+        # action_ = "create" if not action else action
+        
+        body_ = {"role": role_, "type": type_}
+        
+        if type_ in ["user", "group"]:
+            body_['emailAddress'] = target
+        if type_ == "domain":
+            body_['domain'] = target
+        
+        res = service.permissions().create(body=body_, fileId=file_id, sendNotificationEmail=email_notification, 
+                                     transferOwnership=transfer_owner, moveToNewOwnersRoot=transfer, supportsAllDrives=True ).execute()
+        
+        SetVar(result, res)
 
-        service.permissions().create(body={"role": "reader", "type": "anyone"}, fileId=file_id).execute()
+    except Exception as e:
+        SetVar(result, False)
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+
+if module == "PermissionList":
+    try:
+        file_id = GetParams("file_id")
+        service = build('drive', 'v3', credentials=mod_gdrive_session[session])
+        result = GetParams("result")
+        permissions = service.permissions().list(fileId=file_id, supportsAllDrives=True).execute()['permissions']
+        
+        SetVar(result, permissions)
+        
+    except Exception as e:
+        SetVar(result, False)
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+    
+if module == "DeletePermission":
+    try:
+        file_id = GetParams("file_id")
+        permission_id = GetParams("permission_id")
+        service = build('drive', 'v3', credentials=mod_gdrive_session[session])
+        result = GetParams("result")
+        
+        service.permissions().delete(fileId=file_id, permissionId=permission_id, supportsAllDrives=True).execute()
+        
         SetVar(result, True)
-
+        
     except Exception as e:
         SetVar(result, False)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")

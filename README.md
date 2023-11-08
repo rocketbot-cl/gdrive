@@ -43,7 +43,13 @@ Upload a file to Google Drive
 Delete a file or folder from Drive
 
 9. Share file  
-Share a file in Drive  
+Share a file in Drive
+
+10. List permissions  
+Get list of permissions from a file
+
+11. Delete permission  
+Delete a permission from a file  
 
 
 

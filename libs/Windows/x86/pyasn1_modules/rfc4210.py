@@ -1,7 +1,7 @@
 #
 # This file is part of pyasn1-modules software.
 #
-# Copyright (c) 2005-2019, Ilya Etingof <etingof@gmail.com>
+# Copyright (c) 2005-2020, Ilya Etingof <etingof@gmail.com>
 # License: http://snmplabs.com/pyasn1/license.html
 #
 # Certificate Management Protocol structures as per RFC4210
@@ -743,11 +743,11 @@ class PKIHeader(univ.Sequence):
         namedtype.OptionalNamedType('generalInfo',
                                     univ.SequenceOf(
                                         componentType=InfoTypeAndValue().subtype(
-                                            sizeSpec=constraint.ValueSizeConstraint(1, MAX),
-                                            explicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatSimple, 8)
+                                            sizeSpec=constraint.ValueSizeConstraint(1, MAX)
                                         )
-                                    )
-                                    )
+                                    ).subtype(
+            explicitTag=tag.Tag(tag.tagClassContext, tag.tagFormatSimple, 8))
+        )
     )
 
 

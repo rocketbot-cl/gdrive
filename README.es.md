@@ -43,7 +43,13 @@ Subir un archivo a Google Drive
 Eliminar un archivo o carpeta de Google Drive
 
 9. Compartir archivo  
-Comparte un archivo de Drive  
+Comparte un archivo de Drive
+
+10. Listar permisos  
+Obtener lista de permisos de un archivo
+
+11. Borra permiso  
+Eliminar un permiso de un archivo  
 
 
 

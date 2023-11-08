@@ -43,7 +43,13 @@ Carregar um arquivo para o Google Drive
 Excluir um arquivo ou pasta do Google Drive
 
 9. Compartilhar arquivo  
-Compartilhar um arquivo do Drive  
+Compartilhar um arquivo do Drive
+
+10. Listar permissões  
+Obtenha uma lista de permissões de um arquivo
+
+11. Excluir permissão  
+Excluir uma permissão de um arquivo  
 
 
 

@@ -1,4 +1,4 @@
-# Copyright 2016 Google Inc.
+# Copyright 2016 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,9 +20,10 @@ import json
 
 import six
 
+from google.auth import exceptions
 
-_JSON_FILE_PRIVATE_KEY = 'private_key'
-_JSON_FILE_PRIVATE_KEY_ID = 'private_key_id'
+_JSON_FILE_PRIVATE_KEY = "private_key"
+_JSON_FILE_PRIVATE_KEY_ID = "private_key_id"
 
 
 @six.add_metaclass(abc.ABCMeta)
@@ -43,7 +44,7 @@ class Verifier(object):
         """
         # pylint: disable=missing-raises-doc,redundant-returns-doc
         # (pylint doesn't recognize that this is abstract)
-        raise NotImplementedError('Verify must be implemented')
+        raise NotImplementedError("Verify must be implemented")
 
 
 @six.add_metaclass(abc.ABCMeta)
@@ -53,7 +54,7 @@ class Signer(object):
     @abc.abstractproperty
     def key_id(self):
         """Optional[str]: The key ID used to identify this private key."""
-        raise NotImplementedError('Key id must be implemented')
+        raise NotImplementedError("Key id must be implemented")
 
     @abc.abstractmethod
     def sign(self, message):
@@ -67,7 +68,7 @@ class Signer(object):
         """
         # pylint: disable=missing-raises-doc,redundant-returns-doc
         # (pylint doesn't recognize that this is abstract)
-        raise NotImplementedError('Sign must be implemented')
+        raise NotImplementedError("Sign must be implemented")
 
 
 @six.add_metaclass(abc.ABCMeta)
@@ -88,7 +89,7 @@ class FromServiceAccountMixin(object):
         Raises:
             ValueError: If the key cannot be parsed.
         """
-        raise NotImplementedError('from_string must be implemented')
+        raise NotImplementedError("from_string must be implemented")
 
     @classmethod
     def from_service_account_info(cls, info):
@@ -106,13 +107,13 @@ class FromServiceAccountMixin(object):
             ValueError: If the info is not in the expected format.
         """
         if _JSON_FILE_PRIVATE_KEY not in info:
-            raise ValueError(
-                'The private_key field was not found in the service account '
-                'info.')
+            raise exceptions.MalformedError(
+                "The private_key field was not found in the service account " "info."
+            )
 
         return cls.from_string(
-            info[_JSON_FILE_PRIVATE_KEY],
-            info.get(_JSON_FILE_PRIVATE_KEY_ID))
+            info[_JSON_FILE_PRIVATE_KEY], info.get(_JSON_FILE_PRIVATE_KEY_ID)
+        )
 
     @classmethod
     def from_service_account_file(cls, filename):
@@ -125,7 +126,7 @@ class FromServiceAccountMixin(object):
         Returns:
             google.auth.crypt.Signer: The constructed signer.
         """
-        with io.open(filename, 'r', encoding='utf-8') as json_file:
+        with io.open(filename, "r", encoding="utf-8") as json_file:
             data = json.load(json_file)
 
         return cls.from_service_account_info(data)
