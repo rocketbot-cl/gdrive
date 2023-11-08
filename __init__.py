@@ -389,7 +389,7 @@ if module == "UploadFile":
         try:
             file_mime = magic.from_file(file_path, mime=True)
         except:
-            file_mime = None       
+            file_mime = None     
         if file_path.endswith('.csv'):
             file_mime = 'text/csv'
         if file_path.endswith('.xlsx'):

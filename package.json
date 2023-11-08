@@ -929,6 +929,11 @@
               "en": "File ID (Drive)",
               "pr": "ID do Arquivo (Drive)"
             },
+            "help": {
+              "es": "Para borrar un archivo que pertenece a una unidad compartida, el usuario debe ser un organizer en la carpeta superior. Si el destino es una carpeta, también se borran todos los elementos subordinados que pertenecen al usuario.",
+              "en": "To delete a file that belongs to a shared drive, the user must be an organizer on the parent folder. If the target is a folder, all descendants owned by the user are also deleted.",
+              "pr": "Para excluir um arquivo que pertence a um drive compartilhado, o usuário precisará ser um organizer na pasta mãe. Se o destino for uma pasta, todos os descendentes do usuário também serão excluídos."
+            },
             "id": "file_id",
             "css": "col-md-12"
           },
