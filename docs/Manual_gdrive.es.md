@@ -125,5 +125,30 @@ Comparte un archivo de Drive
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Tipo||---- Select ----|
+|Rol||---- Select ----|
+|Email o Dominio|||
+|Enviar correo de notificación||-|
+|Transferir propiedad||-|
+|Mover archivo a la carpeta raíz del nuevo propietario||-|
+|Asignar resultado a variable||var|
+|Session||session|
+
+### Listar permisos
+  
+Obtener lista de permisos de un archivo
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Asignar resultado a variable||var|
+|Session||session|
+
+### Borra permiso
+  
+Eliminar un permiso de un archivo
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|ID del permiso (Drive)||15224413836718185781|
 |Asignar resultado a variable||var|
 |Session||session|
