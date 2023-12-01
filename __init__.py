@@ -119,6 +119,7 @@ if module == "GoogleSuite":
     cred = None
 
     credential_path = GetParams("credentials_path")
+    port = 8080 if not GetParams("port") else GetParams("port")
     
     if session == '':
         filename = "token_drive.pickle"
@@ -145,7 +146,7 @@ if module == "GoogleSuite":
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
                 credential_path, SCOPES)
-            cred = flow.run_local_server()
+            cred = flow.run_local_server(port=port)
         # Save the credentials for the next run
         with open(filename, 'wb') as token:
             pickle.dump(cred, token)
