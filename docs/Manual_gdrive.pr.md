@@ -41,7 +41,8 @@ esse arquivo Faça o mesmo procedimento caso as credenciais expirem.
 Configurar credenciais do Google Drive
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|Caminho do arquivo de credenciais||C:\Usuario\Desktop\credentials.json|
+|Caminho de credenciais|Arquivo JSON com as credenciais de acesso ao API do Google Drive.|C:\Usuario\Desktop\credentials.json|
+|Porto (Opcional)||8080|
 |Session||session|
 
 ### Listar arquivos no Drive

@@ -43,7 +43,8 @@ ese archivo Realice el mismo procedimiento para el caso en que caduquen las cred
 Configura credenciales de Google Drive
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|Ruta archivo de credenciales||C:\Usuario\Desktop\credentials.json|
+|Ruta del archivo de credenciales|Archivo JSON con las credenciales de acceso a la API de Google Drive.|C:\Usuario\Desktop\credentials.json|
+|Puerto (Opcional)||8080|
 |Session||session|
 
 ### Listar archivos en Drive

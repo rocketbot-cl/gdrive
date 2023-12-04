@@ -42,7 +42,8 @@ procedure for the case in which the credentials expire.
 Configure Google Drive credentials
 |Parameters|Description|example|
 | --- | --- | --- |
-|Credentials file path||C:\Usuario\Desktop\credentials.json|
+|Credentials file path|JSON file with the credentials to access the Google Drive API.|C:\Usuario\Desktop\credentials.json|
+|Port (Optional)||8080|
 |Session||session|
 
 ### List files in Drive

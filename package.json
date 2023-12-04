@@ -7,7 +7,7 @@
     "pr": "Módulo para conectar ao Google Drive e gerenciar seus arquivos. Você pode trabalhar com arquivos e pastas próprios ou compartilhados, mover, excluir, baixar, exportar e carregá-los."
   },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "3.6.0",
+  "version": "3.6.1",
   "license": "MIT",
   "homepage": "http://rocketbot.com/",
   "linux": true,
@@ -57,12 +57,38 @@
               "pr": "C:\\Usuario\\Desktop\\credentials.json"
             },
             "title": {
-              "es": "Ruta archivo de credenciales",
+              "es": "Ruta del archivo de credenciales",
               "en": "Credentials file path",
-              "pr": "Caminho do arquivo de credenciais"
+              "pr": "Caminho de credenciais"
             },
+            "description": {
+              "es": "Archivo JSON con las credenciales de acceso a la API de Google Drive.",
+              "en": "JSON file with the credentials to access the Google Drive API.",
+              "pr": "Arquivo JSON com as credenciais de acesso ao API do Google Drive."
+            },
+            "extensions": [
+              [
+                "Json Files",
+                "*.json"
+              ]
+            ],
             "id": "credentials_path",
             "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "8080",
+              "en": "8080",
+              "pr": "8080"
+            },
+            "title": {
+              "es": "Puerto (Opcional)",
+              "en": "Port (Optional)",
+              "pr": "Porto (Opcional)"
+            },
+            "id": "port",
+            "css": "col-md-6"
           },
           {
             "type": "input",
