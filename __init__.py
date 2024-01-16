@@ -29,7 +29,7 @@ import os.path
 import pickle
 import sys
 
-base_path = tmp_global_obj["basepath"]
+base_path = tmp_global_obj["basepath"] # type:ignore
 cur_path = base_path + 'modules' + os.sep + 'gdrive' + os.sep + 'libs' + os.sep
 
 
@@ -43,12 +43,16 @@ elif cur_path_x86 not in sys.path and sys.maxsize < 2**32:
 
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaIoBaseDownload
+from googleapiclient.discovery import build # type:ignore
+from googleapiclient.http import MediaIoBaseDownload # type:ignore
 
-import magic
-from googleapiclient.http import MediaFileUpload
+import magic # type:ignore
+from googleapiclient.http import MediaFileUpload # type:ignore
 import io
+
+SetVar = SetVar # type:ignore
+GetParams = GetParams # type:ignore
+PrintException = PrintException # type:ignore
 
 """
     Obtengo el modulo que fueron invocados
@@ -119,7 +123,7 @@ if module == "GoogleSuite":
     cred = None
 
     credential_path = GetParams("credentials_path")
-    port = 8080 if not GetParams("port") else GetParams("port")
+    port = 8080 if not GetParams("port") else int(GetParams("port"))
     
     if session == '':
         filename = "token_drive.pickle"
