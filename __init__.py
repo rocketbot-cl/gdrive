@@ -392,8 +392,8 @@ if module == "UploadFile":
             mimeType = import_formats.get(file_extension, None)
 
         try:
-            file_mime = magic.from_file(file_path, mime=True)
-        except:
+            file_mime = magic.from_file(file_path.encode('latin-1'), mime=True)
+        except Exception as e:
             file_mime = None     
         if file_path.endswith('.csv'):
             file_mime = 'text/csv'
@@ -401,7 +401,7 @@ if module == "UploadFile":
             file_mime = 'application/vnd.ms-excel'
 
         name = new_name or os.path.basename(file_path)
-
+        print("MIME TYPE: ", file_mime, "NAME: ", name)
         file_metadata = {'name': name, 'mimeType': mimeType} if mimeType else  {'name': name}
         media = MediaFileUpload(file_path,
                                 mimetype=file_mime)
