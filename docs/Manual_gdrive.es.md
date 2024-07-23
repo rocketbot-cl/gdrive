@@ -9,6 +9,7 @@ Módulo para conectarse a Google Drive y administrar sus archivos. Puede trabaja
 *Read this in other languages: [English](Manual_gdrive.md), [Português](Manual_gdrive.pr.md), [Español](Manual_gdrive.es.md)*
   
 ![banner](imgs/Banner_gdrive.png)
+
 ## Como instalar este módulo
   
 Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
@@ -107,6 +108,18 @@ Subir un archivo a Google Drive
 |Ruta del archivo||C:\archivo.txt|
 |Nombre nuevo (opcional)||nuevo_nombre.txt|
 |Guardar en carpeta - ID (opcional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Convertir a formato Google|Si se marca, intentará subir el archivo como el formato equivalente de Google (de existir), si no, subira el archivo original.||
+|Asignar resultado a variable||var|
+|Session||session|
+
+### Subir carpeta
+  
+Subir una carpeta a Google Drive
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|Ruta de la carpeta||C:\folder|
+|Guardar en carpeta - ID (opcional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Nombre nuevo (opcional)|Nuevo nombre para la carpeta raíz a subir. Es opcional.|nuevo_nombre|
 |Convertir a formato Google|Si se marca, intentará subir el archivo como el formato equivalente de Google (de existir), si no, subira el archivo original.||
 |Asignar resultado a variable||var|
 |Session||session|

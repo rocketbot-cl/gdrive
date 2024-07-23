@@ -421,6 +421,94 @@ if module == "UploadFile":
         PrintException()
         raise e
 
+if module == "UploadFolder":
+    try:
+        folder_path = GetParams("folder_path")
+
+        if not folder_path:
+            raise Exception("No ha ingresado una ruta")
+
+        if not os.path.exists(folder_path) or not os.path.isdir(folder_path):
+            raise Exception("Carpeta ingresada no existe o no es una carpeta")
+
+        parent_folder_id = GetParams("folder")
+        convert = GetParams("convert")
+        new_folder_name = GetParams("new_folder_name")
+        var = GetParams("var")
+
+        service = build('drive', 'v3', credentials=mod_gdrive_session[session])
+        
+        def create_folder(service, name, parent_id):
+            global create_folder
+            file_metadata = {
+                'name': name,
+                'mimeType': 'application/vnd.google-apps.folder'
+            }
+            if parent_id:
+                file_metadata['parents'] = [parent_id]
+
+            folder = service.files().create(body=file_metadata, fields='id', supportsAllDrives=True).execute()
+            return folder['id']
+                
+        def upload_file(service, file_path, parent_id, convert):
+            global upload_file
+            from googleapiclient.http import MediaFileUpload
+
+            new_name = os.path.basename(file_path)
+            filename, file_extension = os.path.splitext(file_path)
+
+            try:
+                file_mime = magic.from_file(file_path, mime=True)
+            except:
+                file_mime = None     
+            if file_path.endswith('.csv'):
+                file_mime = 'text/csv'
+            if file_path.endswith('.xlsx'):
+                file_mime = 'application/vnd.ms-excel'
+
+            import_formats = {
+                '.docx': 'application/vnd.google-apps.document',
+                '.xlsx': 'application/vnd.google-apps.spreadsheet',
+                '.pptx': 'application/vnd.google-apps.presentation'
+            }
+
+            mimeType = None
+            if convert and eval(convert) == True and file_extension in import_formats:
+                mimeType = import_formats[file_extension]
+
+            file_metadata = {'name': new_name, 'mimeType': mimeType} if mimeType else {'name': new_name}
+            media = MediaFileUpload(file_path, mimetype=file_mime)
+
+            if parent_id:
+                file_metadata['parents'] = [parent_id]
+
+            file = service.files().create(body=file_metadata, media_body=media, fields='id', supportsAllDrives=True).execute()
+            return file['id']
+        
+        def upload_folder(service, local_folder_path, parent_folder_id, convert, root_folder_name=None):
+            folder_name = root_folder_name if root_folder_name else os.path.basename(local_folder_path)
+            new_folder_id = create_folder(service, folder_name, parent_folder_id)
+
+            for item in os.listdir(local_folder_path):
+                item_path = os.path.join(local_folder_path, item)
+                if os.path.isdir(item_path):
+                    upload_folder(service, item_path, new_folder_id, convert)
+                else:
+                    upload_file(service, item_path, new_folder_id, convert)
+
+            return new_folder_id
+        
+        folder_id = upload_folder(service, folder_path, parent_folder_id, convert, new_folder_name)
+
+        if var:
+            SetVar(var, folder_id)
+
+    except Exception as e:
+        traceback.print_exc()
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+
 if module == "DeleteFile":
     try:
         file_id = GetParams("file_id")

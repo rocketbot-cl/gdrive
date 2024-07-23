@@ -110,6 +110,18 @@ Upload a file to Google Drive
 |Assign result to var||var|
 |Session||session|
 
+### Upload folder
+  
+Upload a folder to Google Drive
+|Parameters|Description|example|
+| --- | --- | --- |
+|Folder path||C:\folder|
+|Save to folder - ID (optional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|New name (optional)|New name for the root folder to upload. It's optional.|new_name|
+|Convert to Google format|If checked, it will try to upload the file as Google's equivalent format (if any), if not, it will upload the original file.||
+|Assign result to var||var|
+|Session||session|
+
 ### Delete a file or folder
   
 Delete a file or folder from Drive

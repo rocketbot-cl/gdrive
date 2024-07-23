@@ -109,6 +109,18 @@ Carregar um arquivo para o Google Drive
 |Atribuir resultado à variável||var|
 |Session||session|
 
+### Subir pasta
+  
+Carregar uma pasta para o Google Drive
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|Caminho da pasta||C:\folder|
+|Salvar na pasta - ID (opcional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Novo nome (opcional)|Novo nome para a pasta raíz a ser carregada. Opcional.|new_name|
+|Converter para o formato Google|Se marcado, ele tentará fazer o upload do arquivo no formato equivalente do Google (se houver), caso contrário, fará o upload do arquivo original.||
+|Atribuir resultado à variável||var|
+|Session||session|
+
 ### Excluir um arquivo ou pasta
   
 Excluir um arquivo ou pasta do Google Drive
