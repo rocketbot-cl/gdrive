@@ -20,20 +20,59 @@ Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
 
 ## Como usar este modulo
 
-Antes de usar este modulo, es necesario registrar tu aplicación en el portal de Google Cloud. 
+Antes de usar este modulo, es necesario registrar tu aplicación en el portal de Google Cloud. Para esto, debes seguir los siguientes pasos:
 
-1. Ingresar con una cuenta de google al siguiente link: https://console.cloud.google.com/projectcreate?previousPage=%2Fhome%2Fdashboard
-2. Completar el formulario y luego presionar Crear
-3. Dentro del Menu de Navegación (Izquierdo), ingresar en API y Servicios
-4. En la sección superior, ingresar a "+ HABILITAR API Y SERVICIOS"
-5. Buscar "Google Drive API", seleccionar y por ultimo habilitar
-6. Nuevamente dirigirse a Menu de Navegación (Izquierdo) > API y Servicios > Credenciales
-7. Presionas Crear Credenciales > ID de cliente de OAuth, seleccionar como Tipo de Aplicación: App de Escritorio, colocar un nombre y crear.
-8. Descargar el archivo JSON de credenciales.
-9. Por ultimo dirigirse a Menu de Navegación (Izquierdo) > Pantalla de Consentimiento y agregar usuario dentro de la seccion "Usuarios de prueba"
+1. Ir a [Consola de Google](https://console.cloud.google.com/projectcreate?previousPage=%2Fhome%2Fdashboard) para crear un nuevo proyecto (Si ya tienes uno creado, omita este paso) y complete los datos indicados en el formulario
 
-Nota: Cuando se realice la primera conexión, se creará un 
-archivo .pickle en la carpeta raíz de Rocketbot, para conectarse al mismo servicio desde otra cuenta, debe eliminar
+![](imgs/proyectonuevo.png)
+
+En la barra superior verás el nombre del proyecto. Si no se visualiza, cambie al proyecto creado haciendo click en la en el menu que se encuentra remarcado en la imagen.
+
+![](imgs/seleccionarproyecto.png)
+
+2. Ve a **API y Servicios** del panel izquierdo, y luego de cambiar a la página, hacer click en **HABILITAR APIs Y SERVICIOS**
+
+![](imgs/habilitarapiyservicios.png)
+
+3. Dentro del buscador "Buscar API y servicios" escriba **Google Drive API**. Luego, habilitar la API dando click en **Habilitar**
+
+![](imgs/gdriveApi.png)
+
+Se redireccionará a la página de 
+configuración de la API.
+
+4. En el panel lateral haga click en **Pantalla de consentimiento de OAuth**, si tienes una cuenta corporativa de gmail, podrás utilizar la API indefinidamente y verás que el tipo de usuario es **Interno**. Si cuentas con una cuenta gmail gratuita, tendrás que dar el consentimiento una vez a la semana para poder conectarte a tu cuenta de correo, tu tipo de usuario es **Externo** y deberás agregar usuarios de prueba. Luego presiona el botón **Crear**
+
+![](imgs/pantallaDeCons.png)
+
+5. Seleccionar el nombre de la app y los campos obligatorios según cada caso. A continuación haga click en siguiente.
+
+![](imgs/infoApp.png)
+
+
+6. Saltearse la pantalla de **Permisos**, haga click en el botón Guardar y Continuar que se encuentra a final de página.
+
+![](imgs/permisos.png)
+
+7. En la pantalla de **Usuarios de prueba** haga click en el botón **Add User** y agregue su usuario. Haga click en Guardar y Continuar
+
+![](imgs/usuarioprueba.png)
+
+8. Dirigirse desde el Menu de 
+Navegación Izquierdo a **Credenciales**. Presione **+Crear Credenciales** e indique la opción **ID de cliente de OAuth**
+
+![](imgs/crearcredencialesok.png)
+
+9. Seleccionar como Tipo de Aplicación: **App de Escritorio**. Coloca un nombre para la aplicación y presione el botón **Crear**
+
+![](imgs/appEscritorio.png)
+
+10. Nos creará las credenciales, damos click en **Descargar JSON** y luego en **Aceptar**. Es importante mantener el archivo descargado. Se utilizará más adelante en el módulo.
+
+![](imgs/credencialesDescarga.png)
+
+
+Nota: Cuando se realice la primera conexión, se creará un archivo .pickle en la carpeta raíz de Rocketbot, para conectarse al mismo servicio desde otra cuenta, debe eliminar
 ese archivo Realice el mismo procedimiento para el caso en que caduquen las credenciales.
 
 
