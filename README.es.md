@@ -39,16 +39,19 @@ Copiar o mover un archivo
 7. Subir archivo  
 Subir un archivo a Google Drive
 
-8. Eliminar un archivo o carpeta  
+8. Subir carpeta  
+Subir una carpeta a Google Drive
+
+9. Eliminar un archivo o carpeta  
 Eliminar un archivo o carpeta de Google Drive
 
-9. Compartir archivo  
+10. Compartir archivo  
 Comparte un archivo de Drive
 
-10. Listar permisos  
+11. Listar permisos  
 Obtener lista de permisos de un archivo
 
-11. Borra permiso  
+12. Borra permiso  
 Eliminar un permiso de un archivo  
 
 

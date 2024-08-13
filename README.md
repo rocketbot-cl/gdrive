@@ -39,16 +39,19 @@ Copy or move a file
 7. Upload file  
 Upload a file to Google Drive
 
-8. Delete a file or folder  
+8. Upload folder  
+Upload a folder to Google Drive
+
+9. Delete a file or folder  
 Delete a file or folder from Drive
 
-9. Share file  
+10. Share file  
 Share a file in Drive
 
-10. List permissions  
+11. List permissions  
 Get list of permissions from a file
 
-11. Delete permission  
+12. Delete permission  
 Delete a permission from a file  
 
 

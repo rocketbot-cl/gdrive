@@ -18,21 +18,58 @@ To install the module in Rocketbot Studio, it can be done in two ways:
 
 ## How to use this module
 
-Before using this module, you must register your app into the Google Cloud Portal.
+Before using this module, you need to register your application in the Google Cloud portal. To do this, you must follow these steps:
 
-1. Sign in with a google account to the following link: https://console.cloud.google.com/projectcreate?previousPage=%2Fhome%2Fdashboard
-2. Complete the form and then press Create
-3. Within the Navigation Menu (Left), enter API and Services
-4. In the upper section, go to "+ ENABLE API AND SERVICES"
-5. Search for "Google Drive API", select it and finally enable it
-6. Again, go to the Navigation Menu (Left) > API and Services > Credentials
-7. Press Create Credentials > OAuth Client ID, select Application Type: Desktop App, enter a name and create.
-8. Download the credentials JSON file.
-9. Finally go to the Navigation Menu (Left) > Consent Screen and add a user in the "Test Users" section
+1. Go to [Google Console](https://console.cloud.google.com/projectcreate?previousPage=%2Fhome%2Fdashboard) to create a new project (If you already have one created, skip this step) and fill in the data indicated in the form
+
+![](imgs/proyectonuevo.png)
+
+In the top bar you will see the name of the project. If it is not displayed, switch to the created project by clicking on the in the menu that is highlighted in the image.
+
+![](imgs/seleccionarproyecto.png)
+
+2. Go to **API and Services** on the left panel, and after changing to the page, click on **ENABLE APIs AND SERVICES**
+
+![](imgs/habilitarapiyservicios.png)
+
+3. Within the "Search API and services" search engine, type **Google Drive API**. Then, enable the API by clicking on **Enable**
+
+![](imgs/gdriveApi.png)
+
+You will be redirected to the API configuration page.
+
+4. In 
+the side panel, click on **OAuth consent screen**. If you have a corporate Gmail account, you will be able to use the API indefinitely and you will see that the user type is **Internal**. If you have a free Gmail account, you will have to give consent once a week to be able to connect to your email account. Your user type is **External** and you will have to add test users. Then press the **Create** button
+
+![](imgs/pantallaDeCons.png)
+
+5. Select the name of the app and the required fields as appropriate. Then click next.
+
+![](imgs/infoApp.png)
+
+6. Skip the **Permissions** screen, click the Save and Continue button at the bottom of the page.
+
+![](imgs/permisos.png)
+
+7. On the **Test Users** screen, click the **Add User** button and add your user. Click Save and Continue
+
+![](imgs/usuarioprueba.png)
+
+8. Go from the Left Navigation Menu to **Credentials**. Press **+Create Credentials** and indicate the option **OAuth Client ID**
+
+![](imgs/crearcredencialesok.png)
+
+9. Select as 
+Application Type: **Desktop App**. Enter a name for the application and press the **Create** button
+
+![](imgs/appEscritorio.png)
+
+10. It will create the credentials for us, click on **Download JSON** and then on **Accept**. It is important to keep the downloaded file. It will be used later in the module.
+
+![](imgs/credencialesDescarga.png)
 
 Note: When the first connection is made, a .pickle file will be created in the Rocketbot root folder, to connect to the same service from another account you must delete
-that file. Do the same 
-procedure for the case in which the credentials expire.
+that file. Do the same procedure for the case in which the credentials expire.
 
 
 ## Description of the commands
@@ -106,6 +143,18 @@ Upload a file to Google Drive
 |File path||C:\file.txt|
 |New name (optional)||new_name.txt|
 |Save to folder - ID (optional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Convert to Google format|If checked, it will try to upload the file as Google's equivalent format (if any), if not, it will upload the original file.||
+|Assign result to var||var|
+|Session||session|
+
+### Upload folder
+  
+Upload a folder to Google Drive
+|Parameters|Description|example|
+| --- | --- | --- |
+|Folder path||C:\folder|
+|Save to folder - ID (optional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|New name (optional)|New name for the root folder to upload. It's optional.|new_name|
 |Convert to Google format|If checked, it will try to upload the file as Google's equivalent format (if any), if not, it will upload the original file.||
 |Assign result to var||var|
 |Session||session|
