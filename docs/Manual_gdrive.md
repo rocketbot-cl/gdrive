@@ -104,6 +104,15 @@ Download file from Drive
 |Path where to save file||C:\users\usuario\Downloads|
 |Session||session|
 
+### Download folder
+  
+Download folder from Drive
+|Parameters|Description|example|
+| --- | --- | --- |
+|Folder ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Path where to save folder||C:\users\usuario\Downloads|
+|Session||session|
+
 ### Export file
   
 Export a file from Drive to the requested format type

@@ -255,6 +255,88 @@ if module == 'DownloadFile':
         PrintException()
         raise e
 
+if module == "DownloadFolder":
+    try:
+        global download_file
+        from googleapiclient.discovery import build
+        
+
+        folder_id = GetParams("folder_id")
+        if not folder_id:
+            raise Exception("No se ha proporcionado el ID de la carpeta")
+
+        download_path = GetParams("download_path")
+        if not download_path:
+            raise Exception("No se ha proporcionado la ruta de descarga")
+
+        service = build('drive', 'v3', credentials=mod_gdrive_session[session])
+
+        export_formats = {
+            'application/vnd.google-apps.document': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',  # Google Docs a DOCX
+            'application/vnd.google-apps.spreadsheet': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',    # Google Sheets a XLSX
+            'application/vnd.google-apps.presentation': 'application/vnd.openxmlformats-officedocument.presentationml.presentation'  # Google Slides a PPTX
+        }
+
+        def download_file(service, file_id, file_name, mime_type, download_path):
+            from googleapiclient.http import MediaIoBaseDownload
+            global export_formats
+            if mime_type in export_formats:
+                request = service.files().export_media(fileId=file_id, mimeType=export_formats[mime_type])
+                file_extension = {
+                    'application/vnd.google-apps.document': '.docx',
+                    'application/vnd.google-apps.spreadsheet': '.xlsx',
+                    'application/vnd.google-apps.presentation': '.pptx'
+                }[mime_type]
+                file_name += file_extension
+            else:
+                request = service.files().get_media(fileId=file_id)
+
+            fh = io.BytesIO()
+            downloader = MediaIoBaseDownload(fh, request)
+
+            done = False
+            while not done:
+                status, done = downloader.next_chunk()
+                print(f"Descargando {file_name}: {int(status.progress() * 100)}% completado")
+
+            with open(os.path.join(download_path, file_name), 'wb') as f:
+                fh.seek(0)
+                f.write(fh.read())
+
+        def download_folder(service, folder_id, parent_download_path):
+            # Obtener el nombre de la carpeta raíz
+            folder_metadata = service.files().get(fileId=folder_id, fields="name").execute()
+            root_folder_name = folder_metadata['name']
+            
+            # Crear la carpeta raíz en la ruta de descarga
+            root_folder_path = os.path.join(parent_download_path, root_folder_name)
+            if not os.path.exists(root_folder_path):
+                os.makedirs(root_folder_path)
+
+            results = service.files().list(
+                q=f"'{folder_id}' in parents and trashed = false",
+                fields="files(id, name, mimeType)"
+            ).execute()
+
+            items = results.get('files', [])
+
+            for item in items:
+                if item['mimeType'] == 'application/vnd.google-apps.folder':
+                    new_folder_path = os.path.join(root_folder_path, item['name'])
+                    download_folder(service, item['id'], new_folder_path)
+                else:
+                    download_file(service, item['id'], item['name'], item['mimeType'], root_folder_path)
+
+        # Descargar la carpeta raíz junto con su contenido
+        download_folder(service, folder_id, download_path)
+
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        traceback.print_exc()
+        PrintException()
+        raise e
+
+    
 if module == 'ExportFile':
     try:
         drive_id = GetParams('drive_id')

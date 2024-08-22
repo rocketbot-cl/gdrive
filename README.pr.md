@@ -27,31 +27,34 @@ Listar arquivos do Google Drive. Este comando retorna todos os arquivos por padr
 3. Baixar arquivo  
 Baixar um arquivo do Drive
 
-4. Exportar arquivo  
+4. Baixar pasta  
+Baixar uma pasta do Drive
+
+5. Exportar arquivo  
 Exportar um arquivo do Drive para o tipo de formato solicitado
 
-5. Criar pasta  
+6. Criar pasta  
 Criar pasta
 
-6. Copiar ou mover arquivo  
+7. Copiar ou mover arquivo  
 Copiar ou mover um arquivo
 
-7. Subir arquivo  
+8. Subir arquivo  
 Carregar um arquivo para o Google Drive
 
-8. Subir pasta  
+9. Subir pasta  
 Carregar uma pasta para o Google Drive
 
-9. Excluir um arquivo ou pasta  
+10. Excluir um arquivo ou pasta  
 Excluir um arquivo ou pasta do Google Drive
 
-10. Compartilhar arquivo  
+11. Compartilhar arquivo  
 Compartilhar um arquivo do Drive
 
-11. Listar permissões  
+12. Listar permissões  
 Obtenha uma lista de permissões de um arquivo
 
-12. Excluir permissão  
+13. Excluir permissão  
 Excluir uma permissão de um arquivo  
 
 
