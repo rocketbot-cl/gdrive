@@ -108,6 +108,15 @@ Descargar un archivo desde Drive
 |Ruta donde guardar archivo||C:\users\usuario\Downloads|
 |Session||session|
 
+### Descargar carpeta
+  
+Descargar una carpeta desde Drive
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID de la carpeta (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Ruta donde guardar la carpeta||C:\users\usuario\Downloads|
+|Session||session|
+
 ### Exportar archivo
   
 Exportar un archivo de Drive al tipo de formato solicitado

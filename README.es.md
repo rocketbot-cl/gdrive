@@ -27,31 +27,34 @@ Lista los archivos de Google Drive. Este comando devuelve todos los archivos de 
 3. Descargar archivo  
 Descargar un archivo desde Drive
 
-4. Exportar archivo  
+4. Descargar carpeta  
+Descargar una carpeta desde Drive
+
+5. Exportar archivo  
 Exportar un archivo de Drive al tipo de formato solicitado
 
-5. Crear carpeta  
+6. Crear carpeta  
 Crear carpeta
 
-6. Copiar o mover archivo  
+7. Copiar o mover archivo  
 Copiar o mover un archivo
 
-7. Subir archivo  
+8. Subir archivo  
 Subir un archivo a Google Drive
 
-8. Subir carpeta  
+9. Subir carpeta  
 Subir una carpeta a Google Drive
 
-9. Eliminar un archivo o carpeta  
+10. Eliminar un archivo o carpeta  
 Eliminar un archivo o carpeta de Google Drive
 
-10. Compartir archivo  
+11. Compartir archivo  
 Comparte un archivo de Drive
 
-11. Listar permisos  
+12. Listar permisos  
 Obtener lista de permisos de un archivo
 
-12. Borra permiso  
+13. Borra permiso  
 Eliminar un permiso de un archivo  
 
 

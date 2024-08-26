@@ -27,31 +27,34 @@ List files of Google Drive. This command returns all files by default, including
 3. Download file  
 Download file from Drive
 
-4. Export file  
+4. Download folder  
+Download folder from Drive
+
+5. Export file  
 Export a file from Drive to the requested format type
 
-5. Create Folder  
+6. Create Folder  
 Create Folder
 
-6. Copy or move file  
+7. Copy or move file  
 Copy or move a file
 
-7. Upload file  
+8. Upload file  
 Upload a file to Google Drive
 
-8. Upload folder  
+9. Upload folder  
 Upload a folder to Google Drive
 
-9. Delete a file or folder  
+10. Delete a file or folder  
 Delete a file or folder from Drive
 
-10. Share file  
+11. Share file  
 Share a file in Drive
 
-11. List permissions  
+12. List permissions  
 Get list of permissions from a file
 
-12. Delete permission  
+13. Delete permission  
 Delete a permission from a file  
 
 

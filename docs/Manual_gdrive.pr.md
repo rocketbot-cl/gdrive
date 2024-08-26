@@ -105,6 +105,15 @@ Baixar um arquivo do Drive
 |Caminho onde salvar o arquivo||C:\users\usuario\Downloads|
 |Session||session|
 
+### Baixar pasta
+  
+Baixar uma pasta do Drive
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|ID da Pasta (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Caminho onde salvar a pasta||C:\users\usuario\Downloads|
+|Session||session|
+
 ### Exportar arquivo
   
 Exportar um arquivo do Drive para o tipo de formato solicitado
