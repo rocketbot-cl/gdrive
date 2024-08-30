@@ -279,6 +279,7 @@ if module == "DownloadFolder":
         import os
 
         def download_file(service, file_id, file_name, mime_type, download_path):
+            global export_formats
             from googleapiclient.http import MediaIoBaseDownload
             if mime_type in export_formats:
                 request = service.files().export_media(fileId=file_id, mimeType=export_formats[mime_type])
