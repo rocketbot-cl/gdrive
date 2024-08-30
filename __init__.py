@@ -303,11 +303,9 @@ if module == "DownloadFolder":
                 f.write(fh.read())
 
         def download_folder(service, folder_id, parent_download_path):
-            # Obtener el nombre de la carpeta raíz
             folder_metadata = service.files().get(fileId=folder_id, fields="name").execute()
             root_folder_name = folder_metadata['name']
             
-            # Crear la carpeta raíz en la ruta de descarga
             root_folder_path = os.path.join(parent_download_path, root_folder_name)
             if not os.path.exists(root_folder_path):
                 os.makedirs(root_folder_path)
@@ -325,19 +323,15 @@ if module == "DownloadFolder":
         
         for item in items:
             if item['mimeType'] == 'application/vnd.google-apps.folder':
-                # Descargar subcarpeta
                 subfolder_id = item['id']
                 subfolder_items, subfolder_path = download_folder(service, subfolder_id, root_folder_path)
                 
-                # Procesar archivos en la subcarpeta
                 for sub_item in subfolder_items:
                     if sub_item['mimeType'] != 'application/vnd.google-apps.folder':
                         download_file(service, sub_item['id'], sub_item['name'], sub_item['mimeType'], subfolder_path)
             else:
-                # Descargar archivo
                 download_file(service, item['id'], item['name'], item['mimeType'], root_folder_path)
 
-        # Descargar la carpeta raíz junto con su contenido
         download_folder(service, folder_id, download_path)
 
     except Exception as e:
@@ -346,7 +340,6 @@ if module == "DownloadFolder":
         PrintException()
         raise e
 
-    
 if module == 'ExportFile':
     try:
         drive_id = GetParams('drive_id')
