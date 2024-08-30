@@ -258,7 +258,6 @@ if module == 'DownloadFile':
 if module == "DownloadFolder":
     try:
         global download_file
-        global download_folder
 
         folder_id = GetParams("folder_id")
         if not folder_id:
@@ -276,9 +275,11 @@ if module == "DownloadFolder":
             'application/vnd.google-apps.presentation': 'application/vnd.openxmlformats-officedocument.presentationml.presentation'  # Google Slides a PPTX
         }
 
+        import io
+        import os
+
         def download_file(service, file_id, file_name, mime_type, download_path):
             from googleapiclient.http import MediaIoBaseDownload
-            global export_formats
             if mime_type in export_formats:
                 request = service.files().export_media(fileId=file_id, mimeType=export_formats[mime_type])
                 file_extension = {
@@ -302,37 +303,33 @@ if module == "DownloadFolder":
                 fh.seek(0)
                 f.write(fh.read())
 
-        def download_folder(service, folder_id, parent_download_path):
-            folder_metadata = service.files().get(fileId=folder_id, fields="name").execute()
+        to_process = [(folder_id, download_path)]
+
+        while to_process:
+            current_folder_id, current_download_path = to_process.pop()
+
+            folder_metadata = service.files().get(fileId=current_folder_id, fields="name").execute()
             root_folder_name = folder_metadata['name']
             
-            root_folder_path = os.path.join(parent_download_path, root_folder_name)
+            root_folder_path = os.path.join(current_download_path, root_folder_name)
             if not os.path.exists(root_folder_path):
                 os.makedirs(root_folder_path)
 
             results = service.files().list(
-                q=f"'{folder_id}' in parents and trashed = false",
+                q=f"'{current_folder_id}' in parents and trashed = false",
                 fields="files(id, name, mimeType)"
             ).execute()
 
             items = results.get('files', [])
-            return items, root_folder_path
-        
-        items, root_folder_path = download_folder(service, folder_id, download_path)
-        print(items)
-        
-        for item in items:
-            if item['mimeType'] == 'application/vnd.google-apps.folder':
-                subfolder_id = item['id']
-                subfolder_items, subfolder_path = download_folder(service, subfolder_id, root_folder_path)
-                
-                for sub_item in subfolder_items:
-                    if sub_item['mimeType'] != 'application/vnd.google-apps.folder':
-                        download_file(service, sub_item['id'], sub_item['name'], sub_item['mimeType'], subfolder_path)
-            else:
-                download_file(service, item['id'], item['name'], item['mimeType'], root_folder_path)
-
-        download_folder(service, folder_id, download_path)
+            for item in items:
+                if item['mimeType'] == 'application/vnd.google-apps.folder':
+                    subfolder_id = item['id']
+                    subfolder_path = os.path.join(root_folder_path, item['name'])
+                    if not os.path.exists(subfolder_path):
+                        os.makedirs(subfolder_path)
+                    to_process.append((subfolder_id, root_folder_path))
+                else:
+                    download_file(service, item['id'], item['name'], item['mimeType'], root_folder_path)
 
     except Exception as e:
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
