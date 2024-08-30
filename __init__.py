@@ -258,8 +258,7 @@ if module == 'DownloadFile':
 if module == "DownloadFolder":
     try:
         global download_file
-        from googleapiclient.discovery import build
-        
+        global download_folder
 
         folder_id = GetParams("folder_id")
         if not folder_id:
@@ -319,13 +318,24 @@ if module == "DownloadFolder":
             ).execute()
 
             items = results.get('files', [])
-
-            for item in items:
-                if item['mimeType'] == 'application/vnd.google-apps.folder':
-                    new_folder_path = os.path.join(root_folder_path, item['name'])
-                    download_folder(service, item['id'], new_folder_path)
-                else:
-                    download_file(service, item['id'], item['name'], item['mimeType'], root_folder_path)
+            return items, root_folder_path
+        
+        items, root_folder_path = download_folder(service, folder_id, download_path)
+        print(items)
+        
+        for item in items:
+            if item['mimeType'] == 'application/vnd.google-apps.folder':
+                # Descargar subcarpeta
+                subfolder_id = item['id']
+                subfolder_items, subfolder_path = download_folder(service, subfolder_id, root_folder_path)
+                
+                # Procesar archivos en la subcarpeta
+                for sub_item in subfolder_items:
+                    if sub_item['mimeType'] != 'application/vnd.google-apps.folder':
+                        download_file(service, sub_item['id'], sub_item['name'], sub_item['mimeType'], subfolder_path)
+            else:
+                # Descargar archivo
+                download_file(service, item['id'], item['name'], item['mimeType'], root_folder_path)
 
         # Descargar la carpeta raíz junto con su contenido
         download_folder(service, folder_id, download_path)
