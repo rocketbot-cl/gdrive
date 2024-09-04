@@ -272,7 +272,9 @@ if module == "DownloadFolder":
         export_formats = {
             'application/vnd.google-apps.document': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',  # Google Docs a DOCX
             'application/vnd.google-apps.spreadsheet': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',    # Google Sheets a XLSX
-            'application/vnd.google-apps.presentation': 'application/vnd.openxmlformats-officedocument.presentationml.presentation'  # Google Slides a PPTX
+            'application/vnd.google-apps.presentation': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',  # Google Slides a PPTX
+            'application/vnd.google-apps.drawing': 'image/png',
+            'application/vnd.google-apps.script': 'application/vnd.google-apps.script+json'
         }
 
         import io
@@ -286,7 +288,9 @@ if module == "DownloadFolder":
                 file_extension = {
                     'application/vnd.google-apps.document': '.docx',
                     'application/vnd.google-apps.spreadsheet': '.xlsx',
-                    'application/vnd.google-apps.presentation': '.pptx'
+                    'application/vnd.google-apps.presentation': '.pptx',
+                    'application/vnd.google-apps.drawing': '.png',
+                    'application/vnd.google-apps.script': '.json'
                 }[mime_type]
                 file_name += file_extension
             else:
