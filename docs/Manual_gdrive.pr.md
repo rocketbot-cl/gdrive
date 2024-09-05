@@ -113,6 +113,7 @@ Baixar uma pasta do Drive
 |ID da Pasta (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Caminho onde salvar a pasta||C:\users\usuario\Downloads|
 |Session||session|
+|Atribuir resultado à variável|Devolverá True ou False dependendo do resultado da execução.|var|
 
 ### Exportar arquivo
   

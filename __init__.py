@@ -258,7 +258,7 @@ if module == 'DownloadFile':
 if module == "DownloadFolder":
     try:
         global download_file
-
+        var_ = GetParams("var_")
         folder_id = GetParams("folder_id")
         if not folder_id:
             raise Exception("No se ha proporcionado el ID de la carpeta")
@@ -335,8 +335,10 @@ if module == "DownloadFolder":
                     to_process.append((subfolder_id, root_folder_path))
                 else:
                     download_file(service, item['id'], item['name'], item['mimeType'], root_folder_path)
-
+                    
+        SetVar(var_, True)
     except Exception as e:
+        SetVar(var_, False)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         traceback.print_exc()
         PrintException()

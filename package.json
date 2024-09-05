@@ -425,6 +425,32 @@
             },
             "id": "session",
             "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "var",
+              "en": "var",
+              "pr": "var"
+            },
+            "title": {
+              "es": "Asignar resultado a variable",
+              "en": "Assign result to var",
+              "pr": "Atribuir resultado à variável"
+            },
+            "help": {
+              "es": "Nombre de variable sin {}",
+              "en": "Var name without {}",
+              "pr": "Nome da variável sem {}"
+            },
+            "description": {
+              "es": "Devolverá True o False dependiendo del éxito de la ejecución.",
+              "en": "Return True or False depending on the execution result.",
+              "pr": "Devolverá True ou False dependendo do resultado da execução."
+            },
+            "remove_vars": true,
+            "id": "var_",
+            "css": "col-md-6"
           }
         ]
       },

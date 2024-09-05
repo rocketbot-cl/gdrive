@@ -112,6 +112,7 @@ Download folder from Drive
 |Folder ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Path where to save folder||C:\users\usuario\Downloads|
 |Session||session|
+|Assign result to var|Return True or False depending on the execution result.|var|
 
 ### Export file
   
