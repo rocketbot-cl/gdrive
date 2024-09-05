@@ -9,7 +9,6 @@ Módulo para conectarse a Google Drive y administrar sus archivos. Puede trabaja
 *Read this in other languages: [English](Manual_gdrive.md), [Português](Manual_gdrive.pr.md), [Español](Manual_gdrive.es.md)*
   
 ![banner](imgs/Banner_gdrive.png)
-
 ## Como instalar este módulo
   
 Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
@@ -116,6 +115,7 @@ Descargar una carpeta desde Drive
 |ID de la carpeta (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Ruta donde guardar la carpeta||C:\users\usuario\Downloads|
 |Session||session|
+|Asignar resultado a variable|Devolverá True o False dependiendo del éxito de la ejecución.|var|
 
 ### Exportar archivo
   
