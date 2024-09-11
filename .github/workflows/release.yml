@@ -62,6 +62,10 @@ jobs:
         id: module_id
         run: echo "MODULE_ID=${{ fromJson(steps.module_info.outputs.response).data.id }}" >> "$GITHUB_OUTPUT"
 
+      - name: Token
+        id: token
+        run: echo "TOKEN=${{ fromJson(steps.login_api.outputs.response).data.token }}" >> "$GITHUB_OUTPUT"
+
       - name: Update module in Market
         uses: fjogeleit/http-request-action@v1
         id: update_module
