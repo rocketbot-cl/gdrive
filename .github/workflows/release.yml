@@ -39,6 +39,18 @@ jobs:
           body: ${{ steps.extract_commit_message.outputs.MESSAGE }}
           draft: false
           prerelease: false
+        
+      - name: Login to Market API
+        id: login_api
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'https://market-api.rocketbot.com/loginApi'
+          method: 'POST'
+          contentType: 'application/json'
+          data: '{"email": "${{ secrets.ACCOUNT }}", "password": "${{ secrets.PASS }}"}'
+          
+
+
       - name: Module Information
         uses: fjogeleit/http-request-action@v1
         id: module_info
@@ -56,3 +68,4 @@ jobs:
         with:
           url: 'https://market-api.rocketbot.com/modules/update/${{ steps.module_id.outputs.MODULE_ID }}'
           method: 'POST'
+          bearerToken: ${{ fromJson(steps.login_api.outputs).data.token }} 
