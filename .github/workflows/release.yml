@@ -62,7 +62,7 @@ jobs:
 
       - name: Token
         id: token
-        run: echo "TOKEN=${{ fromJson(steps.login_api.outputs.response).data.token }}" >> "$GITHUB_OUTPUT"
+        run: echo "TOKEN=${{ fromJson(steps.login_api.outputs.response).token }}" >> "$GITHUB_OUTPUT"
 
       - name: Update module in Market
         uses: fjogeleit/http-request-action@v1
@@ -70,4 +70,4 @@ jobs:
         with:
           url: 'https://market-api.rocketbot.com/modules/update/${{ steps.module_id.outputs.MODULE_ID }}'
           method: 'POST'
-          bearerToken: ${{ fromJson(steps.login_api.outputs.response).data.token }} 
+          bearerToken: ${{ fromJson(steps.login_api.outputs.response).token }} 
