@@ -44,7 +44,7 @@ jobs:
         id: login_api
         uses: fjogeleit/http-request-action@v1
         with:
-          url: 'https://market-api.rocketbot.com/loginApi'
+          url: 'https://market-api.rocketbot.com/api/loginApi'
           method: 'POST'
           contentType: 'application/json'
           data: '{"email": "${{ secrets.ACCOUNT }}", "password": "${{ secrets.PASS }}"}'
@@ -68,4 +68,4 @@ jobs:
         with:
           url: 'https://market-api.rocketbot.com/modules/update/${{ steps.module_id.outputs.MODULE_ID }}'
           method: 'POST'
-          bearerToken: ${{ fromJson(steps.login_api.outputs).data.token }} 
+          bearerToken: ${{ fromJson(steps.login_api.outputs.response).data.token }} 
