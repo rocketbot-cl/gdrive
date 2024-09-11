@@ -7,9 +7,6 @@ on:
       - master
     types:
       - closed
-  push:
-    branches:
-      - qa
 
 jobs:
   create_release:
@@ -51,8 +48,6 @@ jobs:
           method: 'POST'
           contentType: 'application/json'
           data: '{"email": "${{ secrets.ACCOUNT }}", "password": "${{ secrets.PASS }}"}'
-          
-
 
       - name: Module Information
         uses: fjogeleit/http-request-action@v1
