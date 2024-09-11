@@ -70,4 +70,10 @@ jobs:
         with:
           url: 'https://market-api.rocketbot.com/modules/update/${{ steps.module_id.outputs.MODULE_ID }}'
           method: 'POST'
-          bearerToken: ${{ fromJson(steps.login_api.outputs.response).token }} 
+          bearerToken: ${{ fromJson(steps.login_api.outputs.response).token }}
+          timeout: 10000
+          preventFailureOnNoResponse: 'true'
+          ignoreStatusCodes: '502'
+          maskResponse: 'true'
+          retry: 3
+          retryWait: 5000
