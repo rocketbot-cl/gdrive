@@ -196,6 +196,20 @@ Comparte un archivo de Drive
 |Asignar resultado a variable||var|
 |Session||session|
 
+### Manejar permisos de carpeta
+  
+Comparte un archivo de Drive
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID de la carpeta (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Accion||---- Select ----|
+|Tipo||---- Select ----|
+|Rol||---- Select ----|
+|Email o Dominio|||
+|Enviar correo de notificación||-|
+|Asignar resultado a variable||var|
+|Session||session|
+
 ### Listar permisos
   
 Obtener lista de permisos de un archivo

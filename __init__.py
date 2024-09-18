@@ -653,6 +653,72 @@ if module == "ShareFile":
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
+    
+if module == "ManageFolderPermissions":
+    try:
+        folder_id = GetParams("folder_id")
+        type__ = GetParams("type")
+        target = GetParams("target")
+        role = GetParams("role")
+        action = GetParams("action")
+        
+        email_notification = eval(GetParams("email_notification")) if GetParams("email_notification") else False
+        
+        if not folder_id:
+            raise Exception("No ha ingresado un ID de carpeta")
+        
+        service = build('drive', 'v3', credentials=mod_gdrive_session[session])
+        result = GetParams("result")
+        
+        type_ = "anyone" if not type__ else type__
+        role_ = "reader" if not role else role
+        
+        if action == "create":
+            body_ = {"role": role_, "type": type_}
+            
+            if type_ in ["user", "group"]:
+                body_['emailAddress'] = target
+            if type_ == "domain":
+                body_['domain'] = target
+            
+            res = service.permissions().create(
+                body=body_, 
+                fileId=folder_id, 
+                sendNotificationEmail=email_notification, 
+                supportsAllDrives=True
+            ).execute()
+        
+        elif action == "delete":
+            if not target:
+                raise Exception("No ha ingresado un ID de permiso para eliminar")
+            
+            service.permissions().delete(
+                fileId=folder_id, 
+                permissionId=target,
+                supportsAllDrives=True
+            ).execute()
+            res = f"Permission {target} deleted"
+        
+        elif action == "update":
+            if not target:
+                raise Exception("No ha ingresado un ID de permiso para actualizar")
+            
+            body_ = {"role": role_}
+            res = service.permissions().update(
+                fileId=folder_id, 
+                permissionId=target, 
+                body=body_,
+                supportsAllDrives=True
+            ).execute()
+        
+        SetVar(result, res)
+
+    except Exception as e:
+        SetVar(result, False)
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+
 
 if module == "PermissionList":
     try:

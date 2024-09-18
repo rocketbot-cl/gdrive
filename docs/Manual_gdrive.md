@@ -193,6 +193,20 @@ Share a file in Drive
 |Assign result to var||var|
 |Session||session|
 
+### Manage folder permissions
+  
+Share a file in Drive
+|Parameters|Description|example|
+| --- | --- | --- |
+|Folder ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Action||---- Select ----|
+|Type||---- Select ----|
+|Role||---- Select ----|
+|Email or Domain|||
+|Send notification email||-|
+|Assign result to var||var|
+|Session||session|
+
 ### List permissions
   
 Get list of permissions from a file

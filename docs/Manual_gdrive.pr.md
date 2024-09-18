@@ -194,6 +194,20 @@ Compartilhar um arquivo do Drive
 |Atribuir resultado à variável||var|
 |Session||session|
 
+### Gerenciar permissoes da pasta
+  
+Compartilhar um arquivo do Drive
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|ID da pasta (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Ação||---- Select ----|
+|Tipo||---- Select ----|
+|Papel||---- Select ----|
+|E-mail ou Domínio|||
+|Enviar e-mail de notificação||-|
+|Atribuir resultado à variável||var|
+|Session||session|
+
 ### Listar permissões
   
 Obtenha uma lista de permissões de um arquivo
