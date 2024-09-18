@@ -725,7 +725,7 @@ if module == "PermissionList":
         file_id = GetParams("file_id")
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
         result = GetParams("result")
-        permissions = service.permissions().list(fileId=file_id, supportsAllDrives=True).execute()['permissions']
+        permissions = service.permissions().list(fileId=file_id, fields="permissions(id, type, role, emailAddress, displayName)", supportsAllDrives=True).execute()['permissions']
         
         SetVar(result, permissions)
         
