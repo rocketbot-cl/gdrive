@@ -1532,19 +1532,19 @@
     {
       "en": {
         "title": "Manage folder permissions",
-        "description": "Create, update or delete a folder permission. The types of permissions are User or Group for user permissions, and Domain or Anywhere for general access permissions.",
+        "description": "Create, update or delete a folder permission. The types of access are user: User or Group, and general: Domain or Anyone.",
         "title_options": "Select Option",
         "options": null
       },
       "es": {
         "title": "Manejar permisos de carpeta",
-        "description": "Crea, actualiza o elimina un permiso. Los tipos de permisos son User o Group para permisos de usuarios, y Domain o Anywhere son permisos de acceso general.",
+        "description": "Crea, actualiza o elimina un permiso. Los tipos de accesos son de usuarios: User o Group, y de acceso general: Domain o Anyone.",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
         "title": "Gerenciar permissoes da pasta",
-        "description": "Cria, atualiza ou exclui uma permissão. Os tipos de permissões são User ou Group para permissões de usuários, e Domain ou Anywhere para permissões de acesso geral.",
+        "description": "Cria, atualiza ou exclui uma permissão da pasta. Os tipos de acesso são de usuários: User ou Group, e de acesso geral: Domain ou Anyone.",
         "title_options": "Selecione uma opção",
         "options": null
       },
@@ -1607,9 +1607,9 @@
               "pr": "---- Select ----"
             },
             "title": {
-              "es": "Tipo",
-              "en": "Type",
-              "pr": "Tipo"
+              "es": "Tipo de Acceso",
+              "en": "Access Type",
+              "pr": "Tipo de Acesso"
             },
             "options": [
               {
