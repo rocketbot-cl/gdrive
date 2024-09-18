@@ -1532,19 +1532,19 @@
     {
       "en": {
         "title": "Manage folder permissions",
-        "description": "Share a file in Drive",
+        "description": "Create, update or delete a folder permission. The types of permissions are User or Group for user permissions, and Domain or Anywhere for general access permissions.",
         "title_options": "Select Option",
         "options": null
       },
       "es": {
         "title": "Manejar permisos de carpeta",
-        "description": "Comparte un archivo de Drive",
+        "description": "Crea, actualiza o elimina un permiso. Los tipos de permisos son User o Group para permisos de usuarios, y Domain o Anywhere son permisos de acceso general.",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
         "title": "Gerenciar permissoes da pasta",
-        "description": "Compartilhar um arquivo do Drive",
+        "description": "Cria, atualiza ou exclui uma permissão. Os tipos de permissões são User ou Group para permissões de usuários, e Domain ou Anywhere para permissões de acesso geral.",
         "title_options": "Selecione uma opção",
         "options": null
       },
@@ -1675,6 +1675,11 @@
                 "value": "reader"
               }
             ],
+            "help":{
+              "es": "El rol Owner solo funciona para usuarios de la organización.",
+              "en": "The owner role only works for users of the organization.",
+              "pr": "O papel Owner funciona apenas para usuários da organização."
+            },
             "id": "role",
             "css": "col-md-6"
           },
@@ -1686,14 +1691,14 @@
               "pr": ""
             },
             "title": {
-              "es": "Email o Dominio",
-              "en": "Email or Domain",
-              "pr": "E-mail ou Domínio"
+              "es": "Email, Dominio o PermissionID",
+              "en": "Email, Domain or PermissionID",
+              "pr": "E-mail, Domínio ou PermissionID"
             },
             "help": {
-              "es": "IMPORTANTE: Especifique la dirección de correo electrónico para tipo 'user' o 'group', o el dominio para el tipo de domain. Déjelo vacío para tipo anyone. Indicar aquí el permissionId para eliminarlo o actualizarlo.",
-              "en": "IMPORTANT: Specify email address for 'user' or 'group' type, or domain for domain type. Leave it empty for anyone type. Specify permissionId to delete or update.",
-              "pr": "IMPORTANTE: Especifique o endereço de e-mail para o tipo 'user' ou 'group', ou domínio para o tipo de domain. Deixe em branco para tipo anyone. Especifique o permissionId para apagar ou atualizar."
+              "es": "IMPORTANTE: especifique la dirección de correo electrónico para el tipo user o group, el dominio para el tipo domain, o dejar vacío para el tipo anyone. Indique aquí el permissionId para la acción delete o update.",
+              "en": "IMPORTANT: specify the email address for the type user or group, the domain for the type domain, or leave blank for the type anyone. Specify the permissionId for the action delete or update.",
+              "pr": "IMPORTANTE: especifique o endereço de e-mail para o tipo user ou grupo, o domínio para o tipo domain, ou deixe em branco para o tipo anyone. Especifique o permissionId para a ação de delete ou update."
             },
             "id": "target",
             "css": "col-md-6"
