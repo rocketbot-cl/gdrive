@@ -51,10 +51,13 @@ Delete a file or folder from Drive
 11. Share file  
 Share a file in Drive
 
-12. List permissions  
+12. Manage folder permissions  
+Share a file in Drive
+
+13. List permissions  
 Get list of permissions from a file
 
-13. Delete permission  
+14. Delete permission  
 Delete a permission from a file  
 
 

@@ -51,10 +51,13 @@ Excluir um arquivo ou pasta do Google Drive
 11. Compartilhar arquivo  
 Compartilhar um arquivo do Drive
 
-12. Listar permissões  
+12. Gerenciar permissoes da pasta  
+Compartilhar um arquivo do Drive
+
+13. Listar permissões  
 Obtenha uma lista de permissões de um arquivo
 
-13. Excluir permissão  
+14. Excluir permissão  
 Excluir uma permissão de um arquivo  
 
 

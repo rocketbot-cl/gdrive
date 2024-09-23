@@ -51,10 +51,13 @@ Eliminar un archivo o carpeta de Google Drive
 11. Compartir archivo  
 Comparte un archivo de Drive
 
-12. Listar permisos  
+12. Manejar permisos de carpeta  
+Comparte un archivo de Drive
+
+13. Listar permisos  
 Obtener lista de permisos de un archivo
 
-13. Borra permiso  
+14. Borra permiso  
 Eliminar un permiso de un archivo  
 
 
