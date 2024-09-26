@@ -21,43 +21,46 @@ To install the module in Rocketbot Studio, it can be done in two ways:
 1. Setup G-Suite credentials  
 Configure Google Drive credentials
 
-2. List files in Drive  
+2. Login without json file  
+Login to Google Drive without json file
+
+3. List files in Drive  
 List files of Google Drive. This command returns all files by default, including trashed files. If you don't want trashed files to appear in the list, use the trashed=false as filter.
 
-3. Download file  
+4. Download file  
 Download file from Drive
 
-4. Download folder  
+5. Download folder  
 Download folder from Drive
 
-5. Export file  
+6. Export file  
 Export a file from Drive to the requested format type
 
-6. Create Folder  
+7. Create Folder  
 Create Folder
 
-7. Copy or move file  
+8. Copy or move file  
 Copy or move a file
 
-8. Upload file  
+9. Upload file  
 Upload a file to Google Drive
 
-9. Upload folder  
+10. Upload folder  
 Upload a folder to Google Drive
 
-10. Delete a file or folder  
+11. Delete a file or folder  
 Delete a file or folder from Drive
 
-11. Share file  
+12. Share file  
 Share a file in Drive
 
-12. Manage folder permissions  
-Share a file in Drive
+13. Manage folder permissions  
+Create, update or delete a folder permission. The types of access are user: User or Group, and general: Domain or Anyone.
 
-13. List permissions  
+14. List permissions  
 Get list of permissions from a file
 
-14. Delete permission  
+15. Delete permission  
 Delete a permission from a file  
 
 

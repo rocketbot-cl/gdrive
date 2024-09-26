@@ -67,7 +67,7 @@ OAuth**
 
 ![](imgs/appEscritorio.png)
 
-10. Irá criar as credenciais, clicamos em **Baixar JSON** e depois em **Aceitar**. É importante manter o arquivo baixado. Ele será usado posteriormente no módulo.
+10. Irá criar as credenciais, se quisermos fazer o login com o arquivo json clicamos em **Baixar JSON** e depois em **Aceitar**. É importante manter o arquivo baixado. Ele será usado posteriormente no módulo. Se quisermos fazer login com as credenciais, salvamos o Client ID e o Secret ID para usar posteriormente no módulo.
 
 ![](imgs/credencialesDescarga.png)
 
@@ -81,6 +81,16 @@ Configurar credenciais do Google Drive
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |Caminho de credenciais|Arquivo JSON com as credenciais de acesso ao API do Google Drive.|C:\Usuario\Desktop\credentials.json|
+|Porto (Opcional)||8080|
+|Session||session|
+
+### Login sem arquivo json
+  
+Login no Google Drive sem arquivo json
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|Client ID|ID do cliente do console da Google Cloud Platform.|123456789012-xxxxxxxxxxxxxxx.apps.googleusercontent.com|
+|Client Secret|Segredo do cliente do console da Google Cloud Platform.|GOCSPX-xxxxxxxxx_Dc9TGFy32_xxxxxxxx|
 |Porto (Opcional)||8080|
 |Session||session|
 
@@ -196,14 +206,14 @@ Compartilhar um arquivo do Drive
 
 ### Gerenciar permissoes da pasta
   
-Compartilhar um arquivo do Drive
+Cria, atualiza ou exclui uma permissão da pasta. Os tipos de acesso são de usuários: User ou Group, e de acesso geral: Domain ou Anyone.
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |ID da pasta (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Ação||---- Select ----|
-|Tipo||---- Select ----|
+|Tipo de Acesso||---- Select ----|
 |Papel||---- Select ----|
-|E-mail ou Domínio|||
+|E-mail, Domínio ou PermissionID|||
 |Enviar e-mail de notificação||-|
 |Atribuir resultado à variável||var|
 |Session||session|

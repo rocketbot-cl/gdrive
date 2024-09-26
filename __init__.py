@@ -28,6 +28,8 @@ import traceback
 import os.path
 import pickle
 import sys
+import tempfile
+import json
 
 base_path = tmp_global_obj["basepath"] # type:ignore
 cur_path = base_path + 'modules' + os.sep + 'gdrive' + os.sep + 'libs' + os.sep
@@ -109,6 +111,12 @@ export_formats = {
     "JSON (.json)": "application/vnd.google-apps.script+json"
 }
 
+SCOPES = [
+    'https://www.googleapis.com/auth/drive',
+    'https://www.googleapis.com/auth/spreadsheets'
+]
+
+
 session = GetParams("session")
 if not session:
     session = ''
@@ -151,6 +159,56 @@ if module == "GoogleSuite":
             flow = InstalledAppFlow.from_client_secrets_file(
                 credential_path, SCOPES)
             cred = flow.run_local_server(port=port)
+        # Save the credentials for the next run
+        with open(filename, 'wb') as token:
+            pickle.dump(cred, token)
+
+    # global creds
+    mod_gdrive_session[session] = cred
+
+if module == "GoogleSuiteWithoutJSON":
+    cred = None
+
+    client_id = GetParams("client_id")
+    client_secret = GetParams("client_secret")
+
+    port = 8080 if not GetParams("port") else int(GetParams("port"))
+    
+    if session == '':
+        filename = "token_drive.pickle"
+    else:
+        filename = "token_drive_{s}.pickle".format(s=session)
+    
+    filename = os.path.join(base_path, filename)
+    
+    if os.path.exists(filename):
+        with open(filename, 'rb') as token:
+            cred = pickle.load(token)
+        # If there are no (valid) credentials available, let the user log in.
+    if not cred or not cred.valid:
+        if cred and cred.expired and cred.refresh_token:
+            cred.refresh(Request())
+        else:
+            temp_json = {
+                "installed": {
+                    "client_id": client_id,
+                    "client_secret": client_secret,
+                    "redirect_uris": ["http://localhost"],
+                    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                    "token_uri": "https://oauth2.googleapis.com/token",
+                }
+            }
+
+            with tempfile.NamedTemporaryFile(mode='w', delete=False) as temp_file:
+                json.dump(temp_json, temp_file)
+                temp_file_path = temp_file.name
+
+            flow = InstalledAppFlow.from_client_secrets_file(
+                temp_file_path, SCOPES)
+            
+            os.remove(temp_file_path)
+            cred = flow.run_local_server(port=port)
+            
         # Save the credentials for the next run
         with open(filename, 'wb') as token:
             pickle.dump(cred, token)
