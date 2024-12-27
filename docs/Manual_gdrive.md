@@ -64,7 +64,7 @@ Application Type: **Desktop App**. Enter a name for the application and press th
 
 ![](imgs/appEscritorio.png)
 
-10. It will create the credentials for us, click on **Download JSON** and then on **Accept**. It is important to keep the downloaded file. It will be used later in the module.
+10. It will create the credentials for us. If we want to log in with the json file, we click on **Download JSON** and then on **Accept**. It is important to keep the downloaded file. It will be used later in the module. If we want to log in with the credentials, we save the Client ID and the Secret ID to use them later in the module.
 
 ![](imgs/credencialesDescarga.png)
 
@@ -80,6 +80,16 @@ Configure Google Drive credentials
 |Parameters|Description|example|
 | --- | --- | --- |
 |Credentials file path|JSON file with the credentials to access the Google Drive API.|C:\Usuario\Desktop\credentials.json|
+|Port (Optional)||8080|
+|Session||session|
+
+### Login without json file
+  
+Login to Google Drive without json file
+|Parameters|Description|example|
+| --- | --- | --- |
+|Client ID|Client ID from Google Cloud Platform console.|123456789012-xxxxxxxxxxxxxxx.apps.googleusercontent.com|
+|Client Secret|Client Secret from Google Cloud Platform console.|GOCSPX-xxxxxxxxx_Dc9TGFy32_xxxxxxxx|
 |Port (Optional)||8080|
 |Session||session|
 
@@ -195,14 +205,14 @@ Share a file in Drive
 
 ### Manage folder permissions
   
-Share a file in Drive
+Create, update or delete a folder permission. The types of access are user: User or Group, and general: Domain or Anyone.
 |Parameters|Description|example|
 | --- | --- | --- |
 |Folder ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Action||---- Select ----|
-|Type||---- Select ----|
+|Access Type||---- Select ----|
 |Role||---- Select ----|
-|Email or Domain|||
+|Email, Domain or PermissionID|||
 |Send notification email||-|
 |Assign result to var||var|
 |Session||session|

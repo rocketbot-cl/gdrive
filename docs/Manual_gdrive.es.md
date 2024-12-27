@@ -66,7 +66,7 @@ Navegación Izquierdo a **Credenciales**. Presione **+Crear Credenciales** e ind
 
 ![](imgs/appEscritorio.png)
 
-10. Nos creará las credenciales, damos click en **Descargar JSON** y luego en **Aceptar**. Es importante mantener el archivo descargado. Se utilizará más adelante en el módulo.
+10. Nos creará las credenciales, si queremos loguearnos con el archivo json damos click en **Descargar JSON** y luego en **Aceptar**. Es importante mantener el archivo descargado. Se utilizará más adelante en el módulo. Si queremos loguearnos con las credenciales, guardamos el Client ID y el Secret ID para usarlo más adelante el módulo.
 
 ![](imgs/credencialesDescarga.png)
 
@@ -83,6 +83,16 @@ Configura credenciales de Google Drive
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |Ruta del archivo de credenciales|Archivo JSON con las credenciales de acceso a la API de Google Drive.|C:\Usuario\Desktop\credentials.json|
+|Puerto (Opcional)||8080|
+|Session||session|
+
+### Iniciar sesión sin archivo json
+  
+Iniciar sesión en Google Drive sin archivo json
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|Client ID|ID de cliente de la consola de Google Cloud Platform.|123456789012-xxxxxxxxxxxxxxx.apps.googleusercontent.com|
+|Client Secret|Secreto de cliente de la consola de Google Cloud Platform.|GOCSPX-xxxxxxxxx_Dc9TGFy32_xxxxxxxx|
 |Puerto (Opcional)||8080|
 |Session||session|
 
@@ -198,14 +208,14 @@ Comparte un archivo de Drive
 
 ### Manejar permisos de carpeta
   
-Comparte un archivo de Drive
+Crea, actualiza o elimina un permiso. Los tipos de accesos son de usuarios: User o Group, y de acceso general: Domain o Anyone.
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID de la carpeta (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Accion||---- Select ----|
-|Tipo||---- Select ----|
+|Tipo de Acceso||---- Select ----|
 |Rol||---- Select ----|
-|Email o Dominio|||
+|Email, Dominio o PermissionID|||
 |Enviar correo de notificación||-|
 |Asignar resultado a variable||var|
 |Session||session|

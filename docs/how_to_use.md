@@ -45,7 +45,7 @@ You will be redirected to the API configuration page.
 
 ![](imgs/appEscritorio.png)
 
-10. It will create the credentials for us, click on **Download JSON** and then on **Accept**. It is important to keep the downloaded file. It will be used later in the module.
+10. It will create the credentials for us. If we want to log in with the json file, we click on **Download JSON** and then on **Accept**. It is important to keep the downloaded file. It will be used later in the module. If we want to log in with the credentials, we save the Client ID and the Secret ID to use them later in the module.
 
 ![](imgs/credencialesDescarga.png)
 
@@ -101,7 +101,7 @@ Se redireccionará a la página de configuración de la API.
 
 ![](imgs/appEscritorio.png)
 
-10. Nos creará las credenciales, damos click en **Descargar JSON** y luego en **Aceptar**. Es importante mantener el archivo descargado. Se utilizará más adelante en el módulo.
+10. Nos creará las credenciales, si queremos loguearnos con el archivo json damos click en **Descargar JSON** y luego en **Aceptar**. Es importante mantener el archivo descargado. Se utilizará más adelante en el módulo. Si queremos loguearnos con las credenciales, guardamos el Client ID y el Secret ID para usarlo más adelante el módulo.
 
 ![](imgs/credencialesDescarga.png)
 
@@ -159,7 +159,7 @@ Você será redirecionado para a página de configuração da API.
 
 ![](imgs/appEscritorio.png)
 
-10. Irá criar as credenciais, clicamos em **Baixar JSON** e depois em **Aceitar**. É importante manter o arquivo baixado. Ele será usado posteriormente no módulo.
+10. Irá criar as credenciais, se quisermos fazer o login com o arquivo json clicamos em **Baixar JSON** e depois em **Aceitar**. É importante manter o arquivo baixado. Ele será usado posteriormente no módulo. Se quisermos fazer login com as credenciais, salvamos o Client ID e o Secret ID para usar posteriormente no módulo.
 
 ![](imgs/credencialesDescarga.png)
 

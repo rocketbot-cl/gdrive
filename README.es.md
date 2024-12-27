@@ -21,43 +21,46 @@ Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
 1. Configurar credenciales G-Suite  
 Configura credenciales de Google Drive
 
-2. Listar archivos en Drive  
+2. Iniciar sesión sin archivo json  
+Iniciar sesión en Google Drive sin archivo json
+
+3. Listar archivos en Drive  
 Lista los archivos de Google Drive. Este comando devuelve todos los archivos de forma predeterminada, incluidos los archivos desechados. Si no desea que los archivos desechados aparezcan en la lista, utilice trashed=false como filtro.
 
-3. Descargar archivo  
+4. Descargar archivo  
 Descargar un archivo desde Drive
 
-4. Descargar carpeta  
+5. Descargar carpeta  
 Descargar una carpeta desde Drive
 
-5. Exportar archivo  
+6. Exportar archivo  
 Exportar un archivo de Drive al tipo de formato solicitado
 
-6. Crear carpeta  
+7. Crear carpeta  
 Crear carpeta
 
-7. Copiar o mover archivo  
+8. Copiar o mover archivo  
 Copiar o mover un archivo
 
-8. Subir archivo  
+9. Subir archivo  
 Subir un archivo a Google Drive
 
-9. Subir carpeta  
+10. Subir carpeta  
 Subir una carpeta a Google Drive
 
-10. Eliminar un archivo o carpeta  
+11. Eliminar un archivo o carpeta  
 Eliminar un archivo o carpeta de Google Drive
 
-11. Compartir archivo  
+12. Compartir archivo  
 Comparte un archivo de Drive
 
-12. Manejar permisos de carpeta  
-Comparte un archivo de Drive
+13. Manejar permisos de carpeta  
+Crea, actualiza o elimina un permiso. Los tipos de accesos son de usuarios: User o Group, y de acceso general: Domain o Anyone.
 
-13. Listar permisos  
+14. Listar permisos  
 Obtener lista de permisos de un archivo
 
-14. Borra permiso  
+15. Borra permiso  
 Eliminar un permiso de un archivo  
 
 
