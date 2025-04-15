@@ -7,7 +7,7 @@
     "pr": "Módulo para conectar ao Google Drive e gerenciar seus arquivos. Você pode trabalhar com arquivos e pastas próprios ou compartilhados, mover, excluir, baixar, exportar e carregá-los."
   },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "3.10.12",
+  "version": "3.10.13",
   "license": "MIT",
   "homepage": "http://rocketbot.com/",
   "linux": true,
@@ -1135,7 +1135,7 @@
       "group": "scripts",
       "linux": true,
       "windows": true,
-      "mac": true,
+      "mac": false,
       "docker": true
     },
     {
@@ -1284,7 +1284,7 @@
       "group": "scripts",
       "linux": true,
       "windows": true,
-      "mac": true,
+      "mac": false,
       "docker": true
     },
     {

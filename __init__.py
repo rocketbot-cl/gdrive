@@ -47,8 +47,10 @@ from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build # type:ignore
 from googleapiclient.http import MediaIoBaseDownload # type:ignore
-
-import magic # type:ignore
+try:
+    import magic # type:ignore
+except:
+    print("Failed to import the 'magic' library")
 from googleapiclient.http import MediaFileUpload # type:ignore
 import io
 
