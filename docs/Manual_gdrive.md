@@ -102,8 +102,8 @@ List files of Google Drive. This command returns all files by default, including
 |Owned files only||-|
 |Shared with me files only||-|
 |More data||-|
-|Assign result to var||var|
 |Session||session|
+|Assign result to var||var|
 
 ### Download file
   
@@ -113,6 +113,7 @@ Download file from Drive
 |File ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Path where to save file||C:\users\usuario\Downloads|
 |Session||session|
+|Assign result to var|Return True or False depending on the execution result.|var|
 
 ### Download folder
   
@@ -139,10 +140,10 @@ Export a file from Drive to the requested format type
 Create Folder
 |Parameters|Description|example|
 | --- | --- | --- |
-|File ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|Folder ID (Drive)|Optional if you want to create within a specific folder|1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Folder name||New Folder|
-|Assign result to var||var|
 |Session||session|
+|Assign result to var||var|
 
 ### Copy or move file
   
@@ -152,8 +153,8 @@ Copy or move a file
 |File ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Destiny Folder ID||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Move or Copy||var|
-|Assign result to var||var|
 |Session||session|
+|Assign result to var||var|
 
 ### Upload file
   
@@ -164,8 +165,8 @@ Upload a file to Google Drive
 |New name (optional)||new_name.txt|
 |Save to folder - ID (optional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Convert to Google format|If checked, it will try to upload the file as Google's equivalent format (if any), if not, it will upload the original file.||
-|Assign result to var||var|
 |Session||session|
+|Assign result to var||var|
 
 ### Upload folder
   
@@ -176,8 +177,8 @@ Upload a folder to Google Drive
 |Save to folder - ID (optional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |New name (optional)|New name for the root folder to upload. It's optional.|new_name|
 |Convert to Google format|If checked, it will try to upload the file as Google's equivalent format (if any), if not, it will upload the original file.||
-|Assign result to var||var|
 |Session||session|
+|Assign result to var||var|
 
 ### Delete a file or folder
   
@@ -185,8 +186,8 @@ Delete a file or folder from Drive
 |Parameters|Description|example|
 | --- | --- | --- |
 |File ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
-|Assign result to var||var|
 |Session||session|
+|Assign result to var||var|
 
 ### Share file
   
@@ -200,8 +201,8 @@ Share a file in Drive
 |Send notification email||-|
 |Transfer ownership||-|
 |Move file to new owner's root folder||-|
-|Assign result to var||var|
 |Session||session|
+|Assign result to var||var|
 
 ### Manage folder permissions
   
@@ -214,8 +215,8 @@ Create, update or delete a folder permission. The types of access are user: User
 |Role||---- Select ----|
 |Email, Domain or PermissionID|||
 |Send notification email||-|
-|Assign result to var||var|
 |Session||session|
+|Assign result to var||var|
 
 ### List permissions
   
@@ -223,8 +224,8 @@ Get list of permissions from a file
 |Parameters|Description|example|
 | --- | --- | --- |
 |File ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
-|Assign result to var||var|
 |Session||session|
+|Assign result to var||var|
 
 ### Delete permission
   
@@ -233,5 +234,5 @@ Delete a permission from a file
 | --- | --- | --- |
 |File ID (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Permission ID (Drive)||15224413836718185781|
-|Assign result to var||var|
 |Session||session|
+|Assign result to var||var|

@@ -333,6 +333,22 @@
           },
           {
             "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "Session",
+              "es": "Session",
+              "pr": "Session"
+            },
+            "help": {
+              "es": "Identificador de sesión (Opcional)",
+              "en": "Session ID (Optional)",
+              "pr": "ID da sessão (Opcional)"
+            },
+            "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
             "placeholder": {
               "es": "var",
               "en": "var",
@@ -350,22 +366,6 @@
             },
             "remove_vars": true,
             "id": "var_file_list",
-            "css": "col-md-6"
-          },
-          {
-            "type": "input",
-            "placeholder": "session",
-            "title": {
-              "en": "Session",
-              "es": "Session",
-              "pr": "Session"
-            },
-            "help": {
-              "es": "Identificador de sesión (Opcional)",
-              "en": "Session ID (Optional)",
-              "pr": "ID da sessão (Opcional)"
-            },
-            "id": "session",
             "css": "col-md-6"
           }
         ]
@@ -449,6 +449,32 @@
               "pr": "ID da sessão (Opcional)"
             },
             "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "var",
+              "en": "var",
+              "pr": "var"
+            },
+            "title": {
+              "es": "Asignar resultado a variable",
+              "en": "Assign result to var",
+              "pr": "Atribuir resultado à variável"
+            },
+            "help": {
+              "es": "Nombre de variable sin {}",
+              "en": "Var name without {}",
+              "pr": "Nome da variável sem {}"
+            },
+            "description": {
+              "es": "Devolverá True o False dependiendo del éxito de la ejecución.",
+              "en": "Return True or False depending on the execution result.",
+              "pr": "Devolverá True ou False dependendo do resultado da execução."
+            },
+            "remove_vars": true,
+            "id": "var_",
             "css": "col-md-6"
           }
         ]
@@ -782,9 +808,14 @@
               "pr": "1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo"
             },
             "title": {
-              "es": "ID del archivo (Drive)",
-              "en": "File ID (Drive)",
-              "pr": "ID do Arquivo (Drive)"
+              "es": "ID de la carpeta (Drive)",
+              "en": "Folder ID (Drive)",
+              "pr": "ID da pasta (Drive)"
+            },
+            "description": {
+              "es": "Opcional si se quiere crear dentro de una carpeta específica",
+              "en": "Optional if you want to create within a specific folder",
+              "pr": "Opcional se você quiser criar dentro de uma pasta específica"
             },
             "id": "parent_id",
             "css": "col-md-12"
@@ -806,6 +837,22 @@
           },
           {
             "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "Session",
+              "es": "Session",
+              "pr": "Session"
+            },
+            "help": {
+              "es": "Identificador de sesión (Opcional)",
+              "en": "Session ID (Optional)",
+              "pr": "ID da sessão (Opcional)"
+            },
+            "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
             "placeholder": {
               "es": "var",
               "en": "var",
@@ -823,22 +870,6 @@
             },
             "remove_vars": true,
             "id": "var",
-            "css": "col-md-12"
-          },
-          {
-            "type": "input",
-            "placeholder": "session",
-            "title": {
-              "en": "Session",
-              "es": "Session",
-              "pr": "Session"
-            },
-            "help": {
-              "es": "Identificador de sesión (Opcional)",
-              "en": "Session ID (Optional)",
-              "pr": "ID da sessão (Opcional)"
-            },
-            "id": "session",
             "css": "col-md-6"
           }
         ]
@@ -944,6 +975,22 @@
           },
           {
             "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "Session",
+              "es": "Session",
+              "pr": "Session"
+            },
+            "help": {
+              "es": "Identificador de sesión (Opcional)",
+              "en": "Session ID (Optional)",
+              "pr": "ID da sessão (Opcional)"
+            },
+            "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
             "placeholder": {
               "es": "var",
               "en": "var",
@@ -962,22 +1009,6 @@
             "remove_vars": true,
             "id": "var",
             "css": "col-md-12"
-          },
-          {
-            "type": "input",
-            "placeholder": "session",
-            "title": {
-              "en": "Session",
-              "es": "Session",
-              "pr": "Session"
-            },
-            "help": {
-              "es": "Identificador de sesión (Opcional)",
-              "en": "Session ID (Optional)",
-              "pr": "ID da sessão (Opcional)"
-            },
-            "id": "session",
-            "css": "col-md-6"
           }
         ]
       },
@@ -1088,6 +1119,22 @@
           },
           {
             "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "Session",
+              "es": "Session",
+              "pr": "Session"
+            },
+            "help": {
+              "es": "Identificador de sesión (Opcional)",
+              "en": "Session ID (Optional)",
+              "pr": "ID da sessão (Opcional)"
+            },
+            "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
             "placeholder": {
               "es": "var",
               "en": "var",
@@ -1105,22 +1152,6 @@
             },
             "remove_vars": true,
             "id": "var",
-            "css": "col-md-6"
-          },
-          {
-            "type": "input",
-            "placeholder": "session",
-            "title": {
-              "en": "Session",
-              "es": "Session",
-              "pr": "Session"
-            },
-            "help": {
-              "es": "Identificador de sesión (Opcional)",
-              "en": "Session ID (Optional)",
-              "pr": "ID da sessão (Opcional)"
-            },
-            "id": "session",
             "css": "col-md-6"
           }
         ]
@@ -1237,6 +1268,22 @@
           },
           {
             "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "Session",
+              "es": "Session",
+              "pr": "Session"
+            },
+            "help": {
+              "es": "Identificador de sesión (Opcional)",
+              "en": "Session ID (Optional)",
+              "pr": "ID da sessão (Opcional)"
+            },
+            "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
             "placeholder": {
               "es": "var",
               "en": "var",
@@ -1254,22 +1301,6 @@
             },
             "remove_vars": true,
             "id": "var",
-            "css": "col-md-6"
-          },
-          {
-            "type": "input",
-            "placeholder": "session",
-            "title": {
-              "en": "Session",
-              "es": "Session",
-              "pr": "Session"
-            },
-            "help": {
-              "es": "Identificador de sesión (Opcional)",
-              "en": "Session ID (Optional)",
-              "pr": "ID da sessão (Opcional)"
-            },
-            "id": "session",
             "css": "col-md-6"
           }
         ]
@@ -1331,6 +1362,22 @@
           },
           {
             "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "Session",
+              "es": "Session",
+              "pr": "Session"
+            },
+            "help": {
+              "es": "Identificador de sesión (Opcional)",
+              "en": "Session ID (Optional)",
+              "pr": "ID da sessão (Opcional)"
+            },
+            "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
             "placeholder": {
               "es": "var",
               "en": "var",
@@ -1348,22 +1395,6 @@
             },
             "remove_vars": true,
             "id": "result",
-            "css": "col-md-12"
-          },
-          {
-            "type": "input",
-            "placeholder": "session",
-            "title": {
-              "en": "Session",
-              "es": "Session",
-              "pr": "Session"
-            },
-            "help": {
-              "es": "Identificador de sesión (Opcional)",
-              "en": "Session ID (Optional)",
-              "pr": "ID da sessão (Opcional)"
-            },
-            "id": "session",
             "css": "col-md-6"
           }
         ]
@@ -1587,6 +1618,22 @@
           },
           {
             "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "Session",
+              "es": "Session",
+              "pr": "Session"
+            },
+            "help": {
+              "es": "Identificador de sesión (Opcional)",
+              "en": "Session ID (Optional)",
+              "pr": "ID da sessão (Opcional)"
+            },
+            "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
             "placeholder": {
               "es": "var",
               "en": "var",
@@ -1604,22 +1651,6 @@
             },
             "remove_vars": true,
             "id": "result",
-            "css": "col-md-6"
-          },
-          {
-            "type": "input",
-            "placeholder": "session",
-            "title": {
-              "en": "Session",
-              "es": "Session",
-              "pr": "Session"
-            },
-            "help": {
-              "es": "Identificador de sesión (Opcional)",
-              "en": "Session ID (Optional)",
-              "pr": "ID da sessão (Opcional)"
-            },
-            "id": "session",
             "css": "col-md-6"
           }
         ]
@@ -1833,6 +1864,22 @@
           },
           {
             "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "Session",
+              "es": "Session",
+              "pr": "Session"
+            },
+            "help": {
+              "es": "Identificador de sesión (Opcional)",
+              "en": "Session ID (Optional)",
+              "pr": "ID da sessão (Opcional)"
+            },
+            "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
             "placeholder": {
               "es": "var",
               "en": "var",
@@ -1850,22 +1897,6 @@
             },
             "remove_vars": true,
             "id": "result",
-            "css": "col-md-6"
-          },
-          {
-            "type": "input",
-            "placeholder": "session",
-            "title": {
-              "en": "Session",
-              "es": "Session",
-              "pr": "Session"
-            },
-            "help": {
-              "es": "Identificador de sesión (Opcional)",
-              "en": "Session ID (Optional)",
-              "pr": "ID da sessão (Opcional)"
-            },
-            "id": "session",
             "css": "col-md-6"
           }
         ]
@@ -1922,6 +1953,22 @@
           },
           {
             "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "Session",
+              "es": "Session",
+              "pr": "Session"
+            },
+            "help": {
+              "es": "Identificador de sesión (Opcional)",
+              "en": "Session ID (Optional)",
+              "pr": "ID da sessão (Opcional)"
+            },
+            "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
             "placeholder": {
               "es": "var",
               "en": "var",
@@ -1939,22 +1986,6 @@
             },
             "remove_vars": true,
             "id": "result",
-            "css": "col-md-6"
-          },
-          {
-            "type": "input",
-            "placeholder": "session",
-            "title": {
-              "en": "Session",
-              "es": "Session",
-              "pr": "Session"
-            },
-            "help": {
-              "es": "Identificador de sesión (Opcional)",
-              "en": "Session ID (Optional)",
-              "pr": "ID da sessão (Opcional)"
-            },
-            "id": "session",
             "css": "col-md-6"
           }
         ]
@@ -2026,6 +2057,22 @@
           },
           {
             "type": "input",
+            "placeholder": "session",
+            "title": {
+              "en": "Session",
+              "es": "Session",
+              "pr": "Session"
+            },
+            "help": {
+              "es": "Identificador de sesión (Opcional)",
+              "en": "Session ID (Optional)",
+              "pr": "ID da sessão (Opcional)"
+            },
+            "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
             "placeholder": {
               "es": "var",
               "en": "var",
@@ -2043,22 +2090,6 @@
             },
             "remove_vars": true,
             "id": "result",
-            "css": "col-md-6"
-          },
-          {
-            "type": "input",
-            "placeholder": "session",
-            "title": {
-              "en": "Session",
-              "es": "Session",
-              "pr": "Session"
-            },
-            "help": {
-              "es": "Identificador de sesión (Opcional)",
-              "en": "Session ID (Optional)",
-              "pr": "ID da sessão (Opcional)"
-            },
-            "id": "session",
             "css": "col-md-6"
           }
         ]
