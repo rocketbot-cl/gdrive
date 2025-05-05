@@ -9,6 +9,7 @@ Módulo para conectarse a Google Drive y administrar sus archivos. Puede trabaja
 *Read this in other languages: [English](Manual_gdrive.md), [Português](Manual_gdrive.pr.md), [Español](Manual_gdrive.es.md)*
   
 ![banner](imgs/Banner_gdrive.png)
+
 ## Como instalar este módulo
   
 Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
@@ -105,8 +106,8 @@ Lista los archivos de Google Drive. Este comando devuelve todos los archivos de 
 |Sólo archivos propios||-|
 |Sólo archivos compartidos conmigo||-|
 |Más datos||-|
-|Asignar resultado a variable||var|
 |Session||session|
+|Asignar resultado a variable||var|
 
 ### Descargar archivo
   
@@ -116,6 +117,7 @@ Descargar un archivo desde Drive
 |ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Ruta donde guardar archivo||C:\users\usuario\Downloads|
 |Session||session|
+|Asignar resultado a variable|Devolverá True o False dependiendo del éxito de la ejecución.|var|
 
 ### Descargar carpeta
   
@@ -142,10 +144,10 @@ Exportar un archivo de Drive al tipo de formato solicitado
 Crear carpeta
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|ID de la carpeta (Drive)|Opcional si se quiere crear dentro de una carpeta específica|1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Nombre de la carpeta||Nueva carpeta|
-|Asignar resultado a variable||var|
 |Session||session|
+|Asignar resultado a variable||var|
 
 ### Copiar o mover archivo
   
@@ -155,8 +157,8 @@ Copiar o mover un archivo
 |ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Carpeta destino (ID)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Mover o Copiar||var|
-|Asignar resultado a variable||var|
 |Session||session|
+|Asignar resultado a variable||var|
 
 ### Subir archivo
   
@@ -167,8 +169,8 @@ Subir un archivo a Google Drive
 |Nombre nuevo (opcional)||nuevo_nombre.txt|
 |Guardar en carpeta - ID (opcional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Convertir a formato Google|Si se marca, intentará subir el archivo como el formato equivalente de Google (de existir), si no, subira el archivo original.||
-|Asignar resultado a variable||var|
 |Session||session|
+|Asignar resultado a variable||var|
 
 ### Subir carpeta
   
@@ -179,8 +181,8 @@ Subir una carpeta a Google Drive
 |Guardar en carpeta - ID (opcional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Nombre nuevo (opcional)|Nuevo nombre para la carpeta raíz a subir. Es opcional.|nuevo_nombre|
 |Convertir a formato Google|Si se marca, intentará subir el archivo como el formato equivalente de Google (de existir), si no, subira el archivo original.||
-|Asignar resultado a variable||var|
 |Session||session|
+|Asignar resultado a variable||var|
 
 ### Eliminar un archivo o carpeta
   
@@ -188,8 +190,8 @@ Eliminar un archivo o carpeta de Google Drive
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
-|Asignar resultado a variable||var|
 |Session||session|
+|Asignar resultado a variable||var|
 
 ### Compartir archivo
   
@@ -203,8 +205,8 @@ Comparte un archivo de Drive
 |Enviar correo de notificación||-|
 |Transferir propiedad||-|
 |Mover archivo a la carpeta raíz del nuevo propietario||-|
-|Asignar resultado a variable||var|
 |Session||session|
+|Asignar resultado a variable||var|
 
 ### Manejar permisos de carpeta
   
@@ -217,8 +219,8 @@ Crea, actualiza o elimina un permiso. Los tipos de accesos son de usuarios: User
 |Rol||---- Select ----|
 |Email, Dominio o PermissionID|||
 |Enviar correo de notificación||-|
-|Asignar resultado a variable||var|
 |Session||session|
+|Asignar resultado a variable||var|
 
 ### Listar permisos
   
@@ -226,8 +228,8 @@ Obtener lista de permisos de un archivo
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
-|Asignar resultado a variable||var|
 |Session||session|
+|Asignar resultado a variable||var|
 
 ### Borra permiso
   
@@ -236,5 +238,5 @@ Eliminar un permiso de un archivo
 | --- | --- | --- |
 |ID del archivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |ID del permiso (Drive)||15224413836718185781|
-|Asignar resultado a variable||var|
 |Session||session|
+|Asignar resultado a variable||var|

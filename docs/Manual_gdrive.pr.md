@@ -103,8 +103,8 @@ Listar arquivos do Google Drive. Este comando retorna todos os arquivos por padr
 |Somente arquivos próprios||-|
 |Somente arquivos compartilhados comigo||-|
 |Mais dados||-|
-|Atribuir resultado à variável||var|
 |Session||session|
+|Atribuir resultado à variável||var|
 
 ### Baixar arquivo
   
@@ -114,6 +114,7 @@ Baixar um arquivo do Drive
 |ID do Arquivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Caminho onde salvar o arquivo||C:\users\usuario\Downloads|
 |Session||session|
+|Atribuir resultado à variável|Devolverá True ou False dependendo do resultado da execução.|var|
 
 ### Baixar pasta
   
@@ -140,10 +141,10 @@ Exportar um arquivo do Drive para o tipo de formato solicitado
 Criar pasta
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
-|ID do Arquivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
+|ID da pasta (Drive)|Opcional se você quiser criar dentro de uma pasta específica|1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |File path||New Folder|
-|Atribuir resultado à variável||var|
 |Session||session|
+|Atribuir resultado à variável||var|
 
 ### Copiar ou mover arquivo
   
@@ -153,8 +154,8 @@ Copiar ou mover um arquivo
 |ID do Arquivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Destiny Folder ID||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Mover ou Copiar||var|
-|Atribuir resultado à variável||var|
 |Session||session|
+|Atribuir resultado à variável||var|
 
 ### Subir arquivo
   
@@ -165,8 +166,8 @@ Carregar um arquivo para o Google Drive
 |Novo nome (opcional)||new_name.txt|
 |Salvar na pasta - ID (opcional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Converter para o formato Google|Se marcado, ele tentará fazer o upload do arquivo no formato equivalente do Google (se houver), caso contrário, fará o upload do arquivo original.||
-|Atribuir resultado à variável||var|
 |Session||session|
+|Atribuir resultado à variável||var|
 
 ### Subir pasta
   
@@ -177,8 +178,8 @@ Carregar uma pasta para o Google Drive
 |Salvar na pasta - ID (opcional)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |Novo nome (opcional)|Novo nome para a pasta raíz a ser carregada. Opcional.|new_name|
 |Converter para o formato Google|Se marcado, ele tentará fazer o upload do arquivo no formato equivalente do Google (se houver), caso contrário, fará o upload do arquivo original.||
-|Atribuir resultado à variável||var|
 |Session||session|
+|Atribuir resultado à variável||var|
 
 ### Excluir um arquivo ou pasta
   
@@ -186,8 +187,8 @@ Excluir um arquivo ou pasta do Google Drive
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |ID do Arquivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
-|Atribuir resultado à variável||var|
 |Session||session|
+|Atribuir resultado à variável||var|
 
 ### Compartilhar arquivo
   
@@ -201,8 +202,8 @@ Compartilhar um arquivo do Drive
 |Enviar e-mail de notificação||-|
 |Transferir propriedade||-|
 |Mover arquivo para a pasta raiz do novo proprietário||-|
-|Atribuir resultado à variável||var|
 |Session||session|
+|Atribuir resultado à variável||var|
 
 ### Gerenciar permissoes da pasta
   
@@ -215,8 +216,8 @@ Cria, atualiza ou exclui uma permissão da pasta. Os tipos de acesso são de usu
 |Papel||---- Select ----|
 |E-mail, Domínio ou PermissionID|||
 |Enviar e-mail de notificação||-|
-|Atribuir resultado à variável||var|
 |Session||session|
+|Atribuir resultado à variável||var|
 
 ### Listar permissões
   
@@ -224,8 +225,8 @@ Obtenha uma lista de permissões de um arquivo
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |ID do Arquivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
-|Atribuir resultado à variável||var|
 |Session||session|
+|Atribuir resultado à variável||var|
 
 ### Excluir permissão
   
@@ -234,5 +235,5 @@ Excluir uma permissão de um arquivo
 | --- | --- | --- |
 |ID do Arquivo (Drive)||1iySKcDSSHoRxjlNBS4WIANMi9RLp-t8mwYmc-61cvTo|
 |ID do Permissão (Drive)||15224413836718185781|
-|Atribuir resultado à variável||var|
 |Session||session|
+|Atribuir resultado à variável||var|

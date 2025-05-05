@@ -47,8 +47,10 @@ from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build # type:ignore
 from googleapiclient.http import MediaIoBaseDownload # type:ignore
-
-import magic # type:ignore
+try:
+    import magic # type:ignore
+except:
+    print("Failed to import the 'magic' library")
 from googleapiclient.http import MediaFileUpload # type:ignore
 import io
 
@@ -269,6 +271,7 @@ if module == "ListFiles":
 
 if module == 'DownloadFile':
     try:
+        var_ = GetParams("var_")
         drive_id = GetParams('drive_id')
         if not drive_id:
             raise Exception("ID de archivo no enviado")
@@ -307,8 +310,9 @@ if module == 'DownloadFile':
         with io.open(file_path + os.sep + filename, 'wb') as out:
             fh.seek(0)
             out.write(fh.read())
-
+        SetVar(var_, True)
     except Exception as e:
+        SetVar(var_, False)
         print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
         PrintException()
         raise e
@@ -335,10 +339,9 @@ if module == "DownloadFolder":
             'application/vnd.google-apps.script': 'application/vnd.google-apps.script+json'
         }
 
-        import io
-        import os
-
         def download_file(service, file_id, file_name, mime_type, download_path):
+            import io
+            import os
             global export_formats
             from googleapiclient.http import MediaIoBaseDownload
             if mime_type in export_formats:
