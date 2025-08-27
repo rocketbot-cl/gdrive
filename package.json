@@ -1,6 +1,6 @@
 {
   "author": "José Gonzalez - Juan Siro",
-  "description": "Google Drive connection module | Módulo de conexão do Google Drive | Módulo de conexión con Google Drive",
+  "description": "Google Drive connection module",
   "description_lang": {
     "en": "Module to connect to Google Drive and manage your files. You can work with owned or shared files and folders, move, delete, download, export and upload them.",
     "es": "Módulo para conectarse a Google Drive y administrar sus archivos. Puede trabajar con archivos y carpetas propios o compartidos, moverlos, eliminarlos, descargarlos, exportarlos y cargarlos.",
