@@ -30,7 +30,7 @@ import pickle
 import sys
 import tempfile
 import json
-from googleapiclient.errors import HttpError # type:ignore
+
 
 base_path = tmp_global_obj["basepath"] # type:ignore
 cur_path = base_path + 'modules' + os.sep + 'gdrive' + os.sep + 'libs' + os.sep
@@ -47,12 +47,13 @@ elif cur_path_x86 not in sys.path and sys.maxsize < 2**32:
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build # type:ignore
-#from googleapiclient.http import MediaIoBaseDownload # type:ignore
+
 try:
     import magic # type:ignore
 except:
     print("Failed to import the 'magic' library")
 from googleapiclient.http import MediaFileUpload # type:ignore
+from googleapiclient.errors import HttpError # type:ignore
 import io
 
 SetVar = SetVar # type:ignore
