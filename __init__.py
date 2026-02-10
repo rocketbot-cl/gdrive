@@ -31,6 +31,7 @@ import sys
 import tempfile
 import json
 
+
 base_path = tmp_global_obj["basepath"] # type:ignore
 cur_path = base_path + 'modules' + os.sep + 'gdrive' + os.sep + 'libs' + os.sep
 
@@ -46,12 +47,13 @@ elif cur_path_x86 not in sys.path and sys.maxsize < 2**32:
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build # type:ignore
-from googleapiclient.http import MediaIoBaseDownload # type:ignore
+
 try:
     import magic # type:ignore
 except:
     print("Failed to import the 'magic' library")
 from googleapiclient.http import MediaFileUpload # type:ignore
+from googleapiclient.errors import HttpError # type:ignore
 import io
 
 SetVar = SetVar # type:ignore
@@ -541,6 +543,50 @@ if module == "UploadFile":
         var = GetParams("var")
 
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
+
+        # Validación previa del parent/folder para que el error sea descriptivo.
+        if folder:
+            folder_str = str(folder).strip()
+
+            # Caso típico: el usuario puso un MIME type en vez del ID de carpeta.
+            if folder_str.startswith("application/"):
+                raise Exception(
+                    "Error en 'folder' (parent): se esperaba un ID de carpeta de Drive, pero se recibió un MIME type: "
+                    f"{folder_str!r}."
+                )
+
+            try:
+                folder_meta = service.files().get(
+                    fileId=folder_str,
+                    fields="id,name,mimeType",
+                    supportsAllDrives=True
+                ).execute()
+            except HttpError as he:
+                detail = None
+                status = getattr(getattr(he, 'resp', None), 'status', None)
+                try:
+                    content = getattr(he, 'content', None)
+                    if isinstance(content, (bytes, bytearray)):
+                        content = content.decode('utf-8', errors='replace')
+                    payload = json.loads(content) if content else {}
+                    err = payload.get('error') or {}
+                    errs = err.get('errors') or []
+                    detail = (errs[0].get('message') if errs else None) or err.get('message')
+                except Exception:
+                    detail = str(he)
+
+                raise Exception(
+                    "Error en 'folder' (parent): el ID indicado no existe o no es accesible para esta cuenta (permisos). "
+                    f"folder={folder_str!r}. HTTP {status}. Detalle: {detail}"
+                )
+
+            if folder_meta.get('mimeType') != 'application/vnd.google-apps.folder':
+                raise Exception(
+                    "Error en 'folder' (parent): el ID indicado existe, pero no corresponde a una carpeta. "
+                    f"folder={folder_str!r}. mimeType={folder_meta.get('mimeType')!r}."
+                )
+
+            folder = folder_str
 
         mimeType = None
         if convert and eval(convert) == True:
