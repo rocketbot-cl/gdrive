@@ -9,7 +9,6 @@ Módulo para conectarse a Google Drive y administrar sus archivos. Puede trabaja
 *Read this in other languages: [English](Manual_gdrive.md), [Português](Manual_gdrive.pr.md), [Español](Manual_gdrive.es.md)*
   
 ![banner](imgs/Banner_gdrive.png)
-
 ## Como instalar este módulo
   
 Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
@@ -93,7 +92,7 @@ Iniciar sesión en Google Drive sin archivo json
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
 |Client ID|ID de cliente de la consola de Google Cloud Platform.|123456789012-xxxxxxxxxxxxxxx.apps.googleusercontent.com|
-|Client Secret|Secreto de cliente de la consola de Google Cloud Platform.|GOCSPX-xxxxxxxxx_Dc9TGFy32_xxxxxxxx|
+|Client Secret|Secreto de cliente de la consola de Google Cloud Platform.|<your_google_oauth_client_secret>|
 |Puerto (Opcional)||8080|
 |Session||session|
 
@@ -105,6 +104,25 @@ Lista los archivos de Google Drive. Este comando devuelve todos los archivos de 
 |Filtro||mimeType = 'application/vnd.google-apps.folder' and trashed = false|
 |Sólo archivos propios||-|
 |Sólo archivos compartidos conmigo||-|
+|Más datos||-|
+|Session||session|
+|Asignar resultado a variable||var|
+
+### Listar unidades compartidas
+  
+Lista las unidades compartidas (Shared Drives) disponibles para la sesión actual.
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|Session||session|
+|Asignar resultado a variable||var|
+
+### Listar archivos en unidad compartida
+  
+Lista los archivos dentro de una unidad compartida específica usando driveId.
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|ID del drive||0A...|
+|Filtro||mimeType = 'application/vnd.google-apps.folder' and trashed = false|
 |Más datos||-|
 |Session||session|
 |Asignar resultado a variable||var|

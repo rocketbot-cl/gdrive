@@ -27,40 +27,46 @@ Login no Google Drive sem arquivo json
 3. Listar arquivos no Drive  
 Listar arquivos do Google Drive. Este comando retorna todos os arquivos por padrão, incluindo arquivos descartados. Se você não quiser que os arquivos da lixeira apareçam na lista, use trashed=false como filtro.
 
-4. Baixar arquivo  
+4. Listar unidades compartilhadas  
+Lista as unidades compartilhadas (Shared Drives) disponíveis para a sessão atual.
+
+5. Listar arquivos na unidade compartilhada  
+Lista os arquivos dentro de uma unidade compartilhada específica usando driveId.
+
+6. Baixar arquivo  
 Baixar um arquivo do Drive
 
-5. Baixar pasta  
+7. Baixar pasta  
 Baixar uma pasta do Drive
 
-6. Exportar arquivo  
+8. Exportar arquivo  
 Exportar um arquivo do Drive para o tipo de formato solicitado
 
-7. Criar pasta  
+9. Criar pasta  
 Criar pasta
 
-8. Copiar ou mover arquivo  
+10. Copiar ou mover arquivo  
 Copiar ou mover um arquivo
 
-9. Subir arquivo  
+11. Subir arquivo  
 Carregar um arquivo para o Google Drive
 
-10. Subir pasta  
+12. Subir pasta  
 Carregar uma pasta para o Google Drive
 
-11. Excluir um arquivo ou pasta  
+13. Excluir um arquivo ou pasta  
 Excluir um arquivo ou pasta do Google Drive
 
-12. Compartilhar arquivo  
+14. Compartilhar arquivo  
 Compartilhar um arquivo do Drive
 
-13. Gerenciar permissoes da pasta  
+15. Gerenciar permissoes da pasta  
 Cria, atualiza ou exclui uma permissão da pasta. Os tipos de acesso são de usuários: User ou Group, e de acesso geral: Domain ou Anyone.
 
-14. Listar permissões  
+16. Listar permissões  
 Obtenha uma lista de permissões de um arquivo
 
-15. Excluir permissão  
+17. Excluir permissão  
 Excluir uma permissão de um arquivo  
 
 

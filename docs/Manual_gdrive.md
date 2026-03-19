@@ -89,7 +89,7 @@ Login to Google Drive without json file
 |Parameters|Description|example|
 | --- | --- | --- |
 |Client ID|Client ID from Google Cloud Platform console.|123456789012-xxxxxxxxxxxxxxx.apps.googleusercontent.com|
-|Client Secret|Client Secret from Google Cloud Platform console.|GOCSPX-xxxxxxxxx_Dc9TGFy32_xxxxxxxx|
+|Client Secret|Client Secret from Google Cloud Platform console.|<your_google_oauth_client_secret>|
 |Port (Optional)||8080|
 |Session||session|
 
@@ -101,6 +101,25 @@ List files of Google Drive. This command returns all files by default, including
 |Filter||mimeType = 'application/vnd.google-apps.folder' and trashed = false|
 |Owned files only||-|
 |Shared with me files only||-|
+|More data||-|
+|Session||session|
+|Assign result to var||var|
+
+### List shared drives
+  
+List shared drives (Shared Drives) available for the current session.
+|Parameters|Description|example|
+| --- | --- | --- |
+|Session||session|
+|Assign result to var||var|
+
+### List files in shared drive
+  
+List files inside a specific Shared Drive by driveId.
+|Parameters|Description|example|
+| --- | --- | --- |
+|Drive ID||0A...|
+|Filter||mimeType = 'application/vnd.google-apps.folder' and trashed = false|
 |More data||-|
 |Session||session|
 |Assign result to var||var|

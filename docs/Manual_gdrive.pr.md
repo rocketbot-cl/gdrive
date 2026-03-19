@@ -90,7 +90,7 @@ Login no Google Drive sem arquivo json
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
 |Client ID|ID do cliente do console da Google Cloud Platform.|123456789012-xxxxxxxxxxxxxxx.apps.googleusercontent.com|
-|Client Secret|Segredo do cliente do console da Google Cloud Platform.|GOCSPX-xxxxxxxxx_Dc9TGFy32_xxxxxxxx|
+|Client Secret|Segredo do cliente do console da Google Cloud Platform.|<your_google_oauth_client_secret>|
 |Porto (Opcional)||8080|
 |Session||session|
 
@@ -102,6 +102,25 @@ Listar arquivos do Google Drive. Este comando retorna todos os arquivos por padr
 |Filtro||mimeType = 'application/vnd.google-apps.folder' and trashed = false|
 |Somente arquivos próprios||-|
 |Somente arquivos compartilhados comigo||-|
+|Mais dados||-|
+|Session||session|
+|Atribuir resultado à variável||var|
+
+### Listar unidades compartilhadas
+  
+Lista as unidades compartilhadas (Shared Drives) disponíveis para a sessão atual.
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|Session||session|
+|Atribuir resultado à variável||var|
+
+### Listar arquivos na unidade compartilhada
+  
+Lista os arquivos dentro de uma unidade compartilhada específica usando driveId.
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|ID do drive||0A...|
+|Filtro||mimeType = 'application/vnd.google-apps.folder' and trashed = false|
 |Mais dados||-|
 |Session||session|
 |Atribuir resultado à variável||var|
