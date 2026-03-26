@@ -27,40 +27,46 @@ Iniciar sesión en Google Drive sin archivo json
 3. Listar archivos en Drive  
 Lista los archivos de Google Drive. Este comando devuelve todos los archivos de forma predeterminada, incluidos los archivos desechados. Si no desea que los archivos desechados aparezcan en la lista, utilice trashed=false como filtro.
 
-4. Descargar archivo  
+4. Listar unidades compartidas  
+Lista las unidades compartidas (Shared Drives) disponibles para la sesión actual.
+
+5. Listar archivos en unidad compartida  
+Lista los archivos dentro de una unidad compartida específica usando driveId.
+
+6. Descargar archivo  
 Descargar un archivo desde Drive
 
-5. Descargar carpeta  
+7. Descargar carpeta  
 Descargar una carpeta desde Drive
 
-6. Exportar archivo  
+8. Exportar archivo  
 Exportar un archivo de Drive al tipo de formato solicitado
 
-7. Crear carpeta  
+9. Crear carpeta  
 Crear carpeta
 
-8. Copiar o mover archivo  
+10. Copiar o mover archivo  
 Copiar o mover un archivo
 
-9. Subir archivo  
+11. Subir archivo  
 Subir un archivo a Google Drive
 
-10. Subir carpeta  
+12. Subir carpeta  
 Subir una carpeta a Google Drive
 
-11. Eliminar un archivo o carpeta  
+13. Eliminar un archivo o carpeta  
 Eliminar un archivo o carpeta de Google Drive
 
-12. Compartir archivo  
+14. Compartir archivo  
 Comparte un archivo de Drive
 
-13. Manejar permisos de carpeta  
+15. Manejar permisos de carpeta  
 Crea, actualiza o elimina un permiso. Los tipos de accesos son de usuarios: User o Group, y de acceso general: Domain o Anyone.
 
-14. Listar permisos  
+16. Listar permisos  
 Obtener lista de permisos de un archivo
 
-15. Borra permiso  
+17. Borra permiso  
 Eliminar un permiso de un archivo  
 
 

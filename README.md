@@ -27,40 +27,46 @@ Login to Google Drive without json file
 3. List files in Drive  
 List files of Google Drive. This command returns all files by default, including trashed files. If you don't want trashed files to appear in the list, use the trashed=false as filter.
 
-4. Download file  
+4. List shared drives  
+List shared drives (Shared Drives) available for the current session.
+
+5. List files in shared drive  
+List files inside a specific Shared Drive by driveId.
+
+6. Download file  
 Download file from Drive
 
-5. Download folder  
+7. Download folder  
 Download folder from Drive
 
-6. Export file  
+8. Export file  
 Export a file from Drive to the requested format type
 
-7. Create Folder  
+9. Create Folder  
 Create Folder
 
-8. Copy or move file  
+10. Copy or move file  
 Copy or move a file
 
-9. Upload file  
+11. Upload file  
 Upload a file to Google Drive
 
-10. Upload folder  
+12. Upload folder  
 Upload a folder to Google Drive
 
-11. Delete a file or folder  
+13. Delete a file or folder  
 Delete a file or folder from Drive
 
-12. Share file  
+14. Share file  
 Share a file in Drive
 
-13. Manage folder permissions  
+15. Manage folder permissions  
 Create, update or delete a folder permission. The types of access are user: User or Group, and general: Domain or Anyone.
 
-14. List permissions  
+16. List permissions  
 Get list of permissions from a file
 
-15. Delete permission  
+17. Delete permission  
 Delete a permission from a file  
 
 

@@ -52,7 +52,7 @@ try:
     import magic # type:ignore
 except:
     print("Failed to import the 'magic' library")
-from googleapiclient.http import MediaFileUpload # type:ignore
+from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload # type:ignore
 from googleapiclient.errors import HttpError # type:ignore
 import io
 
@@ -277,6 +277,87 @@ if module == "ListFiles":
         PrintException()
         raise e
 
+if module == "ListSharedDrives":
+    var = GetParams('var_drives_list')
+
+    try:
+        service = build('drive', 'v3', credentials=mod_gdrive_session[session])
+
+        drives = []
+        page_token = None
+        while True:
+            results = service.drives().list(
+                pageSize=100,
+                fields="nextPageToken, drives(id, name)",
+                pageToken=page_token
+            ).execute()
+
+            items = results.get('drives', [])
+            if len(items) > 0:
+                for item in items:
+                    drives.append(item)
+
+            if var:
+                SetVar(var, drives)
+
+            page_token = results.get('nextPageToken')
+            if not page_token:
+                break
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+
+if module == "ListFilesInDrive":
+    var = GetParams('var_file_list')
+    drive_id = GetParams('drive_id')
+    filter_ = GetParams("filter")
+    more_data = GetParams("more_data")
+
+    try:
+        if not drive_id:
+            raise Exception("ID del drive no enviado")
+
+        service = build('drive', 'v3', credentials=mod_gdrive_session[session])
+
+        if more_data and eval(more_data):
+            file_fields = "id, name, mimeType, createdTime, modifiedTime, modifiedByMeTime, labelInfo, permissions, parents, shared, driveId"
+        else:
+            file_fields = "id, name, mimeType, parents"
+
+        fields_ = f"nextPageToken, files({file_fields})"
+        files = []
+        page_token = None
+        while True:
+            results = service.files().list(
+                corpora='drive',
+                driveId=drive_id,
+                q=filter_,
+                fields=fields_,
+                pageSize=1000,
+                spaces='drive',
+                includeItemsFromAllDrives=True,
+                supportsAllDrives=True,
+                includeLabels=True,
+                pageToken=page_token
+            ).execute()
+
+            items = results.get('files', [])
+            if len(items) > 0:
+                for item in items:
+                    files.append(item)
+
+            if var:
+                SetVar(var, files)
+
+            page_token = results.get('nextPageToken')
+            if not page_token:
+                break
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
+        PrintException()
+        raise e
+
 if module == 'DownloadFile':
     try:
         var_ = GetParams("var_")
@@ -294,10 +375,10 @@ if module == 'DownloadFile':
         request = None
         if file['mimeType'] in mimes:
             mime = mimes[file['mimeType']]
-            request = service.files().export_media(fileId=drive_id, mimeType=mime)
+            request = service.files().export_media(fileId=drive_id, mimeType=mime, supportsAllDrives=True)
         else:
             mime = file['mimeType']
-            request = service.files().get_media(fileId=drive_id)
+            request = service.files().get_media(fileId=drive_id, supportsAllDrives=True)
         fh = io.BytesIO()
         downloader = MediaIoBaseDownload(fh, request)
         # downloader = MediaIoBaseDownload(fh, request)
@@ -353,7 +434,7 @@ if module == "DownloadFolder":
             global export_formats
             from googleapiclient.http import MediaIoBaseDownload
             if mime_type in export_formats:
-                request = service.files().export_media(fileId=file_id, mimeType=export_formats[mime_type])
+                request = service.files().export_media(fileId=file_id, mimeType=export_formats[mime_type], supportsAllDrives=True)
                 file_extension = {
                     'application/vnd.google-apps.document': '.docx',
                     'application/vnd.google-apps.spreadsheet': '.xlsx',
@@ -363,7 +444,7 @@ if module == "DownloadFolder":
                 }[mime_type]
                 file_name += file_extension
             else:
-                request = service.files().get_media(fileId=file_id)
+                request = service.files().get_media(fileId=file_id, supportsAllDrives=True)
 
             fh = io.BytesIO()
             downloader = MediaIoBaseDownload(fh, request)
@@ -382,7 +463,7 @@ if module == "DownloadFolder":
         while to_process:
             current_folder_id, current_download_path = to_process.pop()
 
-            folder_metadata = service.files().get(fileId=current_folder_id, fields="name").execute()
+            folder_metadata = service.files().get(fileId=current_folder_id, fields="name", supportsAllDrives=True).execute()
             root_folder_name = folder_metadata['name']
             
             root_folder_path = os.path.join(current_download_path, root_folder_name)
@@ -391,7 +472,9 @@ if module == "DownloadFolder":
 
             results = service.files().list(
                 q=f"'{current_folder_id}' in parents and trashed = false",
-                fields="files(id, name, mimeType)"
+                fields="files(id, name, mimeType)",
+                includeItemsFromAllDrives=True,
+                supportsAllDrives=True
             ).execute()
 
             items = results.get('files', [])
@@ -430,7 +513,7 @@ if module == 'ExportFile':
         file = service.files().get(fileId=drive_id, supportsAllDrives=True).execute()
         request = None
 
-        request = service.files().export_media(fileId=drive_id, mimeType=mime)
+        request = service.files().export_media(fileId=drive_id, mimeType=mime, supportsAllDrives=True)
         fh = io.BytesIO()
         downloader = MediaIoBaseDownload(fh, request)
 
