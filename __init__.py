@@ -375,7 +375,7 @@ if module == 'DownloadFile':
         request = None
         if file['mimeType'] in mimes:
             mime = mimes[file['mimeType']]
-            request = service.files().export_media(fileId=drive_id, mimeType=mime, supportsAllDrives=True)
+            request = service.files().export_media(fileId=drive_id, mimeType=mime)
         else:
             mime = file['mimeType']
             request = service.files().get_media(fileId=drive_id, supportsAllDrives=True)
@@ -434,7 +434,7 @@ if module == "DownloadFolder":
             global export_formats
             from googleapiclient.http import MediaIoBaseDownload
             if mime_type in export_formats:
-                request = service.files().export_media(fileId=file_id, mimeType=export_formats[mime_type], supportsAllDrives=True)
+                request = service.files().export_media(fileId=file_id, mimeType=export_formats[mime_type])
                 file_extension = {
                     'application/vnd.google-apps.document': '.docx',
                     'application/vnd.google-apps.spreadsheet': '.xlsx',
@@ -513,7 +513,7 @@ if module == 'ExportFile':
         file = service.files().get(fileId=drive_id, supportsAllDrives=True).execute()
         request = None
 
-        request = service.files().export_media(fileId=drive_id, mimeType=mime, supportsAllDrives=True)
+        request = service.files().export_media(fileId=drive_id, mimeType=mime)
         fh = io.BytesIO()
         downloader = MediaIoBaseDownload(fh, request)
 
