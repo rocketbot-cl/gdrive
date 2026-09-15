@@ -373,11 +373,17 @@ if module == 'DownloadFile':
         file = service.files().get(fileId=drive_id, supportsAllDrives=True).execute()
         
         request = None
+        extension = ""
         if file['mimeType'] in mimes:
             mime = mimes[file['mimeType']]
-            request = service.files().export_media(fileId=drive_id, mimeType=mime, supportsAllDrives=True)
+            request = service.files().export_media(fileId=drive_id, mimeType=mime)
+            export_extensions = {
+                'application/vnd.google-apps.spreadsheet': '.xlsx',
+                'application/vnd.google-apps.document': '.docx',
+                'application/vnd.google-apps.presentation': '.pptx'
+            }
+            extension = export_extensions[file['mimeType']]
         else:
-            mime = file['mimeType']
             request = service.files().get_media(fileId=drive_id, supportsAllDrives=True)
         fh = io.BytesIO()
         downloader = MediaIoBaseDownload(fh, request)
@@ -387,16 +393,11 @@ if module == 'DownloadFile':
             status, done = downloader.next_chunk()
             print("Download %d%%." % int(status.progress() * 100))
 
-        keys = list(export_formats.keys())
-        values = list(export_formats.values())
-        try:
-            index = values.index(mime)
-            extension = keys[index].split()[-1][1:-1]
-        except:
-            extension = ""
-        
-        filename = file['name'] + extension if extension not in file['name'] else file['name']
-        with io.open(file_path + os.sep + filename, 'wb') as out:
+        filename = file['name']
+        if extension and not filename.lower().endswith(extension.lower()):
+            filename += extension
+
+        with io.open(os.path.join(file_path, filename), 'wb') as out:
             fh.seek(0)
             out.write(fh.read())
         SetVar(var_, True)
@@ -434,7 +435,7 @@ if module == "DownloadFolder":
             global export_formats
             from googleapiclient.http import MediaIoBaseDownload
             if mime_type in export_formats:
-                request = service.files().export_media(fileId=file_id, mimeType=export_formats[mime_type], supportsAllDrives=True)
+                request = service.files().export_media(fileId=file_id, mimeType=export_formats[mime_type])
                 file_extension = {
                     'application/vnd.google-apps.document': '.docx',
                     'application/vnd.google-apps.spreadsheet': '.xlsx',
@@ -508,12 +509,14 @@ if module == 'ExportFile':
 
         export_format = GetParams('format')
         mime = export_formats.get(export_format)
+        if not mime:
+            raise Exception("Formato de exportacion no soportado: {}".format(export_format))
         
         service = build('drive', 'v3', credentials=mod_gdrive_session[session])
         file = service.files().get(fileId=drive_id, supportsAllDrives=True).execute()
         request = None
 
-        request = service.files().export_media(fileId=drive_id, mimeType=mime, supportsAllDrives=True)
+        request = service.files().export_media(fileId=drive_id, mimeType=mime)
         fh = io.BytesIO()
         downloader = MediaIoBaseDownload(fh, request)
 
