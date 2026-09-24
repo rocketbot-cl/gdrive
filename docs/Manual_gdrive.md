@@ -3,17 +3,17 @@
 
 
 # Google Drive
-
-Module to connect to Google Drive and manage your files. You can work with owned or shared files and folders, move, delete, download, export and upload them.
+  
+Module to connect to Google Drive and manage your files. You can work with owned or shared files and folders, move, delete, download, export and upload them.  
 
 *Read this in other languages: [English](Manual_gdrive.md), [Português](Manual_gdrive.pr.md), [Español](Manual_gdrive.es.md)*
-
+  
 ![banner](imgs/Banner_gdrive.png)
 ## How to install this module
-
+  
 To install the module in Rocketbot Studio, it can be done in two ways:
 1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
-2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.
+2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
 
 
 ## How to use this module
@@ -75,7 +75,7 @@ that file. Do the same procedure for the case in which the credentials expire.
 ## Description of the commands
 
 ### Setup G-Suite credentials
-
+  
 Configure Google Drive credentials
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -84,7 +84,7 @@ Configure Google Drive credentials
 |Session||session|
 
 ### Login without json file
-
+  
 Login to Google Drive without json file
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -94,15 +94,15 @@ Login to Google Drive without json file
 |Session||session|
 
 ### Setup G-Suite Service Account credentials
-
-Get permissions to handle Google SpreadSheet with Rocketbot
+  
+Get permissions to handle Google Drive with Rocketbot
 |Parameters|Description|example|
 | --- | --- | --- |
-|Credentials file path|JSON file of the Service account for Google SpreadSheets.|C:/path/to/credentials.json|
+|Credentials file path|Service account JSON file with the credentials to access the Google Drive API.|C:/path/to/credentials.json|
 |Session||session|
 
 ### List files in Drive
-
+  
 List files of Google Drive. This command returns all files by default, including trashed files. If you don't want trashed files to appear in the list, use the trashed=false as filter.
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -114,7 +114,7 @@ List files of Google Drive. This command returns all files by default, including
 |Assign result to var||var|
 
 ### List shared drives
-
+  
 List shared drives (Shared Drives) available for the current session.
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -122,7 +122,7 @@ List shared drives (Shared Drives) available for the current session.
 |Assign result to var||var|
 
 ### List files in shared drive
-
+  
 List files inside a specific Shared Drive by driveId.
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -133,7 +133,7 @@ List files inside a specific Shared Drive by driveId.
 |Assign result to var||var|
 
 ### Download file
-
+  
 Download file from Drive
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -143,7 +143,7 @@ Download file from Drive
 |Assign result to var|Return True or False depending on the execution result.|var|
 
 ### Download folder
-
+  
 Download folder from Drive
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -153,7 +153,7 @@ Download folder from Drive
 |Assign result to var|Return True or False depending on the execution result.|var|
 
 ### Export file
-
+  
 Export a file from Drive to the requested format type
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -163,7 +163,7 @@ Export a file from Drive to the requested format type
 |Session||session|
 
 ### Create Folder
-
+  
 Create Folder
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -173,7 +173,7 @@ Create Folder
 |Assign result to var||var|
 
 ### Copy or move file
-
+  
 Copy or move a file
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -184,7 +184,7 @@ Copy or move a file
 |Assign result to var||var|
 
 ### Upload file
-
+  
 Upload a file to Google Drive
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -196,7 +196,7 @@ Upload a file to Google Drive
 |Assign result to var||var|
 
 ### Upload folder
-
+  
 Upload a folder to Google Drive
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -208,7 +208,7 @@ Upload a folder to Google Drive
 |Assign result to var||var|
 
 ### Delete a file or folder
-
+  
 Delete a file or folder from Drive
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -217,7 +217,7 @@ Delete a file or folder from Drive
 |Assign result to var||var|
 
 ### Share file
-
+  
 Share a file in Drive
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -232,7 +232,7 @@ Share a file in Drive
 |Assign result to var||var|
 
 ### Manage folder permissions
-
+  
 Create, update or delete a folder permission. The types of access are user: User or Group, and general: Domain or Anyone.
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -246,7 +246,7 @@ Create, update or delete a folder permission. The types of access are user: User
 |Assign result to var||var|
 
 ### List permissions
-
+  
 Get list of permissions from a file
 |Parameters|Description|example|
 | --- | --- | --- |
@@ -255,7 +255,7 @@ Get list of permissions from a file
 |Assign result to var||var|
 
 ### Delete permission
-
+  
 Delete a permission from a file
 |Parameters|Description|example|
 | --- | --- | --- |

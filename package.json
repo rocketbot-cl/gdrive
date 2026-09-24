@@ -232,19 +232,19 @@
     {
       "en": {
         "title": "Setup G-Suite Service Account credentials",
-        "description": "Get permissions to handle Google SpreadSheet with Rocketbot",
+        "description": "Get permissions to handle Google Drive with Rocketbot",
         "title_options": null,
         "options": null
       },
       "es": {
         "title": "Configurar credenciales de cuenta de Servicio G-Suite",
-        "description": "Obtiene los permisos para manejar Google SpreadSheet con Rocketbot",
+        "description": "Obtiene los permisos para manejar Google Drive con Rocketbot",
         "title_options": "Seleccione una opción",
         "options": null
       },
       "pr": {
         "title": "Configurar credenciais de conta de Serviço G-Suite",
-        "description": "Obtém permissão para trabalhar no Google SpreadSheet com o Rocketbot",
+        "description": "Obtém permissão para trabalhar no Google Drive com o Rocketbot",
         "title_options": "Seleccione una opción",
         "options": null
       },
@@ -264,9 +264,9 @@
               "pr": "Caminho de credenciais"
             },
             "description": {
-              "es": "Archivo JSON de Service account de Google SpreadSheets.",
-              "en": "JSON file of the Service account for Google SpreadSheets.",
-              "pr": "Arquivo JSON da Service account do Google SpreadSheets."
+              "es": "Archivo JSON de Service account con las credenciales de acceso a la API de Google Drive.",
+              "en": "Service account JSON file with the credentials to access the Google Drive API.",
+              "pr": "Arquivo JSON da Service account com as credenciais para acessar a API do Google Drive."
             },
             "extensions": [
               [

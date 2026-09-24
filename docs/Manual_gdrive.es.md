@@ -3,17 +3,17 @@
 
 
 # Google Drive
-
-Módulo para conectarse a Google Drive y administrar sus archivos. Puede trabajar con archivos y carpetas propios o compartidos, moverlos, eliminarlos, descargarlos, exportarlos y cargarlos.
+  
+Módulo para conectarse a Google Drive y administrar sus archivos. Puede trabajar con archivos y carpetas propios o compartidos, moverlos, eliminarlos, descargarlos, exportarlos y cargarlos.  
 
 *Read this in other languages: [English](Manual_gdrive.md), [Português](Manual_gdrive.pr.md), [Español](Manual_gdrive.es.md)*
-
+  
 ![banner](imgs/Banner_gdrive.png)
 ## Como instalar este módulo
-
+  
 Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
 1. Manual: __Descargar__ el archivo .zip y descomprimirlo en la carpeta modules. El nombre de la carpeta debe ser el mismo al del módulo y dentro debe tener los siguientes archivos y carpetas: \__init__.py, package.json, docs, example y libs. Si tiene abierta la aplicación, refresca el navegador para poder utilizar el nuevo modulo.
-2. Automática: Al ingresar a Rocketbot Studio sobre el margen derecho encontrara la sección de **Addons**, seleccionar **Install Mods**, buscar el modulo deseado y presionar install.
+2. Automática: Al ingresar a Rocketbot Studio sobre el margen derecho encontrara la sección de **Addons**, seleccionar **Install Mods**, buscar el modulo deseado y presionar install.  
 
 
 
@@ -78,7 +78,7 @@ ese archivo Realice el mismo procedimiento para el caso en que caduquen las cred
 ## Descripción de los comandos
 
 ### Configurar credenciales G-Suite
-
+  
 Configura credenciales de Google Drive
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -87,7 +87,7 @@ Configura credenciales de Google Drive
 |Session||session|
 
 ### Iniciar sesión sin archivo json
-
+  
 Iniciar sesión en Google Drive sin archivo json
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -97,15 +97,15 @@ Iniciar sesión en Google Drive sin archivo json
 |Session||session|
 
 ### Configurar credenciales de cuenta de Servicio G-Suite
-
-Obtiene los permisos para manejar Google SpreadSheet con Rocketbot
+  
+Obtiene los permisos para manejar Google Drive con Rocketbot
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|Ruta del archivo de credenciales|Archivo JSON de Service account de Google SpreadSheets.|C:/ruta/a/credenciales.json|
+|Ruta del archivo de credenciales|Archivo JSON de Service account con las credenciales de acceso a la API de Google Drive.|C:/ruta/a/credenciales.json|
 |Session||session|
 
 ### Listar archivos en Drive
-
+  
 Lista los archivos de Google Drive. Este comando devuelve todos los archivos de forma predeterminada, incluidos los archivos desechados. Si no desea que los archivos desechados aparezcan en la lista, utilice trashed=false como filtro.
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -117,7 +117,7 @@ Lista los archivos de Google Drive. Este comando devuelve todos los archivos de 
 |Asignar resultado a variable||var|
 
 ### Listar unidades compartidas
-
+  
 Lista las unidades compartidas (Shared Drives) disponibles para la sesión actual.
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -125,7 +125,7 @@ Lista las unidades compartidas (Shared Drives) disponibles para la sesión actua
 |Asignar resultado a variable||var|
 
 ### Listar archivos en unidad compartida
-
+  
 Lista los archivos dentro de una unidad compartida específica usando driveId.
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -136,7 +136,7 @@ Lista los archivos dentro de una unidad compartida específica usando driveId.
 |Asignar resultado a variable||var|
 
 ### Descargar archivo
-
+  
 Descargar un archivo desde Drive
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -146,7 +146,7 @@ Descargar un archivo desde Drive
 |Asignar resultado a variable|Devolverá True o False dependiendo del éxito de la ejecución.|var|
 
 ### Descargar carpeta
-
+  
 Descargar una carpeta desde Drive
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -156,7 +156,7 @@ Descargar una carpeta desde Drive
 |Asignar resultado a variable|Devolverá True o False dependiendo del éxito de la ejecución.|var|
 
 ### Exportar archivo
-
+  
 Exportar un archivo de Drive al tipo de formato solicitado
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -166,7 +166,7 @@ Exportar un archivo de Drive al tipo de formato solicitado
 |Session||session|
 
 ### Crear carpeta
-
+  
 Crear carpeta
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -176,7 +176,7 @@ Crear carpeta
 |Asignar resultado a variable||var|
 
 ### Copiar o mover archivo
-
+  
 Copiar o mover un archivo
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -187,7 +187,7 @@ Copiar o mover un archivo
 |Asignar resultado a variable||var|
 
 ### Subir archivo
-
+  
 Subir un archivo a Google Drive
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -199,7 +199,7 @@ Subir un archivo a Google Drive
 |Asignar resultado a variable||var|
 
 ### Subir carpeta
-
+  
 Subir una carpeta a Google Drive
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -211,7 +211,7 @@ Subir una carpeta a Google Drive
 |Asignar resultado a variable||var|
 
 ### Eliminar un archivo o carpeta
-
+  
 Eliminar un archivo o carpeta de Google Drive
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -220,7 +220,7 @@ Eliminar un archivo o carpeta de Google Drive
 |Asignar resultado a variable||var|
 
 ### Compartir archivo
-
+  
 Comparte un archivo de Drive
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -235,7 +235,7 @@ Comparte un archivo de Drive
 |Asignar resultado a variable||var|
 
 ### Manejar permisos de carpeta
-
+  
 Crea, actualiza o elimina un permiso. Los tipos de accesos son de usuarios: User o Group, y de acceso general: Domain o Anyone.
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -249,7 +249,7 @@ Crea, actualiza o elimina un permiso. Los tipos de accesos son de usuarios: User
 |Asignar resultado a variable||var|
 
 ### Listar permisos
-
+  
 Obtener lista de permisos de un archivo
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
@@ -258,7 +258,7 @@ Obtener lista de permisos de un archivo
 |Asignar resultado a variable||var|
 
 ### Borra permiso
-
+  
 Eliminar un permiso de un archivo
 |Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
