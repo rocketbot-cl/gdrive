@@ -3,17 +3,17 @@
 
 
 # Google Drive
-  
-Módulo para conectar ao Google Drive e gerenciar seus arquivos. Você pode trabalhar com arquivos e pastas próprios ou compartilhados, mover, excluir, baixar, exportar e carregá-los.  
+
+Módulo para conectar ao Google Drive e gerenciar seus arquivos. Você pode trabalhar com arquivos e pastas próprios ou compartilhados, mover, excluir, baixar, exportar e carregá-los.
 
 *Read this in other languages: [English](Manual_gdrive.md), [Português](Manual_gdrive.pr.md), [Español](Manual_gdrive.es.md)*
-  
+
 ![banner](imgs/Banner_gdrive.png)
 ## Como instalar este módulo
-  
+
 Para instalar o módulo no Rocketbot Studio, pode ser feito de duas formas:
 1. Manual: __Baixe__ o arquivo .zip e descompacte-o na pasta módulos. O nome da pasta deve ser o mesmo do módulo e dentro dela devem ter os seguintes arquivos e pastas: \__init__.py, package.json, docs, example e libs. Se você tiver o aplicativo aberto, atualize seu navegador para poder usar o novo módulo.
-2. Automático: Ao entrar no Rocketbot Studio na margem direita você encontrará a seção **Addons**, selecione **Install Mods**, procure o módulo desejado e aperte instalar.  
+2. Automático: Ao entrar no Rocketbot Studio na margem direita você encontrará a seção **Addons**, selecione **Install Mods**, procure o módulo desejado e aperte instalar.
 
 
 
@@ -76,7 +76,7 @@ esse arquivo Faça o mesmo procedimento caso as credenciais expirem.
 ## Descrição do comando
 
 ### Configurar credenciais do G-Suite
-  
+
 Configurar credenciais do Google Drive
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -85,7 +85,7 @@ Configurar credenciais do Google Drive
 |Session||session|
 
 ### Login sem arquivo json
-  
+
 Login no Google Drive sem arquivo json
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -94,8 +94,16 @@ Login no Google Drive sem arquivo json
 |Porto (Opcional)||8080|
 |Session||session|
 
+### Configurar credenciais de conta de Serviço G-Suite
+
+Obtém permissão para trabalhar no Google SpreadSheet com o Rocketbot
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|Caminho de credenciais|Arquivo JSON da Service account do Google SpreadSheets.|C:/caminho/credenciais.json|
+|Session||session|
+
 ### Listar arquivos no Drive
-  
+
 Listar arquivos do Google Drive. Este comando retorna todos os arquivos por padrão, incluindo arquivos descartados. Se você não quiser que os arquivos da lixeira apareçam na lista, use trashed=false como filtro.
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -107,7 +115,7 @@ Listar arquivos do Google Drive. Este comando retorna todos os arquivos por padr
 |Atribuir resultado à variável||var|
 
 ### Listar unidades compartilhadas
-  
+
 Lista as unidades compartilhadas (Shared Drives) disponíveis para a sessão atual.
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -115,7 +123,7 @@ Lista as unidades compartilhadas (Shared Drives) disponíveis para a sessão atu
 |Atribuir resultado à variável||var|
 
 ### Listar arquivos na unidade compartilhada
-  
+
 Lista os arquivos dentro de uma unidade compartilhada específica usando driveId.
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -126,7 +134,7 @@ Lista os arquivos dentro de uma unidade compartilhada específica usando driveId
 |Atribuir resultado à variável||var|
 
 ### Baixar arquivo
-  
+
 Baixar um arquivo do Drive
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -136,7 +144,7 @@ Baixar um arquivo do Drive
 |Atribuir resultado à variável|Devolverá True ou False dependendo do resultado da execução.|var|
 
 ### Baixar pasta
-  
+
 Baixar uma pasta do Drive
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -146,7 +154,7 @@ Baixar uma pasta do Drive
 |Atribuir resultado à variável|Devolverá True ou False dependendo do resultado da execução.|var|
 
 ### Exportar arquivo
-  
+
 Exportar um arquivo do Drive para o tipo de formato solicitado
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -156,7 +164,7 @@ Exportar um arquivo do Drive para o tipo de formato solicitado
 |Session||session|
 
 ### Criar pasta
-  
+
 Criar pasta
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -166,7 +174,7 @@ Criar pasta
 |Atribuir resultado à variável||var|
 
 ### Copiar ou mover arquivo
-  
+
 Copiar ou mover um arquivo
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -177,7 +185,7 @@ Copiar ou mover um arquivo
 |Atribuir resultado à variável||var|
 
 ### Subir arquivo
-  
+
 Carregar um arquivo para o Google Drive
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -189,7 +197,7 @@ Carregar um arquivo para o Google Drive
 |Atribuir resultado à variável||var|
 
 ### Subir pasta
-  
+
 Carregar uma pasta para o Google Drive
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -201,7 +209,7 @@ Carregar uma pasta para o Google Drive
 |Atribuir resultado à variável||var|
 
 ### Excluir um arquivo ou pasta
-  
+
 Excluir um arquivo ou pasta do Google Drive
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -210,7 +218,7 @@ Excluir um arquivo ou pasta do Google Drive
 |Atribuir resultado à variável||var|
 
 ### Compartilhar arquivo
-  
+
 Compartilhar um arquivo do Drive
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -225,7 +233,7 @@ Compartilhar um arquivo do Drive
 |Atribuir resultado à variável||var|
 
 ### Gerenciar permissoes da pasta
-  
+
 Cria, atualiza ou exclui uma permissão da pasta. Os tipos de acesso são de usuários: User ou Group, e de acesso geral: Domain ou Anyone.
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -239,7 +247,7 @@ Cria, atualiza ou exclui uma permissão da pasta. Os tipos de acesso são de usu
 |Atribuir resultado à variável||var|
 
 ### Listar permissões
-  
+
 Obtenha uma lista de permissões de um arquivo
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |
@@ -248,7 +256,7 @@ Obtenha uma lista de permissões de um arquivo
 |Atribuir resultado à variável||var|
 
 ### Excluir permissão
-  
+
 Excluir uma permissão de um arquivo
 |Parâmetros|Descrição|exemplo|
 | --- | --- | --- |

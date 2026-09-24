@@ -220,6 +220,20 @@ if module == "GoogleSuiteWithoutJSON":
     # global creds
     mod_gdrive_session[session] = cred
 
+if module == "GoogleSuiteServiceAccount":
+    cred = None
+    credentials_path = GetParams("credentials_path")
+
+    if not os.path.isfile(credentials_path):
+        raise Exception("The file does not exist")
+    
+    from google.oauth2 import service_account
+    cred = service_account.Credentials.from_service_account_file(
+        credentials_path, scopes=SCOPES
+    )
+
+    mod_gss_session[session] = cred
+        
 if not mod_gdrive_session[session]:
     raise Exception("No hay credenciales ni token válidos, por favor configure sus credenciales")
 
