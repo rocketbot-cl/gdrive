@@ -613,6 +613,37 @@ if module == 'CopyMoveFile':
         PrintException()
         raise e
 
+def _upload_resumable_file(service, file_metadata, media):
+    import socket
+    import ssl
+    import time
+
+    try:
+        upload_request = service.files().create(
+            body=file_metadata,
+            media_body=media,
+            fields='id', supportsAllDrives=True
+        )
+        uploaded_file = None
+        transport_retries = 0
+        while uploaded_file is None:
+            try:
+                status, uploaded_file = upload_request.next_chunk(num_retries=3)
+            except (ssl.SSLError, socket.timeout, ConnectionError):
+                if transport_retries >= 3:
+                    raise
+                time.sleep(2 ** transport_retries)
+                transport_retries += 1
+                print("Upload connection interrupted. Retry {}/3.".format(transport_retries))
+                continue
+            transport_retries = 0
+            if status:
+                print("Upload: {:.0%}".format(status.progress()))
+        return uploaded_file
+    finally:
+        media.stream().close()
+
+
 if module == "UploadFile":
     try:
         file_path = GetParams("file_path")
@@ -691,15 +722,13 @@ if module == "UploadFile":
         name = new_name or os.path.basename(file_path)
         print("MIME TYPE: ", file_mime, "NAME: ", name)
         file_metadata = {'name': name, 'mimeType': mimeType} if mimeType else  {'name': name}
-        media = MediaFileUpload(file_path,
-                                mimetype=file_mime)
 
         if folder:
             file_metadata['parents'] = [folder]
 
-        file = service.files().create(body=file_metadata,
-                                      media_body=media,
-                                      fields='id', supportsAllDrives=True).execute()
+        media = MediaFileUpload(file_path, mimetype=file_mime,
+                                chunksize=8 * 1024 * 1024, resumable=True)
+        file = _upload_resumable_file(service, file_metadata, media)
         if var:
             SetVar(var, file)
 
@@ -765,12 +794,13 @@ if module == "UploadFolder":
                 mimeType = import_formats[file_extension]
 
             file_metadata = {'name': new_name, 'mimeType': mimeType} if mimeType else {'name': new_name}
-            media = MediaFileUpload(file_path, mimetype=file_mime)
 
             if parent_id:
                 file_metadata['parents'] = [parent_id]
 
-            file = service.files().create(body=file_metadata, media_body=media, fields='id', supportsAllDrives=True).execute()
+            media = MediaFileUpload(file_path, mimetype=file_mime,
+                                    chunksize=8 * 1024 * 1024, resumable=True)
+            file = _upload_resumable_file(service, file_metadata, media)
             return file['id']
         
         def upload_folder(service, local_folder_path, parent_folder_id, convert, root_folder_name=None):
