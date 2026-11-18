@@ -617,6 +617,8 @@ def _upload_resumable_file(service, file_metadata, media):
     import socket
     import ssl
     import time
+    
+    step = 0.5
 
     try:
         upload_request = service.files().create(
@@ -626,6 +628,8 @@ def _upload_resumable_file(service, file_metadata, media):
         )
         uploaded_file = None
         transport_retries = 0
+        last_bucket = -1.0
+        
         while uploaded_file is None:
             try:
                 status, uploaded_file = upload_request.next_chunk(num_retries=3)
@@ -638,7 +642,13 @@ def _upload_resumable_file(service, file_metadata, media):
                 continue
             transport_retries = 0
             if status:
-                print("Upload: {:.0%}".format(status.progress()))
+                  bucket = int(status.progress() * 100 / step) * step
+                  if bucket != last_bucket:
+                    print("Upload: {:.1f}%".format(bucket).replace(".", ","))
+                    last_bucket = bucket
+                    
+        if last_bucket < 100:
+            print("Upload: 100,0%")
         return uploaded_file
     finally:
         media.stream().close()
